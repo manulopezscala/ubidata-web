@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cumplimiento normativo — Ubidata</title>
+<link rel="icon" href="assets/logo/ubidata-mark.png">
+<link rel="stylesheet" href="_ds/ubidata-design-system-f0fbdda3-3a90-4fc2-8858-39d3bc5ebf3e/styles.css">
+<template id="__bundler_thumbnail" data-bg-color="#0A1C3A">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#0A1C3A"/>
+    <rect x="330" y="180" width="540" height="120" rx="14" fill="#11254A" stroke="#2c3e52" stroke-width="3"/>
+    <rect x="330" y="330" width="540" height="120" rx="14" fill="#11254A" stroke="#00AAB9" stroke-width="4"/>
+    <rect x="366" y="222" width="300" height="14" rx="7" fill="#5a6b80"/>
+    <rect x="366" y="256" width="180" height="12" rx="6" fill="#3f4f66"/>
+    <rect x="366" y="372" width="330" height="14" rx="7" fill="#3DC2CE"/>
+    <rect x="366" y="406" width="210" height="12" rx="6" fill="#5a6b80"/>
+    <path d="M754 388 l18 18 l34 -38" stroke="#5FBF8A" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <g><rect x="330" y="500" width="120" height="26" rx="13" fill="#1F9D63"/><rect x="466" y="500" width="120" height="26" rx="13" fill="#00919F"/><rect x="602" y="500" width="120" height="26" rx="13" fill="#B97A09"/><rect x="738" y="500" width="120" height="26" rx="13" fill="#CC3D3D"/></g>
+    <text x="600" y="650" font-family="Arial, sans-serif" font-size="44" font-weight="600" fill="white" text-anchor="middle" opacity="0.9">Cumplimiento normativo</text>
+  </svg>
+</template>
+<style>
+/* Ubidata — Caso de uso: Cumplimiento normativo. Comparte vocabulario con index.html / caso-onboarding.html. */
+* { box-sizing: border-box; }
+body { margin: 0; font-family: var(--font-sans); color: var(--text-body); background: var(--surface-page); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+img { display: block; }
+a { color: inherit; }
+a:hover { color: var(--cyan-700); }
+
+/* ── Section scaffolding ── */
+.eyebrow { font: var(--text-overline); letter-spacing: var(--tracking-overline); text-transform: uppercase; color: var(--cyan-600); }
+.eyebrow--on-dark { color: var(--cyan-400); }
+.sec { padding: 96px 0; }
+.sec-h2 { font: 600 clamp(1.75rem, 3.6vw, 2.25rem)/1.16 var(--font-sans); letter-spacing: -0.02em; color: var(--navy-950); margin: 14px 0 0; max-width: 42ch; text-wrap: pretty; }
+.sec-h2--on-dark { color: #fff; }
+.sec-lead { font: var(--text-body-lg); color: var(--text-muted); line-height: 1.6; margin: 16px 0 0; max-width: 660px; text-wrap: pretty; }
+.sec-lead--on-dark { color: var(--text-on-dark); }
+.sec-head { max-width: 54rem; }
+.sec--subtle { background: var(--surface-subtle); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); }
+.spotlight { position: relative; overflow: hidden; background: var(--surface-spotlight); }
+.spotlight::before { content: ""; position: absolute; inset: 0; pointer-events: none; background-image: var(--grid-overlay); background-size: var(--grid-size); }
+.spotlight::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: var(--spotlight-glow); }
+.spotlight .wrap { position: relative; z-index: 1; }
+
+/* ── Buttons ── */
+.btn { display: inline-flex; align-items: center; gap: 8px; height: 46px; padding: 0 22px; border-radius: var(--radius-md); font: 500 1rem/1 var(--font-sans); cursor: pointer; border: 1px solid transparent; text-decoration: none; transition: background var(--duration-base) var(--ease-out), border-color var(--duration-base) var(--ease-out), box-shadow var(--duration-slow) var(--ease-out), transform var(--duration-base) var(--ease-out); white-space: nowrap; }
+.btn:hover { text-decoration: none; color: inherit; }
+.btn-grad { color: #fff; background: var(--brand-gradient-cta); box-shadow: var(--shadow-glow-cyan); }
+.btn-grad:hover { box-shadow: var(--shadow-glow-cyan-strong); transform: translateY(-1px); color: #fff; }
+.btn-glass { color: #fff; background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.14); }
+.btn-glass:hover { background: rgba(255,255,255,0.10); border-color: rgba(0,170,185,0.5); color: #fff; }
+.btn-outline-white { background: rgba(255,255,255,0.08); color: #fff; border-color: rgba(255,255,255,0.55); }
+.btn-outline-white:hover { background: rgba(255,255,255,0.16); color: #fff; }
+.btn .i { width: 17px; height: 17px; }
+
+/* ============================================================ NAV ============================================================ */
+.nav { position: sticky; top: 0; z-index: 200; display: flex; align-items: center; gap: 8px; height: 68px; padding: 0 48px; background: rgba(255,255,255,0.88); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-subtle); }
+.nav__logo { height: 26px; margin-right: 18px; width: auto; }
+.nav__links { display: flex; align-items: stretch; height: 100%; }
+.nav__item { position: relative; display: flex; align-items: center; }
+.nav__link { display: inline-flex; align-items: center; gap: 5px; height: 100%; padding: 0 14px; font: 500 0.9rem/1 var(--font-sans); color: var(--text-body); background: none; border: none; cursor: pointer; text-decoration: none; }
+.nav__link:hover, .nav__link.is-current { color: var(--navy-950); }
+.nav__link .caret { width: 14px; height: 14px; transition: transform var(--duration-base) var(--ease-out); color: var(--gray-400); }
+.nav__item:hover .nav__link .caret { transform: rotate(180deg); }
+.nav__item:hover .nav__link { color: var(--navy-950); }
+.nav__spacer { flex: 1; }
+.nav__right { display: flex; align-items: center; gap: 10px; }
+.nav__login { display: inline-flex; align-items: center; gap: 7px; height: 40px; padding: 0 20px; border-radius: var(--radius-md); font: 500 0.9rem/1 var(--font-sans); background: var(--navy-950); color: #fff; border: 1px solid var(--navy-950); cursor: pointer; transition: background var(--duration-base) var(--ease-out); }
+.nav__login:hover { background: var(--navy-800); }
+.dropdown { position: absolute; top: calc(100% - 6px); left: 0; min-width: 320px; background: #fff; border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); padding: 10px; opacity: 0; visibility: hidden; transform: translateY(6px); transition: opacity var(--duration-base) var(--ease-out), transform var(--duration-base) var(--ease-out), visibility var(--duration-base); }
+.nav__item:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+.dropdown::before { content: ""; position: absolute; bottom: 100%; left: 0; right: 0; height: 10px; }
+.dropdown a { display: flex; gap: 12px; align-items: flex-start; padding: 11px 12px; border-radius: var(--radius-md); text-decoration: none; transition: background var(--duration-fast) var(--ease-out); color: inherit; }
+.dropdown a:hover { background: var(--surface-subtle); color: inherit; }
+.dropdown__ic { flex: none; width: 34px; height: 34px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; background: var(--cyan-100); color: var(--cyan-700); margin-top: 2px; }
+.dropdown a:hover .dropdown__ic { background: var(--cyan-200); }
+.dropdown__t { font: 600 0.875rem/1.3 var(--font-sans); color: var(--navy-950); display: block; }
+.dropdown__d { font: var(--text-caption); color: var(--text-muted); margin-top: 3px; line-height: 1.45; display: block; }
+.dropdown .i { width: 17px; height: 17px; }
+
+/* ============================================================ HERO ============================================================ */
+.hero { padding: 80px 0 92px; }
+.hero__grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 56px; align-items: center; }
+.hero__crumb { display: inline-flex; align-items: center; gap: 8px; font: 500 0.78rem/1 var(--font-sans); color: var(--cyan-400); margin-bottom: 24px; }
+.hero__crumb a { color: var(--text-on-dark); text-decoration: none; }
+.hero__crumb a:hover { color: #fff; }
+.hero__crumb .sep { color: var(--gray-500); }
+.hero__h1 { font: 600 clamp(2.1rem, 4.2vw, 2.95rem)/1.1 var(--font-sans); letter-spacing: -0.02em; color: #fff; margin: 0; max-width: 19ch; text-wrap: pretty; }
+.hero__h1 .grad { background: var(--brand-gradient-h); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hero__sub { font: var(--text-body-lg); color: var(--text-on-dark); line-height: 1.62; max-width: 33rem; margin: 22px 0 0; }
+.hero__ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px; }
+
+/* ── Hero: compliance control console ── */
+.console { background: #fff; border-radius: var(--radius-xl); box-shadow: 0 30px 70px -22px rgba(0,0,0,0.55), 0 0 0 1px rgba(0,170,185,0.06); overflow: hidden; }
+.console__bar { display: flex; align-items: center; gap: 10px; padding: 14px 22px; border-bottom: 1px solid var(--border-subtle); background: var(--gray-50); }
+.console__bar .ic { width: 28px; height: 28px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; background: var(--cyan-100); color: var(--cyan-700); flex: none; }
+.console__bar .ic .i { width: 15px; height: 15px; }
+.console__bar .t { font: 600 0.88rem/1.2 var(--font-sans); color: var(--navy-950); }
+.console__bar .id { margin-left: auto; font-family: var(--font-mono); font-size: 0.72rem; color: var(--gray-500); }
+.console__body { padding: 22px; }
+.cline { display: flex; flex-direction: column; gap: 6px; }
+.cline__k { font: var(--text-overline); letter-spacing: 0.07em; text-transform: uppercase; color: var(--gray-400); }
+.cin { display: flex; align-items: center; gap: 9px; height: 44px; padding: 0 13px; border: 1px dashed var(--gray-300); border-radius: var(--radius-md); background: var(--gray-50); font-family: var(--font-mono); font-size: 0.82rem; color: var(--gray-600); }
+.cin .i { width: 16px; height: 16px; color: var(--gray-400); flex: none; }
+.carrow { display: flex; align-items: center; gap: 9px; padding: 10px 0 10px 4px; font: var(--text-caption); color: var(--cyan-700); }
+.carrow .i { width: 16px; height: 16px; }
+.cout { display: flex; align-items: center; gap: 9px; min-height: 46px; padding: 10px 13px; border: 1.5px solid var(--cyan-500); border-radius: var(--radius-md); background: #fff; box-shadow: 0 0 0 3px rgba(0,170,185,0.14); font-family: var(--font-mono); font-size: 0.82rem; color: var(--navy-950); line-height: 1.4; }
+.cout .i { width: 17px; height: 17px; color: var(--cyan-600); flex: none; }
+.cgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 14px; }
+.cstat { border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 9px 12px; background: var(--gray-50); }
+.cstat__k { font: var(--text-overline); letter-spacing: 0.07em; text-transform: uppercase; color: var(--gray-400); }
+.cstat__v { display: flex; align-items: center; gap: 7px; font: 600 0.9rem/1.2 var(--font-sans); color: var(--navy-950); margin-top: 5px; }
+.cstat__v .d { width: 7px; height: 7px; border-radius: 50%; flex: none; }
+.cstat__v .d--ok { background: var(--success); }
+.cstat__v .d--hi { background: var(--cyan-600); }
+.crow { display: flex; align-items: flex-start; gap: 10px; margin-top: 8px; padding: 9px 12px; border: 1px solid var(--border-subtle); border-radius: var(--radius-md); }
+.crow .i { width: 15px; height: 15px; flex: none; margin-top: 2px; color: var(--cyan-600); }
+.crow .ck { font: var(--text-overline); letter-spacing: 0.07em; text-transform: uppercase; color: var(--gray-400); display: block; }
+.crow .cv { font: 500 0.85rem/1.35 var(--font-sans); color: var(--navy-950); margin-top: 3px; display: block; }
+.crow--action { background: var(--success-bg); border-color: rgba(31,157,99,0.3); }
+.crow--action .i { color: var(--success); }
+.caudit { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--border-subtle); }
+.caudit__h { display: flex; align-items: center; gap: 7px; font: var(--text-overline); letter-spacing: 0.07em; text-transform: uppercase; color: var(--gray-400); }
+.caudit__h .i { width: 13px; height: 13px; }
+.caudit__steps { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 9px; }
+.caudit__steps span { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-mono); font-size: 0.7rem; color: var(--cyan-700); background: var(--cyan-100); padding: 5px 10px; border-radius: var(--radius-pill); }
+.caudit__steps span .d { width: 5px; height: 5px; border-radius: 50%; background: var(--cyan-600); }
+
+/* ============================================================ CONTROL LAYER (Antes / Ubidata / Después) ============================================================ */
+.flow { display: grid; grid-template-columns: 1fr 1.12fr 1fr; gap: 20px; margin-top: 56px; align-items: stretch; }
+.fcard { background: #fff; border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 24px 22px; box-shadow: var(--shadow-card); display: flex; flex-direction: column; }
+.fcard__step { display: flex; align-items: center; gap: 8px; font: var(--text-overline); letter-spacing: 0.07em; text-transform: uppercase; color: var(--gray-400); }
+.fcard__step .n { width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 0.66rem; color: #fff; background: var(--gray-400); }
+.fcard h3 { font: 600 1.12rem/1.28 var(--font-sans); letter-spacing: -0.01em; color: var(--navy-950); margin: 12px 0 0; text-wrap: pretty; }
+.fcard p { font: var(--text-body-sm); color: var(--text-muted); line-height: 1.58; margin: 10px 0 0; }
+.fdata { margin-top: 16px; padding: 11px 13px; border-radius: var(--radius-sm); font-family: var(--font-mono); font-size: 0.78rem; display: flex; align-items: center; gap: 8px; background: var(--warning-bg); color: var(--warning); border: 1px dashed rgba(185,122,9,0.5); }
+.fdata .d { width: 6px; height: 6px; border-radius: 50%; background: currentColor; flex: none; }
+.flist { list-style: none; padding: 0; margin: 16px 0 0; display: flex; flex-direction: column; gap: 8px; }
+.flist li { display: flex; align-items: flex-start; gap: 8px; font: var(--text-caption); color: var(--text-muted); line-height: 1.45; }
+.flist li .i { width: 13px; height: 13px; flex: none; margin-top: 2px; color: var(--danger); }
+/* middle: Ubidata control layer, navy */
+.fcard--ubi { background: var(--navy-950); border-color: var(--navy-950); position: relative; overflow: hidden; box-shadow: 0 24px 54px -20px rgba(0,170,185,0.4); }
+.fcard--ubi::after { content: ""; position: absolute; inset: 0; background-image: var(--grid-overlay); background-size: var(--grid-size); opacity: 0.55; pointer-events: none; }
+.fcard--ubi > * { position: relative; z-index: 1; }
+.fcard--ubi .fcard__step { color: var(--cyan-400); }
+.fcard--ubi .fcard__step .n { background: var(--brand-gradient-cta); color: var(--navy-950); }
+.fcard--ubi h3 { color: #fff; }
+.fcard--ubi p { color: var(--text-on-dark); }
+.ubichips { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 18px; }
+.ubichip { display: flex; align-items: center; gap: 8px; padding: 10px 11px; border-radius: var(--radius-sm); background: rgba(0,170,185,0.12); border: 1px solid rgba(0,170,185,0.26); font: 500 0.78rem/1.2 var(--font-sans); color: #fff; }
+.ubichip .i { width: 14px; height: 14px; color: var(--cyan-300); flex: none; }
+.ubimeter { margin-top: 14px; display: flex; align-items: center; gap: 10px; }
+.ubimeter__bars { display: flex; align-items: flex-end; gap: 4px; height: 24px; }
+.ubimeter__bars i { width: 6px; border-radius: 3px; background: var(--brand-gradient-cta); display: block; }
+.ubimeter__t { font: var(--text-caption); color: var(--text-on-dark); }
+.ubimeter__t b { color: var(--cyan-300); font-family: var(--font-mono); font-weight: 600; }
+/* right: states */
+.fstates { display: flex; flex-direction: column; gap: 8px; margin-top: 16px; }
+.fstate { display: flex; align-items: center; gap: 9px; padding: 10px 12px; border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); font: 500 0.82rem/1.2 var(--font-sans); color: var(--navy-950); background: var(--gray-50); }
+.fstate .d { width: 7px; height: 7px; border-radius: 50%; flex: none; }
+.fstate--ok .d { background: var(--success); }
+.fstate--info .d { background: var(--cyan-600); }
+.fstate--warn .d { background: var(--warning); }
+.fstate--bad .d { background: var(--danger); }
+.fstate--log .d { background: var(--gray-400); }
+.flow__close { margin-top: 48px; display: flex; justify-content: center; }
+.flow__close-inner { display: flex; align-items: center; gap: 16px; max-width: 58rem; background: var(--navy-950); border-radius: var(--radius-xl); padding: 26px 32px; box-shadow: 0 24px 54px -20px rgba(0,170,185,0.4); }
+.flow__close-inner .ic { width: 46px; height: 46px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; background: var(--brand-gradient-cta); color: #fff; box-shadow: var(--shadow-glow-cyan); flex: none; }
+.flow__close-inner .ic .i { width: 23px; height: 23px; }
+.flow__close-inner p { font: 600 clamp(1.05rem,2vw,1.28rem)/1.42 var(--font-sans); letter-spacing: -0.01em; color: #fff; margin: 0; text-wrap: pretty; }
+.flow__close-inner p .hl { background: var(--brand-gradient-h); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+/* ============================================================ MATRIZ DE DECISIÓN ============================================================ */
+.matrix { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 52px; }
+.mcard { position: relative; background: #fff; border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 22px 20px 20px; box-shadow: var(--shadow-card); display: flex; flex-direction: column; overflow: hidden; transition: border-color var(--duration-slow) var(--ease-out), box-shadow var(--duration-slow) var(--ease-out), transform var(--duration-slow) var(--ease-out); }
+.mcard:hover { box-shadow: var(--shadow-card-hover); transform: translateY(-2px); }
+.mcard::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--mc); }
+.mcard--ok { --mc: var(--success); }
+.mcard--info { --mc: var(--cyan-600); }
+.mcard--warn { --mc: var(--warning); }
+.mcard--bad { --mc: var(--danger); }
+.mpill { display: inline-flex; align-items: center; gap: 7px; align-self: flex-start; font: 600 0.78rem/1 var(--font-sans); color: var(--mc); border: 1px solid var(--mc); background: color-mix(in srgb, var(--mc) 8%, #fff); padding: 6px 12px; border-radius: var(--radius-pill); }
+.mpill .i { width: 13px; height: 13px; }
+.mcard h3 { font: 600 1rem/1.3 var(--font-sans); color: var(--navy-950); margin: 16px 0 0; }
+.mcard p { font: var(--text-body-sm); color: var(--text-muted); line-height: 1.55; margin: 9px 0 0; }
+.maction { margin-top: auto; padding-top: 18px; }
+.maction__k { font: var(--text-overline); letter-spacing: 0.07em; text-transform: uppercase; color: var(--gray-400); }
+.maction__v { display: flex; align-items: flex-start; gap: 7px; font: 500 0.85rem/1.4 var(--font-sans); color: var(--navy-950); margin-top: 6px; }
+.maction__v .i { width: 15px; height: 15px; flex: none; margin-top: 2px; color: var(--mc); }
+/* mini dashboard table */
+.mtable { margin-top: 32px; background: #fff; border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); box-shadow: var(--shadow-card); overflow: hidden; }
+.mtable__head { display: flex; align-items: center; gap: 10px; padding: 14px 20px; border-bottom: 1px solid var(--border-subtle); }
+.mtable__head .ic { width: 28px; height: 28px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; background: var(--cyan-100); color: var(--cyan-700); flex: none; }
+.mtable__head .ic .i { width: 15px; height: 15px; }
+.mtable__head .t { font: 600 0.88rem/1.2 var(--font-sans); color: var(--navy-950); }
+.mtable__head .tag { margin-left: auto; font: var(--text-caption); color: var(--gray-500); font-family: var(--font-mono); }
+.mtable table { width: 100%; border-collapse: collapse; }
+.mtable th { text-align: left; font: var(--text-overline); letter-spacing: 0.07em; text-transform: uppercase; color: var(--gray-400); padding: 11px 20px; background: var(--gray-50); border-bottom: 1px solid var(--border-subtle); white-space: nowrap; }
+.mtable td { padding: 13px 20px; border-bottom: 1px solid var(--gray-100); font: var(--text-body-sm); color: var(--text-body); vertical-align: middle; }
+.mtable tr:last-child td { border-bottom: none; }
+.mtable tbody tr:hover td { background: var(--gray-50); }
+.mtable td.mono { font-family: var(--font-mono); font-size: 0.8rem; color: var(--navy-950); }
+.spill { display: inline-flex; align-items: center; gap: 6px; font: 500 0.76rem/1 var(--font-sans); padding: 5px 10px; border-radius: var(--radius-pill); white-space: nowrap; }
+.spill .d { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.spill--ok { color: var(--success); background: var(--success-bg); }
+.spill--info { color: var(--cyan-700); background: var(--cyan-100); }
+.spill--warn { color: var(--warning); background: var(--warning-bg); }
+.spill--bad { color: var(--danger); background: var(--danger-bg); }
+.conf-cell { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted); }
+
+/* ============================================================ SIMULADOR ============================================================ */
+.sim__grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: 24px; margin-top: 52px; align-items: start; }
+.dpanel { background: #fff; border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); box-shadow: var(--shadow-card); overflow: hidden; }
+.dpanel__head { display: flex; align-items: center; gap: 10px; padding: 16px 22px; border-bottom: 1px solid var(--border-subtle); }
+.dpanel__head .ic { width: 30px; height: 30px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; background: var(--cyan-100); color: var(--cyan-700); flex: none; }
+.dpanel__head .ic .i { width: 16px; height: 16px; }
+.dpanel__head .t { font: 600 0.92rem/1.2 var(--font-sans); color: var(--navy-950); }
+.dpanel__head .tag { margin-left: auto; font: var(--text-caption); color: var(--gray-500); }
+.dpanel__body { padding: 22px; }
+.fmrow { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+.fmf { display: flex; flex-direction: column; gap: 6px; }
+.fmf--full { grid-column: 1 / -1; }
+.dlabel { display: flex; align-items: center; gap: 6px; font: 500 0.74rem/1 var(--font-sans); color: var(--gray-500); }
+.dlabel--active { color: var(--cyan-700); }
+.dlabel .req { color: var(--cyan-600); }
+.ph { height: 40px; border: 1px solid var(--gray-200); border-radius: var(--radius-md); background: var(--gray-50); display: flex; align-items: center; padding: 0 13px; font: var(--text-body-sm); color: var(--gray-600); }
+.ph.mono { font-family: var(--font-mono); font-size: 0.78rem; }
+.daddr__field { display: flex; align-items: center; gap: 9px; height: 48px; border: 1.5px solid var(--gray-200); border-radius: var(--radius-md); background: #fff; padding: 0 13px; transition: border-color var(--duration-base) var(--ease-out), box-shadow var(--duration-base) var(--ease-out); }
+.daddr__field:focus-within { border-color: var(--cyan-500); box-shadow: 0 0 0 3px rgba(0,170,185,0.18); }
+.daddr__field .pin { width: 18px; height: 18px; color: var(--cyan-600); flex: none; }
+.daddr__field input { flex: 1; border: none; outline: none; background: none; font: var(--text-data); font-size: 0.88rem; color: var(--navy-950); min-width: 0; }
+.daddr__field input::placeholder { color: var(--gray-400); font-family: var(--font-sans); font-weight: 400; }
+.presets { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 11px; }
+.presets__k { width: 100%; font: var(--text-caption); color: var(--gray-500); margin-bottom: 1px; }
+.preset { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-body); background: var(--gray-50); border: 1px solid var(--gray-200); padding: 6px 10px; border-radius: var(--radius-pill); cursor: pointer; transition: border-color var(--duration-base) var(--ease-out), background var(--duration-base) var(--ease-out); }
+.preset:hover { border-color: var(--cyan-500); background: var(--cyan-100); color: var(--cyan-700); }
+.preset.is-on { border-color: var(--cyan-600); background: var(--cyan-100); color: var(--cyan-700); }
+.dform__submit { width: 100%; margin-top: 20px; height: 48px; border: none; border-radius: var(--radius-md); background: var(--brand-gradient-cta); color: #fff; font: 500 0.95rem/1 var(--font-sans); cursor: pointer; box-shadow: var(--shadow-glow-cyan); display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
+.dform__submit:disabled { background: var(--gray-200); color: var(--gray-500); cursor: not-allowed; box-shadow: none; }
+.dform__submit .i { width: 16px; height: 16px; }
+/* response panel */
+.dpanel--resp { background: var(--navy-950); border-color: var(--navy-950); position: relative; overflow: hidden; }
+.dpanel--resp::after { content: ""; position: absolute; inset: 0; background-image: var(--grid-overlay); background-size: var(--grid-size); opacity: 0.5; pointer-events: none; }
+.dpanel--resp > * { position: relative; z-index: 1; }
+.dpanel--resp .dpanel__head { border-color: rgba(255,255,255,0.1); }
+.dpanel--resp .dpanel__head .ic { background: rgba(0,170,185,0.18); color: var(--cyan-300); }
+.dpanel--resp .dpanel__head .t { color: #fff; }
+.dpanel--resp .dpanel__head .tag { color: var(--text-inverse-muted); font-family: var(--font-mono); }
+.dtabs { display: flex; gap: 4px; padding: 4px; margin: 18px 22px 0; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-md); }
+.dtab { flex: 1; height: 34px; border: none; background: none; border-radius: var(--radius-sm); font: 500 0.82rem/1 var(--font-sans); color: var(--text-on-dark); cursor: pointer; transition: background var(--duration-base) var(--ease-out), color var(--duration-base) var(--ease-out); }
+.dtab.is-active { background: #fff; color: var(--navy-950); }
+.dresp { padding: 20px 22px 24px; }
+.dresp__await { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 46px 16px; }
+.dresp__await .ic { width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); color: var(--gray-500); margin-bottom: 16px; }
+.dresp__await .ic .i { width: 24px; height: 24px; }
+.dresp__await p { font: var(--text-body-sm); color: var(--text-on-dark); max-width: 28ch; line-height: 1.5; margin: 0; }
+.dview { display: none; }
+.dview.is-shown { display: block; animation: fadeUp var(--duration-reveal) var(--ease-reveal) both; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+.dstatus { display: flex; align-items: center; gap: 11px; padding: 13px 14px; border-radius: var(--radius-md); background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); margin-bottom: 16px; }
+.dstatus .ic { width: 34px; height: 34px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; flex: none; }
+.dstatus .ic .i { width: 18px; height: 18px; }
+.dstatus .st { font: 600 0.98rem/1.2 var(--font-sans); color: #fff; }
+.dstatus .sd { font: var(--text-caption); color: var(--text-on-dark); margin-top: 3px; display: block; }
+.dstatus .score { margin-left: auto; text-align: right; }
+.dstatus .score .sk { font: var(--text-caption); color: var(--text-inverse-muted); display: block; }
+.dstatus .score .sv { font: 600 1.05rem/1 var(--font-mono); color: var(--cyan-300); display: block; margin-top: 4px; }
+.dkv { display: flex; flex-direction: column; }
+.dkv__row { display: flex; align-items: baseline; gap: 12px; padding: 11px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.dkv__row:last-child { border-bottom: none; }
+.dkv__k { flex: none; width: 132px; font: var(--text-overline); letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-inverse-muted); }
+.dkv__v { font: var(--text-data); color: #fff; line-height: 1.4; }
+.dkv__v.accent { color: var(--cyan-300); }
+.drec { display: flex; align-items: flex-start; gap: 10px; margin-top: 16px; padding: 13px 14px; background: rgba(0,170,185,0.1); border: 1px solid rgba(0,170,185,0.25); border-radius: var(--radius-md); }
+.drec .i { width: 16px; height: 16px; color: var(--cyan-300); flex: none; margin-top: 1px; }
+.drec .rt { font: 500 0.82rem/1.4 var(--font-sans); color: #fff; }
+.drec .rt span { display: block; font: var(--text-caption); color: var(--text-on-dark); font-weight: 400; margin-top: 3px; }
+/* diagnóstico tab */
+.diaglist { display: flex; flex-direction: column; gap: 9px; }
+.diagrow { display: flex; align-items: center; gap: 10px; padding: 12px 13px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-md); font-family: var(--font-mono); font-size: 0.78rem; }
+.diagrow .from { color: var(--text-inverse-muted); text-decoration: line-through; text-decoration-color: rgba(204,61,61,0.7); }
+.diagrow .arr { color: var(--cyan-400); flex: none; }
+.diagrow .to { color: #fff; }
+.diagrow .tagf { margin-left: auto; font-family: var(--font-sans); font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--cyan-300); flex: none; }
+.diagnote { margin-top: 14px; font: var(--text-caption); color: var(--text-on-dark); line-height: 1.5; }
+/* audit trail tab */
+.trail { display: flex; flex-direction: column; }
+.trailrow { display: flex; gap: 13px; padding-bottom: 16px; position: relative; }
+.trailrow:last-child { padding-bottom: 0; }
+.trailrow::before { content: ""; position: absolute; left: 8px; top: 20px; bottom: 0; width: 1px; background: rgba(255,255,255,0.14); }
+.trailrow:last-child::before { display: none; }
+.trailrow .dot { width: 17px; height: 17px; border-radius: 50%; flex: none; display: flex; align-items: center; justify-content: center; background: rgba(0,170,185,0.18); border: 1px solid rgba(0,170,185,0.45); margin-top: 2px; z-index: 1; }
+.trailrow .dot i { width: 5px; height: 5px; border-radius: 50%; background: var(--cyan-300); display: block; }
+.trailrow .tb { display: flex; flex-direction: column; gap: 3px; }
+.trailrow .tt { font: 500 0.85rem/1.3 var(--font-sans); color: #fff; }
+.trailrow .tm { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-inverse-muted); }
+.trailfoot { margin-top: 16px; display: flex; align-items: center; gap: 8px; padding: 11px 13px; border-radius: var(--radius-md); background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); font: var(--text-caption); color: var(--text-on-dark); }
+.trailfoot .i { width: 14px; height: 14px; color: var(--cyan-300); flex: none; }
+
+/* ============================================================ BENEFICIOS ============================================================ */
+.benf { position: relative; overflow: hidden; background: var(--surface-spotlight); }
+.benf::before { content: ""; position: absolute; inset: 0; background-image: var(--grid-overlay); background-size: var(--grid-size); pointer-events: none; }
+.benf::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: var(--spotlight-glow); }
+.benf .wrap { position: relative; z-index: 1; }
+.benf__grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; margin-top: 48px; }
+.gcard { grid-column: span 2; background: rgba(255,255,255,0.055); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.13); border-radius: var(--radius-lg); padding: 24px 22px; transition: background var(--duration-slow) var(--ease-out), transform var(--duration-slow) var(--ease-out), border-color var(--duration-slow) var(--ease-out); }
+.gcard:hover { background: rgba(255,255,255,0.09); border-color: rgba(0,170,185,0.4); transform: translateY(-3px); }
+.gcard--half { grid-column: span 3; }
+.gcard__ic { width: 42px; height: 42px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; background: rgba(0,170,185,0.16); color: var(--cyan-300); margin-bottom: 15px; }
+.gcard__ic .i { width: 21px; height: 21px; }
+.gcard h3 { font: 600 1.05rem/1.25 var(--font-sans); color: #fff; margin: 0; }
+.gcard p { font: var(--text-body-sm); color: var(--text-on-dark); line-height: 1.55; margin: 9px 0 0; }
+
+/* ============================================================ PRODUCTOS ============================================================ */
+.prodlead { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 20px; margin-top: 52px; }
+.pfeat { position: relative; overflow: hidden; display: flex; flex-direction: column; text-decoration: none; background: var(--navy-950); border: 1px solid var(--navy-950); border-radius: var(--radius-xl); padding: 30px 32px; box-shadow: 0 24px 54px -20px rgba(0,170,185,0.35); transition: transform var(--duration-slow) var(--ease-out), box-shadow var(--duration-slow) var(--ease-out); }
+.pfeat::after { content: ""; position: absolute; inset: 0; background-image: var(--grid-overlay); background-size: var(--grid-size); opacity: 0.5; pointer-events: none; }
+.pfeat:hover { transform: translateY(-3px); box-shadow: 0 28px 62px -20px rgba(0,170,185,0.5); color: inherit; }
+.pfeat > * { position: relative; z-index: 1; }
+.pfeat__tag { display: inline-flex; align-items: center; gap: 7px; align-self: flex-start; font: var(--text-overline); letter-spacing: 0.07em; text-transform: uppercase; color: var(--navy-950); background: var(--brand-gradient-cta); padding: 6px 12px; border-radius: var(--radius-pill); margin-bottom: 18px; }
+.pfeat__tag .i { width: 13px; height: 13px; }
+.pfeat__ic { width: 48px; height: 48px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; background: rgba(0,170,185,0.18); color: var(--cyan-300); margin-bottom: 16px; }
+.pfeat__ic .i { width: 24px; height: 24px; }
+.pfeat h3 { font: 600 1.5rem/1.2 var(--font-sans); letter-spacing: -0.02em; color: #fff; margin: 0; }
+.pfeat p { font: var(--text-body-sm); font-size: 0.92rem; color: var(--text-on-dark); line-height: 1.6; margin: 12px 0 0; max-width: 42ch; }
+.pjson { margin: 22px 0 0; font: var(--text-code); font-size: 0.79rem; color: var(--cyan-100); background: rgba(0,0,0,0.28); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-md); padding: 16px 18px; overflow-x: auto; line-height: 1.75; }
+.pjson .k { color: var(--cyan-300); }
+.pjson .s { color: var(--green-400); }
+.pfeat .more { display: inline-flex; align-items: center; gap: 6px; margin-top: 22px; font: 500 0.9rem/1 var(--font-sans); color: var(--cyan-300); }
+.pfeat .more .i { width: 16px; height: 16px; transition: transform var(--duration-base) var(--ease-out); }
+.pfeat:hover .more .i { transform: translateX(4px); }
+.psecs { display: flex; flex-direction: column; gap: 20px; }
+.psec { display: flex; gap: 16px; text-decoration: none; background: #fff; border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 22px; box-shadow: var(--shadow-card); transition: border-color var(--duration-slow) var(--ease-out), box-shadow var(--duration-slow) var(--ease-out), transform var(--duration-slow) var(--ease-out); flex: 1; }
+.psec:hover { border-color: rgba(0,170,185,0.4); box-shadow: var(--shadow-card-hover); transform: translateY(-2px); color: inherit; }
+.psec__ic { width: 42px; height: 42px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; background: var(--cyan-100); color: var(--cyan-700); flex: none; }
+.psec__ic .i { width: 21px; height: 21px; }
+.psec__b { display: flex; flex-direction: column; }
+.psec h4 { font: 600 1.02rem/1.25 var(--font-sans); color: var(--navy-950); margin: 0; }
+.psec p { font: var(--text-caption); color: var(--text-muted); line-height: 1.5; margin: 6px 0 0; }
+.psec__tag { font: var(--text-overline); letter-spacing: 0.06em; text-transform: uppercase; color: var(--cyan-700); margin-top: 10px; }
+
+/* ============================================================ CTA FINAL ============================================================ */
+.cta { position: relative; overflow: hidden; background: var(--surface-spotlight); }
+.cta::before { content: ""; position: absolute; inset: 0; background-image: var(--grid-overlay); background-size: var(--grid-size); pointer-events: none; }
+.cta__inner { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 84px 48px; display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 56px; align-items: center; }
+.cta__h2 { font: 600 clamp(1.8rem,3.6vw,2.4rem)/1.15 var(--font-sans); letter-spacing: -0.02em; color: #fff; margin: 14px 0 0; max-width: 20ch; text-wrap: pretty; }
+.cta__p { font: var(--text-body-lg); color: var(--text-on-dark); line-height: 1.6; margin: 16px 0 0; max-width: 34rem; }
+.cta__btns { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
+.cta__chip { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.13); border-radius: var(--radius-lg); padding: 24px; backdrop-filter: blur(14px); }
+.cta__chip .ph2 { display: flex; align-items: center; gap: 10px; }
+.cta__chip .ph2 .ic { width: 38px; height: 38px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; background: rgba(0,170,185,0.16); color: var(--cyan-300); flex: none; }
+.cta__chip .ph2 .ic .i { width: 19px; height: 19px; }
+.cta__chip .ph2 .t { font: 600 0.95rem/1.2 var(--font-sans); color: #fff; }
+.cta__chip .addr { font: var(--text-data); color: var(--text-on-dark); margin: 16px 0 0; line-height: 1.4; }
+.cta__chip .states { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+.cta__chip .states span { display: inline-flex; align-items: center; gap: 5px; font: var(--text-caption); color: var(--cyan-300); background: rgba(0,170,185,0.12); padding: 5px 9px; border-radius: var(--radius-pill); }
+.cta__chip .states span .d { width: 5px; height: 5px; border-radius: 50%; background: var(--cyan-400); }
+
+/* ============================================================ FOOTER ============================================================ */
+.footer { background: var(--surface-spotlight); position: relative; }
+.footer::before { content: ""; position: absolute; inset: 0; background-image: var(--grid-overlay); background-size: var(--grid-size); opacity: 0.6; pointer-events: none; }
+.footer__inner { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 64px 48px 36px; }
+.footer__top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 36px; padding-bottom: 44px; border-bottom: 1px solid rgba(255,255,255,0.09); }
+.footer__brand img { height: 26px; }
+.footer__brand p { font: var(--text-body-sm); color: var(--text-on-dark); line-height: 1.6; margin: 16px 0 0; max-width: 260px; }
+.footer__brand .badges { display: flex; gap: 8px; margin-top: 18px; }
+.footer__brand .badges span { font: var(--text-caption); color: var(--text-inverse-muted); border: 1px solid rgba(255,255,255,0.14); padding: 5px 10px; border-radius: var(--radius-sm); }
+.footer__col h4 { font: 600 0.8125rem/1 var(--font-sans); color: #fff; margin: 0 0 16px; }
+.footer__col ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 11px; }
+.footer__col li a { font: var(--text-body-sm); color: var(--text-on-dark); text-decoration: none; }
+.footer__col li a:hover { color: #fff; }
+.footer__bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 26px; }
+.footer__bottom p { font: var(--text-caption); color: var(--gray-500); }
+.footer__bottom .links { display: flex; gap: 22px; }
+.footer__bottom .links a { font: var(--text-caption); color: var(--gray-400); text-decoration: none; }
+.footer__bottom .links a:hover { color: #fff; }
+
+/* ── Scroll reveal ── */
+.reveal-on [data-reveal] { opacity: 0; }
+.reveal-on [data-reveal].in { animation: revealIn var(--duration-reveal) var(--ease-reveal) both; }
+@keyframes revealIn { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .reveal-on [data-reveal] { opacity: 1 !important; animation: none !important; } }
+
+/* ── Responsive ── */
+@media (max-width: 1080px) {
+  .flow { grid-template-columns: 1fr; }
+  .matrix { grid-template-columns: repeat(2, 1fr); }
+  .benf__grid { grid-template-columns: repeat(4, 1fr); }
+  .gcard--half { grid-column: span 2; }
+}
+@media (max-width: 900px) {
+  .wrap, .nav, .cta__inner, .footer__inner { padding-left: 24px; padding-right: 24px; }
+  .nav__links { display: none; }
+  .hero__grid { grid-template-columns: 1fr; gap: 40px; }
+  .sim__grid { grid-template-columns: 1fr; }
+  .prodlead { grid-template-columns: 1fr; }
+  .cta__inner { grid-template-columns: 1fr; gap: 36px; }
+  .footer__top { grid-template-columns: 1fr 1fr; }
+  .mtable { overflow-x: auto; }
+}
+@media (max-width: 620px) {
+  .matrix { grid-template-columns: 1fr; }
+  .benf__grid { grid-template-columns: 1fr; }
+  .gcard, .gcard--half { grid-column: span 1; }
+  .fmrow, .cgrid, .ubichips { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================ NAV ============================================================ -->
+<nav class="nav">
+  <a href="index.html"><img class="nav__logo" src="assets/logo/ubidata-logo-navy.png" alt="Ubidata"></a>
+  <div class="nav__links">
+    <div class="nav__item"><a class="nav__link" href="index.html">Inicio</a></div>
+    <div class="nav__item">
+      <button class="nav__link">Productos <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg></button>
+      <div class="dropdown" style="min-width:380px;">
+        <a href="index.html#producto-lookup"><span class="dropdown__ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span><span><span class="dropdown__t">Buscador de direcciones</span><span class="dropdown__d">Autocompletado normalizado para onboarding y checkout</span></span></a>
+        <a href="producto-api-rest.html"><span class="dropdown__ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg></span><span><span class="dropdown__t">API REST de validación</span><span class="dropdown__d">Validación, normalización y diagnóstico en tus sistemas</span></span></a>
+        <a href="index.html#producto-batch"><span class="dropdown__ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg></span><span><span class="dropdown__t">Procesamiento batch</span><span class="dropdown__d">Normalizá grandes volúmenes y bases históricas</span></span></a>
+        <a href="index.html#producto-plataforma"><span class="dropdown__ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></span><span><span class="dropdown__t">Plataforma</span><span class="dropdown__d">Operá productos y centralizá procesos con visibilidad total</span></span></a>
+      </div>
+    </div>
+    <div class="nav__item">
+      <button class="nav__link is-current">Casos de uso <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg></button>
+      <div class="dropdown">
+        <a href="caso-ultima-milla.html"><span class="dropdown__ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg></span><span><span class="dropdown__t">Última milla</span><span class="dropdown__d">Reducí entregas fallidas y mejorá la precisión operativa</span></span></a>
+        <a href="caso-onboarding.html"><span class="dropdown__ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg></span><span><span class="dropdown__t">Onboarding</span><span class="dropdown__d">Mejorá la captura de domicilios desde el primer dato</span></span></a>
+        <a href="caso-cumplimiento.html"><span class="dropdown__ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span><span><span class="dropdown__t">Cumplimiento normativo</span><span class="dropdown__d">Validación de domicilios en procesos sensibles</span></span></a>
+        <a href="caso-data-cleaning.html"><span class="dropdown__ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg></span><span><span class="dropdown__t">Data cleaning</span><span class="dropdown__d">Transformá bases inconsistentes en datos confiables</span></span></a>
+      </div>
+    </div>
+    <div class="nav__item"><a class="nav__link" href="index.html#novedades">Docs</a></div>
+    <div class="nav__item"><a class="nav__link" href="index.html#novedades">Novedades</a></div>
+    <div class="nav__item"><a class="nav__link" href="index.html#footer">Empresa</a></div>
+    <div class="nav__item"><a class="nav__link" href="index.html#footer">Contacto</a></div>
+  </div>
+  <div class="nav__spacer"></div>
+  <div class="nav__right">
+    <button class="nav__login">
+      <svg class="i" style="width:15px;height:15px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" x2="3" y1="12" y2="12"/></svg>
+      Login
+    </button>
+  </div>
+</nav>
+
+<!-- ============================================================ HERO ============================================================ -->
+<section class="spotlight hero" data-screen-label="Hero — Cumplimiento normativo">
+  <div class="wrap hero__grid">
+    <div data-reveal>
+      <span class="hero__crumb"><a href="index.html#casos">Casos de uso</a> <span class="sep">/</span> Cumplimiento normativo</span>
+      <h1 class="hero__h1">Convertí domicilios declarados en <span class="grad">datos trazables</span></h1>
+      <p class="hero__sub">Ubidata incorpora validación, normalización y diagnóstico de direcciones en flujos sensibles, ayudando a fortalecer controles, trazabilidad y calidad de datos sin rediseñar toda tu operación.</p>
+      <div class="hero__ctas">
+        <a class="btn btn-grad" href="#cta">Solicitar demo <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+        <a class="btn btn-glass" href="#productos">Ver productos relacionados</a>
+      </div>
+    </div>
+
+    <!-- Compliance control console -->
+    <div data-reveal>
+      <div class="console">
+        <div class="console__bar">
+          <span class="ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span>
+          <span class="t">Control de validación de domicilio</span>
+          <span class="id">CASE-2291 · KYC</span>
+        </div>
+        <div class="console__body">
+          <div class="cline">
+            <span class="cline__k">Domicilio informado</span>
+            <div class="cin"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg> Cordoba 1430 Cap Fed</div>
+          </div>
+          <div class="carrow"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg> Motor de Address Intelligence</div>
+          <div class="cline">
+            <span class="cline__k">Resultado Ubidata</span>
+            <div class="cout"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg> Av. Córdoba 1430, Ciudad Autónoma de Buenos Aires</div>
+          </div>
+          <div class="cgrid">
+            <div class="cstat"><span class="cstat__k">Estado</span><span class="cstat__v"><span class="d d--ok"></span>Validado</span></div>
+            <div class="cstat"><span class="cstat__k">Nivel de confianza</span><span class="cstat__v"><span class="d d--hi"></span>Alto</span></div>
+          </div>
+          <div class="crow">
+            <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+            <span><span class="ck">Diagnóstico</span><span class="cv">Coincidencia encontrada · Campos normalizados</span></span>
+          </div>
+          <div class="crow crow--action">
+            <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 11 3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+            <span><span class="ck">Acción sugerida</span><span class="cv">Continuar flujo</span></span>
+          </div>
+          <div class="caudit">
+            <span class="caudit__h"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="9"/></svg> Audit trail</span>
+            <div class="caudit__steps">
+              <span><span class="d"></span>Validado</span>
+              <span><span class="d"></span>Normalizado</span>
+              <span><span class="d"></span>Registrado</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ CONTROL LAYER ============================================================ -->
+<section class="sec sec--subtle" data-screen-label="La dirección como punto de control">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow">La dirección como punto de control</span>
+      <h2 class="sec-h2">El riesgo no está solo en una dirección incorrecta. Está en no poder explicar qué pasó con ese dato.</h2>
+      <p class="sec-lead">En flujos sensibles, una dirección incompleta, ambigua o inconsistente puede avanzar por distintos sistemas sin que quede claro si fue validada, corregida, rechazada o enviada a revisión. Ubidata agrega una capa de diagnóstico para que cada domicilio tenga un estado y una decisión asociada.</p>
+    </div>
+
+    <div class="flow">
+      <!-- Antes -->
+      <div class="fcard" data-reveal>
+        <span class="fcard__step"><span class="n">1</span>Antes · dato ambiguo</span>
+        <h3>Un domicilio entra como texto libre</h3>
+        <p>El usuario, cliente o sistema informa una dirección con abreviaciones, errores o datos incompletos. El flujo puede continuar, pero el dato todavía no tiene un estado confiable.</p>
+        <div class="fdata"><span class="d"></span>Cordoba 1430 Cap Fed</div>
+        <ul class="flist">
+          <li><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg> No estandarizado</li>
+          <li><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg> Ambiguo</li>
+          <li><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg> Sin diagnóstico</li>
+          <li><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg> Sin nivel de confianza</li>
+          <li><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg> Difícil de auditar</li>
+        </ul>
+      </div>
+
+      <!-- Capa Ubidata -->
+      <div class="fcard fcard--ubi" data-reveal>
+        <span class="fcard__step"><span class="n">2</span>Capa Ubidata</span>
+        <h3>Ubidata convierte el dato en una decisión operable</h3>
+        <p>El motor de Address Intelligence interpreta, valida, normaliza y diagnostica el domicilio para devolver un resultado accionable dentro del flujo de control.</p>
+        <div class="ubichips">
+          <span class="ubichip"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Validated</span>
+          <span class="ubichip"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V5h16v2"/><path d="M9 20h6"/><path d="M12 5v15"/></svg> Normalized</span>
+          <span class="ubichip"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="10" width="3" height="7"/><rect x="12" y="6" width="3" height="11"/><rect x="17" y="13" width="3" height="4"/></svg> Confidence score</span>
+          <span class="ubichip"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg> Diagnosis</span>
+          <span class="ubichip"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg> Review required</span>
+          <span class="ubichip"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="m9 15 2 2 4-4"/></svg> Audit-ready</span>
+        </div>
+        <div class="ubimeter">
+          <span class="ubimeter__bars"><i style="height:9px"></i><i style="height:15px"></i><i style="height:22px"></i><i style="height:18px"></i><i style="height:24px"></i></span>
+          <span class="ubimeter__t">Confianza calculada por campo · <b>0.987</b></span>
+        </div>
+      </div>
+
+      <!-- Después -->
+      <div class="fcard" data-reveal>
+        <span class="fcard__step"><span class="n">3</span>Después · decisión trazable</span>
+        <h3>El sistema sabe qué hacer con ese domicilio</h3>
+        <p>El resultado vuelve al flujo del cliente con un estado claro: continuar, corregir, revisar o escalar. Esto ayuda a reducir criterios manuales dispersos y mejorar la trazabilidad de los procesos sensibles.</p>
+        <div class="fstates">
+          <span class="fstate fstate--ok"><span class="d"></span>Continuar flujo</span>
+          <span class="fstate fstate--info"><span class="d"></span>Guardar domicilio normalizado</span>
+          <span class="fstate fstate--warn"><span class="d"></span>Solicitar revisión</span>
+          <span class="fstate fstate--bad"><span class="d"></span>Rechazar o escalar</span>
+          <span class="fstate fstate--log"><span class="d"></span>Registrar diagnóstico</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="flow__close" data-reveal>
+      <div class="flow__close-inner">
+        <span class="ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span>
+        <p>Ubidata no reemplaza tus reglas de cumplimiento. <span class="hl">Les da datos más confiables, consistentes y trazables para operar.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ MATRIZ DE DECISIÓN ============================================================ -->
+<section class="sec" data-screen-label="Matriz de decisión">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow">Matriz de decisión</span>
+      <h2 class="sec-h2">Cada domicilio debería volver con una respuesta clara</h2>
+      <p class="sec-lead">No todas las direcciones tienen el mismo nivel de resolución. Ubidata permite diferenciar entre domicilios validados, corregidos, ambiguos o no resolubles para que tus sistemas y equipos sepan cómo actuar.</p>
+    </div>
+
+    <div class="matrix">
+      <div class="mcard mcard--ok" data-reveal>
+        <span class="mpill"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Validado</span>
+        <h3>Coincidencia encontrada</h3>
+        <p>La dirección fue encontrada, normalizada y puede avanzar en el flujo.</p>
+        <div class="maction"><span class="maction__k">Acción sugerida</span><span class="maction__v"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg> Continuar proceso</span></div>
+      </div>
+      <div class="mcard mcard--info" data-reveal>
+        <span class="mpill"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg> Corregido</span>
+        <h3>Interpretado y normalizado</h3>
+        <p>La dirección fue interpretada y normalizada a partir de variantes, abreviaciones o inconsistencias menores.</p>
+        <div class="maction"><span class="maction__k">Acción sugerida</span><span class="maction__v"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21V5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v16l7-3z"/></svg> Guardar versión normalizada</span></div>
+      </div>
+      <div class="mcard mcard--warn" data-reveal>
+        <span class="mpill"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg> Requiere revisión</span>
+        <h3>Ambigüedad detectada</h3>
+        <p>La dirección presenta ambigüedades o datos insuficientes para resolverla con confianza alta.</p>
+        <div class="maction"><span class="maction__k">Acción sugerida</span><span class="maction__v"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/></svg> Derivar a revisión interna</span></div>
+      </div>
+      <div class="mcard mcard--bad" data-reveal>
+        <span class="mpill"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg> No resoluble</span>
+        <h3>Sin información suficiente</h3>
+        <p>La dirección no pudo validarse con la información disponible.</p>
+        <div class="maction"><span class="maction__k">Acción sugerida</span><span class="maction__v"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/></svg> Bloquear, corregir o escalar</span></div>
+      </div>
+    </div>
+
+    <div class="mtable" data-reveal>
+      <div class="mtable__head">
+        <span class="ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></span>
+        <span class="t">Cola de validaciones · vista de control</span>
+        <span class="tag">4 registros</span>
+      </div>
+      <table>
+        <thead><tr><th>Domicilio ingresado</th><th>Estado</th><th>Confianza</th><th>Acción</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">Av. Córdoba 1430</td><td><span class="spill spill--ok"><span class="d"></span>Validado</span></td><td class="conf-cell">Alta · 0.987</td><td>Continuar</td></tr>
+          <tr><td class="mono">Cordoba 1430 Cap Fed</td><td><span class="spill spill--info"><span class="d"></span>Corregido</span></td><td class="conf-cell">Alta · 0.941</td><td>Guardar normalizado</td></tr>
+          <tr><td class="mono">Calle 14 s/n</td><td><span class="spill spill--warn"><span class="d"></span>Requiere revisión</span></td><td class="conf-cell">Media · 0.612</td><td>Revisar</td></tr>
+          <tr><td class="mono">Zona norte lote 8</td><td><span class="spill spill--bad"><span class="d"></span>No resoluble</span></td><td class="conf-cell">Baja · 0.218</td><td>Escalar</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ SIMULADOR ============================================================ -->
+<section class="sec sec--subtle" id="simulador" data-screen-label="Simulador de validación">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow">Simulador</span>
+      <h2 class="sec-h2">Cómo se vería Ubidata dentro de tu flujo de control</h2>
+      <p class="sec-lead">Ingresá una dirección y visualizá cómo Ubidata podría devolver una versión normalizada, un estado de validación, un diagnóstico y una acción sugerida para tus sistemas internos.</p>
+    </div>
+
+    <div class="sim__grid">
+      <!-- LEFT: internal request -->
+      <div class="dpanel" data-reveal>
+        <div class="dpanel__head">
+          <span class="ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 15h6M9 11h3"/></svg></span>
+          <span class="t">Solicitud interna de validación</span>
+          <span class="tag">Proceso sensible</span>
+        </div>
+        <div class="dpanel__body">
+          <div class="fmrow">
+            <div class="fmf"><span class="dlabel">Cliente / ID</span><div class="ph mono">CLI-0093421</div></div>
+            <div class="fmf"><span class="dlabel">Tipo de proceso</span><div class="ph">KYC · alta de cliente</div></div>
+          </div>
+          <div class="fmrow">
+            <div class="fmf"><span class="dlabel">País</span><div class="ph">Argentina</div></div>
+            <div class="fmf"><span class="dlabel">Provincia</span><div class="ph">CABA</div></div>
+          </div>
+          <div class="fmf fmf--full" style="margin-bottom:14px;"><span class="dlabel">Localidad</span><div class="ph">Ciudad Autónoma de Buenos Aires</div></div>
+
+          <div class="fmf fmf--full">
+            <span class="dlabel dlabel--active">Domicilio informado <span class="req">· editable</span></span>
+            <div class="daddr__field">
+              <svg class="pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <input id="s-input" type="text" autocomplete="off" spellcheck="false" placeholder="Cordoba 1430 Cap Fed" value="Cordoba 1430 Cap Fed">
+            </div>
+            <div class="presets">
+              <span class="presets__k">Probá con otros casos:</span>
+              <button class="preset is-on" data-case="0">Cordoba 1430 Cap Fed</button>
+              <button class="preset" data-case="1">Av. Córdoba 1430</button>
+              <button class="preset" data-case="2">Calle 14 s/n</button>
+              <button class="preset" data-case="3">Zona norte lote 8</button>
+            </div>
+          </div>
+
+          <button class="dform__submit" id="s-run">
+            <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+            Ejecutar validación
+          </button>
+        </div>
+      </div>
+
+      <!-- RIGHT: control result -->
+      <div class="dpanel dpanel--resp" data-reveal>
+        <div class="dpanel__head">
+          <span class="ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg></span>
+          <span class="t">Resultado de control Ubidata</span>
+          <span class="tag" id="s-latency">—</span>
+        </div>
+        <div class="dtabs" role="tablist">
+          <button class="dtab is-active" data-tab="resumen">Resumen</button>
+          <button class="dtab" data-tab="diagnostico">Diagnóstico</button>
+          <button class="dtab" data-tab="audit">Audit trail</button>
+        </div>
+        <div class="dresp">
+          <div class="dresp__await" id="s-await">
+            <span class="ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg></span>
+            <p>Ejecutá la validación para ver estado, diagnóstico y acción sugerida.</p>
+          </div>
+
+          <!-- Resumen -->
+          <div class="dview" id="s-view-resumen">
+            <div class="dstatus">
+              <span class="ic" id="s-st-ic"></span>
+              <span><span class="st" id="s-st">—</span><span class="sd" id="s-st-sub">—</span></span>
+              <span class="score"><span class="sk">Confianza</span><span class="sv" id="s-score">—</span></span>
+            </div>
+            <div class="dkv">
+              <div class="dkv__row"><span class="dkv__k">Dirección normalizada</span><span class="dkv__v accent" id="s-norm">—</span></div>
+              <div class="dkv__row"><span class="dkv__k">Localidad</span><span class="dkv__v" id="s-city">—</span></div>
+              <div class="dkv__row"><span class="dkv__k">Provincia</span><span class="dkv__v" id="s-prov">—</span></div>
+              <div class="dkv__row"><span class="dkv__k">Diagnóstico</span><span class="dkv__v" id="s-diag">—</span></div>
+              <div class="dkv__row"><span class="dkv__k">Registro</span><span class="dkv__v" id="s-log">—</span></div>
+            </div>
+            <div class="drec">
+              <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 11 3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+              <div class="rt">Acción sugerida<span id="s-action">—</span></div>
+            </div>
+          </div>
+
+          <!-- Diagnóstico -->
+          <div class="dview" id="s-view-diagnostico">
+            <div class="diaglist" id="s-diaglist"></div>
+            <p class="diagnote" id="s-diagnote"></p>
+          </div>
+
+          <!-- Audit trail -->
+          <div class="dview" id="s-view-audit">
+            <div class="trail" id="s-trail"></div>
+            <div class="trailfoot">
+              <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="m9 15 2 2 4-4"/></svg>
+              <span id="s-trailfoot">Registro disponible para consulta interna y auditoría posterior.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ BENEFICIOS ============================================================ -->
+<section class="sec benf" data-screen-label="Beneficios">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow eyebrow--on-dark">Beneficios</span>
+      <h2 class="sec-h2 sec-h2--on-dark">Más control sobre el dato. Menos ambigüedad en el proceso.</h2>
+      <p class="sec-lead sec-lead--on-dark">Ubidata ayuda a que cada domicilio tenga un estado claro, una versión normalizada y un diagnóstico disponible para tus sistemas o equipos internos.</p>
+    </div>
+    <div class="benf__grid">
+      <div class="gcard" data-reveal>
+        <div class="gcard__ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="9"/></svg></div>
+        <h3>Mayor trazabilidad</h3>
+        <p>Registrá qué dirección fue ingresada, cómo fue interpretada y qué resultado devolvió la validación.</p>
+      </div>
+      <div class="gcard" data-reveal>
+        <div class="gcard__ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 12h18M3 18h10"/></svg></div>
+        <h3>Criterios más consistentes</h3>
+        <p>Reducí decisiones manuales dispersas con estados y diagnósticos estandarizados.</p>
+      </div>
+      <div class="gcard" data-reveal>
+        <div class="gcard__ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg></div>
+        <h3>Mejor calidad de datos</h3>
+        <p>Normalizá domicilios antes de que ingresen o se repliquen en sistemas internos.</p>
+      </div>
+      <div class="gcard gcard--half" data-reveal>
+        <div class="gcard__ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h5l3 12h5l3-8"/><circle cx="19" cy="6" r="2"/></svg></div>
+        <h3>Menos revisión innecesaria</h3>
+        <p>Diferenciá casos validados, corregidos, ambiguos o no resolubles para enfocar la revisión donde realmente hace falta.</p>
+      </div>
+      <div class="gcard gcard--half" data-reveal>
+        <div class="gcard__ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg></div>
+        <h3>Integración con procesos sensibles</h3>
+        <p>Incorporá validación de domicilios vía API, plataforma o soluciones a medida sin rediseñar todo el flujo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ PRODUCTOS ============================================================ -->
+<section class="sec" id="productos" data-screen-label="Productos recomendados">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow">Productos recomendados</span>
+      <h2 class="sec-h2">Productos para fortalecer tus procesos de control</h2>
+      <p class="sec-lead">Aplicá Address Intelligence en los puntos donde el domicilio necesita validarse, diagnosticarse y quedar disponible para decisiones internas.</p>
+    </div>
+    <div class="prodlead">
+      <a class="pfeat" href="producto-api-rest.html" data-reveal>
+        <span class="pfeat__tag"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 9.2 8.6 2 9.3l5.5 4.8L5.8 21 12 17.3 18.2 21l-1.7-6.9L22 9.3l-7.2-.7z"/></svg> Producto recomendado para flujos sensibles</span>
+        <div class="pfeat__ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg></div>
+        <h3>API REST de validación</h3>
+        <p>Integrá validación, normalización y diagnóstico de domicilios en tiempo real dentro de flujos de alta, KYC, control interno, prevención de fraude o sistemas propios.</p>
+        <pre class="pjson">{
+  <span class="k">"status"</span>: <span class="s">"corrected"</span>,
+  <span class="k">"confidence"</span>: <span class="s">"high"</span>,
+  <span class="k">"normalized_address"</span>: <span class="s">"Av. Córdoba 1430"</span>,
+  <span class="k">"diagnosis"</span>: <span class="s">"matched_and_normalized"</span>,
+  <span class="k">"recommended_action"</span>: <span class="s">"continue"</span>
+}</pre>
+        <span class="more">Ver producto <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+      </a>
+
+      <div class="psecs">
+        <a class="psec" href="producto-api-rest.html" data-reveal>
+          <span class="psec__ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v6H4z"/><path d="M4 14h16v6H4z"/><path d="M8 7h.01M8 17h.01"/></svg></span>
+          <div class="psec__b"><h4>API SOAP</h4><p>Integra validación de domicilios en arquitecturas existentes o sistemas legacy donde se requiere compatibilidad con servicios tradicionales.</p><span class="psec__tag">Ideal para entornos legacy</span></div>
+        </a>
+        <a class="psec" href="index.html#producto-plataforma" data-reveal>
+          <span class="psec__ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></span>
+          <div class="psec__b"><h4>Plataforma Ubidata</h4><p>Consultá resultados, visualizá diagnósticos y centralizá la operación de validaciones desde una interfaz de control.</p><span class="psec__tag">Ideal para visibilidad operativa</span></div>
+        </a>
+        <a class="psec" href="index.html#producto-batch" data-reveal>
+          <span class="psec__ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>
+          <div class="psec__b"><h4>Soluciones a medida</h4><p>Adaptamos reglas, diagnósticos e integraciones a procesos sensibles, flujos internos o requerimientos específicos del cliente.</p><span class="psec__tag">Ideal para reglas particulares</span></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ CTA FINAL ============================================================ -->
+<section class="cta" id="cta" data-screen-label="CTA final">
+  <div class="cta__inner">
+    <div data-reveal>
+      <span class="eyebrow eyebrow--on-dark">Empezá hoy</span>
+      <h2 class="cta__h2">Sumá trazabilidad al dato antes de tomar decisiones</h2>
+      <p class="cta__p">Conocé cómo Ubidata puede integrarse a tus flujos sensibles para validar, normalizar y diagnosticar domicilios con criterios consistentes y resultados accionables.</p>
+      <div class="cta__btns">
+        <a class="btn btn-grad" href="index.html#footer">Solicitar demo <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+        <a class="btn btn-outline-white" href="index.html#novedades">Ver documentación</a>
+      </div>
+    </div>
+    <div class="cta__chip" data-reveal>
+      <div class="ph2">
+        <span class="ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span>
+        <span class="t">Domicilio listo para control</span>
+      </div>
+      <p class="addr">Av. Córdoba 1430, Ciudad Autónoma de Buenos Aires</p>
+      <div class="states">
+        <span><span class="d"></span>Validado</span>
+        <span><span class="d"></span>Normalizado</span>
+        <span><span class="d"></span>Diagnóstico disponible</span>
+        <span><span class="d"></span>Audit-ready</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ FOOTER ============================================================ -->
+<footer class="footer" id="footer">
+  <div class="footer__inner">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <img src="assets/logo/ubidata-logo-white.png" alt="Ubidata">
+        <p>Address Intelligence para empresas que necesitan operar con direcciones confiables, en tiempo real o a gran escala.</p>
+        <div class="badges"><span>Real-time</span><span>Batch</span><span>REST · SOAP</span></div>
+      </div>
+      <div class="footer__col"><h4>Productos</h4><ul><li><a href="index.html#producto-lookup">Buscador de direcciones</a></li><li><a href="producto-api-rest.html">API REST</a></li><li><a href="producto-api-rest.html">API SOAP</a></li><li><a href="index.html#producto-batch">Procesamiento batch</a></li><li><a href="index.html#producto-batch">Soluciones a medida</a></li><li><a href="index.html#producto-plataforma">Plataforma</a></li></ul></div>
+      <div class="footer__col"><h4>Casos de uso</h4><ul><li><a href="caso-ultima-milla.html">Última milla</a></li><li><a href="caso-onboarding.html">Onboarding</a></li><li><a href="caso-cumplimiento.html">Cumplimiento normativo</a></li><li><a href="caso-data-cleaning.html">Data cleaning</a></li></ul></div>
+      <div class="footer__col"><h4>Recursos</h4><ul><li><a href="index.html#novedades">Docs</a></li><li><a href="index.html#novedades">Novedades</a></li><li><a href="#">API reference</a></li><li><a href="#">Estado del servicio</a></li></ul></div>
+      <div class="footer__col"><h4>Empresa</h4><ul><li><a href="#">Nosotros</a></li><li><a href="#">Contacto</a></li><li><a href="#">Login</a></li><li><a href="#">Solicitar demo</a></li></ul></div>
+    </div>
+    <div class="footer__bottom">
+      <p>© 2026 Ubidata · Inteligencia en datos</p>
+      <div class="links"><a href="#">Privacidad</a><a href="#">Términos</a><a href="#">Seguridad</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ── Simulador de validación para flujos sensibles ── */
+(function () {
+  const input = document.getElementById('s-input');
+  const run = document.getElementById('s-run');
+  const awaitEl = document.getElementById('s-await');
+  if (!input) return;
+
+  const ICONS = {
+    ok: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" class="i"><path d="M20 6 9 17l-5-5"/></svg>',
+    info: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="i"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>',
+    warn: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="i"><path d="M12 9v4M12 17h.01"/><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>',
+    bad: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="i"><path d="M18 6 6 18M6 6l12 12"/></svg>'
+  };
+  const TONE = {
+    ok:   { bg: 'rgba(31,157,99,0.16)',  fg: 'var(--green-400)' },
+    info: { bg: 'rgba(0,170,185,0.16)',  fg: 'var(--cyan-300)' },
+    warn: { bg: 'rgba(185,122,9,0.20)',  fg: '#E8B54A' },
+    bad:  { bg: 'rgba(204,61,61,0.18)',  fg: '#F08A8A' }
+  };
+
+  const CASES = [
+    {
+      q: 'Cordoba 1430 Cap Fed', tone: 'info', status: 'Corregido',
+      sub: 'Dirección interpretada y normalizada', score: '0.941', conf: 'Alta', latency: '82 ms',
+      norm: 'Av. Córdoba 1430', city: 'Ciudad Autónoma de Buenos Aires', prov: 'CABA',
+      diag: 'Dirección interpretada y normalizada', log: 'Validación registrada',
+      action: 'Guardar versión normalizada y continuar',
+      fixes: [['Cordoba', 'Córdoba', 'ortografía'], ['Cap Fed', 'Ciudad Autónoma de Buenos Aires', 'expansión'], ['—', 'Av. (tipo de vía inferido)', 'inferido']],
+      note: 'Se normalizaron 3 campos sin intervención manual. El texto original queda registrado junto al resultado.'
+    },
+    {
+      q: 'Av. Córdoba 1430', tone: 'ok', status: 'Validado',
+      sub: 'Coincidencia exacta encontrada', score: '0.987', conf: 'Alta', latency: '76 ms',
+      norm: 'Av. Córdoba 1430', city: 'Ciudad Autónoma de Buenos Aires', prov: 'CABA',
+      diag: 'Coincidencia encontrada · Campos completos', log: 'Validación registrada',
+      action: 'Continuar flujo',
+      fixes: [['—', 'Sin correcciones aplicadas', 'sin cambios'], ['—', 'Altura y vía confirmadas', 'verificado']],
+      note: 'La dirección informada coincide con el resultado normalizado. No se requirieron correcciones.'
+    },
+    {
+      q: 'Calle 14 s/n', tone: 'warn', status: 'Requiere revisión',
+      sub: 'Datos insuficientes para resolver con confianza alta', score: '0.612', conf: 'Media', latency: '89 ms',
+      norm: 'Calle 14 (altura no informada)', city: 'Localidad no determinada', prov: 'Buenos Aires',
+      diag: 'Múltiples coincidencias posibles · Altura ausente', log: 'Caso derivado a revisión',
+      action: 'Derivar a revisión interna o solicitar información adicional',
+      fixes: [['s/n', 'Altura no informada', 'campo faltante'], ['Calle 14', '4 coincidencias en la provincia', 'ambigüedad']],
+      note: 'El resultado se marca como no concluyente. La decisión final queda en tus reglas internas.'
+    },
+    {
+      q: 'Zona norte lote 8', tone: 'bad', status: 'No resoluble',
+      sub: 'No pudo validarse con la información disponible', score: '0.218', conf: 'Baja', latency: '91 ms',
+      norm: 'Sin resultado normalizado', city: 'No determinada', prov: 'No determinada',
+      diag: 'Referencia sin vía ni localidad identificable', log: 'Resultado registrado como no resoluble',
+      action: 'Bloquear avance, solicitar corrección o escalar según reglas internas',
+      fixes: [['Zona norte', 'Referencia genérica no georreferenciable', 'no interpretable'], ['lote 8', 'Sin vía ni localidad asociada', 'campo insuficiente']],
+      note: 'Ubidata devuelve el diagnóstico para que el proceso decida: pedir corrección, escalar o rechazar.'
+    }
+  ];
+
+  function pick(q) {
+    const t = q.trim().toLowerCase();
+    if (!t) return CASES[0];
+    let best = null, bestScore = 0;
+    CASES.forEach(c => {
+      const tokens = c.q.toLowerCase().split(/\s+/);
+      let score = 0;
+      tokens.forEach(tok => { if (tok.length > 2 && t.includes(tok.replace(/[.,]/g, ''))) score++; });
+      if (t.includes(c.q.toLowerCase())) score += 3;
+      if (score > bestScore) { bestScore = score; best = c; }
+    });
+    if (best) return best;
+    // Direcciones desconocidas: se muestran como caso a revisar, derivado del input
+    const custom = Object.assign({}, CASES[2]);
+    custom.norm = q.trim();
+    custom.fixes = [[q.trim(), 'Sin coincidencia de alta confianza', 'ambigüedad']];
+    return custom;
+  }
+
+  function stamp(offsetSec) {
+    const base = new Date('2026-08-25T14:32:07');
+    base.setSeconds(base.getSeconds() + offsetSec);
+    return base.toISOString().replace('T', ' ').slice(0, 19) + ' UTC-3';
+  }
+
+  function render(c) {
+    const tone = TONE[c.tone];
+    const ic = document.getElementById('s-st-ic');
+    ic.style.background = tone.bg; ic.style.color = tone.fg; ic.innerHTML = ICONS[c.tone];
+    document.getElementById('s-st').textContent = c.status;
+    document.getElementById('s-st').style.color = '#fff';
+    document.getElementById('s-st-sub').textContent = c.sub;
+    document.getElementById('s-score').textContent = c.conf + ' · ' + c.score;
+    document.getElementById('s-score').style.color = tone.fg;
+    document.getElementById('s-norm').textContent = c.norm;
+    document.getElementById('s-city').textContent = c.city;
+    document.getElementById('s-prov').textContent = c.prov;
+    document.getElementById('s-diag').textContent = c.diag;
+    document.getElementById('s-log').textContent = c.log;
+    document.getElementById('s-action').textContent = c.action;
+    document.getElementById('s-latency').textContent = c.latency;
+
+    document.getElementById('s-diaglist').innerHTML = c.fixes.map(f =>
+      '<div class="diagrow"><span class="from">' + f[0] + '</span><svg class="arr" style="width:14px;height:14px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg><span class="to">' + f[1] + '</span><span class="tagf">' + f[2] + '</span></div>'
+    ).join('');
+    document.getElementById('s-diagnote').textContent = c.note;
+
+    const trail = [
+      ['Dirección recibida', input.value.trim() || c.q],
+      ['Validación ejecutada', 'Motor de Address Intelligence · v2'],
+      ['Resultado generado', c.status + ' · confianza ' + c.score],
+      ['Acción sugerida', c.action],
+      ['Registro almacenado', c.log]
+    ];
+    document.getElementById('s-trail').innerHTML = trail.map((t, i) =>
+      '<div class="trailrow"><span class="dot"><i></i></span><span class="tb"><span class="tt">' + t[0] + ' — ' + t[1] + '</span><span class="tm">' + stamp(i) + '</span></span></div>'
+    ).join('');
+
+    awaitEl.style.display = 'none';
+    showView();
+  }
+
+  let view = 'resumen';
+  function showView() {
+    const populated = awaitEl.style.display === 'none';
+    ['resumen', 'diagnostico', 'audit'].forEach(v => {
+      document.getElementById('s-view-' + v).classList.toggle('is-shown', populated && view === v);
+    });
+  }
+  document.querySelectorAll('.dtab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.dtab').forEach(t => t.classList.remove('is-active'));
+      tab.classList.add('is-active');
+      view = tab.dataset.tab;
+      showView();
+    });
+  });
+
+  document.querySelectorAll('.preset').forEach(p => {
+    p.addEventListener('click', () => {
+      document.querySelectorAll('.preset').forEach(x => x.classList.remove('is-on'));
+      p.classList.add('is-on');
+      input.value = CASES[+p.dataset.case].q;
+      render(CASES[+p.dataset.case]);
+    });
+  });
+
+  input.addEventListener('input', () => {
+    document.querySelectorAll('.preset').forEach(x => x.classList.toggle('is-on', x.textContent.trim() === input.value.trim()));
+  });
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); render(pick(input.value)); } });
+  run.addEventListener('click', () => render(pick(input.value)));
+})();
+
+/* ── Scroll reveal ── */
+(function () {
+  const reveals = [...document.querySelectorAll('[data-reveal]')];
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.body.classList.add('reveal-on');
+  if (prefersReduced) { reveals.forEach(el => el.classList.add('in')); return; }
+  reveals.forEach(el => {
+    const sibs = [...el.parentElement.children].filter(c => c.hasAttribute('data-reveal'));
+    el.style.animationDelay = (Math.min(sibs.indexOf(el), 4) * 0.07) + 's';
+  });
+  const pending = new Set(reveals);
+  let ticking = false;
+  function reveal() {
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+    pending.forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.top < vh * 0.92 && r.bottom > 0) { el.classList.add('in'); pending.delete(el); }
+    });
+    ticking = false;
+  }
+  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(reveal); } }
+  reveal();
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  window.addEventListener('load', reveal);
+  setTimeout(() => reveals.forEach(el => { el.classList.add('in'); el.style.opacity = '1'; el.style.transform = 'none'; }), 4000);
+})();
+</script>
+</body></html>

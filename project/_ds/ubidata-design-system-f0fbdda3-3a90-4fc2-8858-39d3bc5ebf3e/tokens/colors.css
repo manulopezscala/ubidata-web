@@ -1,0 +1,106 @@
+/* ============================================================
+   Ubidata — Color tokens
+   Base: deep navy. Accents: cyan → green brand gradient (from logo mark).
+   ============================================================ */
+:root {
+  /* ---- Brand (sampled from logo mark gradient) ---- */
+  --brand-cyan: #00AAB9;
+  --brand-teal: #35B8A8;
+  --brand-green: #8FCB90;
+  --brand-navy: #414C5A;
+  --brand-gradient: linear-gradient(135deg, #00AAB9 0%, #4FBBA4 52%, #8FCB90 100%); /* @kind color */
+  --brand-gradient-v: linear-gradient(180deg, #00AAB9 0%, #8FCB90 100%); /* @kind color */
+  --brand-gradient-h: linear-gradient(90deg, #00AAB9 0%, #35B8A8 50%, #8FCB90 100%); /* @kind color */
+  --brand-gradient-cta: linear-gradient(90deg, #00AAB9 0%, #35B8A8 100%); /* @kind color */
+
+  /* ---- Navy scale (primary base) ---- */
+  --navy-950: #1C2530;
+  --navy-900: #252F3C;
+  --navy-800: #2E3A47;
+  --navy-700: #374555;
+  --navy-600: #414C5A;
+  --navy-500: #566576;
+
+  /* ---- Cyan scale (functional accent) ---- */
+  --cyan-800: #00606E;
+  --cyan-700: #007887;
+  --cyan-600: #00919F;
+  --cyan-500: #00AAB9;
+  --cyan-400: #3DC2CE;
+  --cyan-300: #84D8DF;
+  --cyan-200: #BFEAEE;
+  --cyan-100: #E2F6F7;
+
+  /* ---- Green scale (secondary accent) ---- */
+  --green-700: #3E7D52;
+  --green-600: #53996A;
+  --green-500: #6CB37E;
+  --green-400: #8FCB90;
+  --green-200: #D2EAD0;
+  --green-100: #ECF6EB;
+
+  /* ---- Neutrals (navy-tinted cool grays) ---- */
+  --gray-0: #FFFFFF;
+  --gray-50: #F6F8FB;
+  --gray-100: #EDF1F6;
+  --gray-200: #DEE5EE;
+  --gray-300: #C5CFDD;
+  --gray-400: #9DABBF;
+  --gray-500: #71819A;
+  --gray-600: #54657E;
+  --gray-700: #3C4D66;
+  --gray-800: #233651;
+  --gray-900: #0A1C3A;
+
+  /* ---- Semantic ---- */
+  --success: #1F9D63;
+  --success-bg: #E5F5ED;
+  --warning: #B97A09;
+  --warning-bg: #FCF2DE;
+  --danger: #CC3D3D;
+  --danger-bg: #FBEAEA;
+  --info: #007887;
+  --info-bg: #E2F6F7;
+
+  /* ---- Semantic aliases: text ---- */
+  --text-heading: var(--navy-900); /* #252F3C */
+  --text-body: #2B3D58;
+  --text-muted: var(--gray-500);
+  --text-faint: var(--gray-400);
+  --text-inverse: #FFFFFF;
+  --text-inverse-muted: #9FB1CB;
+  --text-link: var(--cyan-700);
+  --text-on-accent: #FFFFFF;
+
+  /* ---- Semantic aliases: surfaces ---- */
+  --surface-page: #FFFFFF;
+  --surface-app: #ECEFF5;        /* tinted app canvas — lets white cards float */
+  --surface-subtle: var(--gray-50);
+  --surface-card: #FFFFFF;
+  --surface-inset: var(--gray-100);
+  --surface-dark: var(--navy-900); /* #252F3C */
+  --surface-dark-raised: #2E3A47;
+  --surface-dark-inset: #1C2530;
+  --surface-spotlight: var(--navy-950); /* #1C2530 — deep navy "spotlight" marketing sections */
+  --text-on-dark: #9FB0C2;       /* muted body copy on spotlight/dark sections */
+
+  /* ---- Semantic aliases: interactive ---- */
+  --action-primary: var(--brand-navy);
+  --action-primary-hover: var(--navy-700);
+  --action-accent: var(--cyan-600);
+  --action-accent-hover: var(--cyan-700);
+  --focus-ring: rgba(0, 170, 185, 0.35);
+
+  /* ---- Borders ---- */
+  --border-subtle: var(--gray-200);
+  --border-strong: var(--gray-300);
+  --border-dark: rgba(255, 255, 255, 0.12);
+
+  /* ---- Data visualization ---- */
+  --viz-1: #00AAB9;
+  --viz-2: #8FCB90;
+  --viz-3: #1B3A6B;
+  --viz-4: #3DC2CE;
+  --viz-5: #71819A;
+  --viz-6: #D9A441;
+}

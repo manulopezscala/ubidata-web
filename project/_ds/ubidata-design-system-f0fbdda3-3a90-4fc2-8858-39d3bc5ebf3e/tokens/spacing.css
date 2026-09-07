@@ -1,0 +1,74 @@
+/* ============================================================
+   Ubidata — Spacing, radii, elevation, motion
+   ============================================================ */
+:root {
+  /* 4px base spacing scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+
+  /* Corner radii — soft, generous, modern-SaaS */
+  --radius-sm: 8px;    /* badges, tags, code chips */
+  --radius-md: 10px;   /* buttons, inputs */
+  --radius-lg: 16px;   /* cards, panels */
+  --radius-xl: 22px;   /* large cards, modals, hero blocks */
+  --radius-pill: 999px;
+
+  /* Elevation — soft, diffuse, pillowy (layered ambient + key light) */
+  --shadow-xs: 0 1px 2px rgba(23, 33, 56, 0.04);
+  --shadow-sm: 0 1px 2px rgba(23, 33, 56, 0.04), 0 3px 8px -2px rgba(23, 33, 56, 0.06);
+  --shadow-md: 0 2px 6px -1px rgba(23, 33, 56, 0.06), 0 12px 28px -8px rgba(23, 33, 56, 0.12);
+  --shadow-lg: 0 8px 20px -6px rgba(23, 33, 56, 0.10), 0 28px 56px -16px rgba(23, 33, 56, 0.18);
+  /* Pillowy card elevation — the default card look */
+  --shadow-card: 0 1px 2px rgba(23, 33, 56, 0.04), 0 10px 26px -12px rgba(23, 33, 56, 0.14);
+  --shadow-card-hover: 0 2px 6px -1px rgba(23, 33, 56, 0.06), 0 20px 40px -16px rgba(23, 33, 56, 0.22);
+  /* Hairline drawn as a ring so it composes with soft shadows (no hard 1px border) */
+  --ring-hairline: 0 0 0 1px rgba(23, 33, 56, 0.05);
+  --shadow-focus: 0 0 0 3px var(--focus-ring);
+
+  /* Fluid glass — frosted translucent surfaces (use sparingly: floating bars, overlays) */
+  --glass-blur: blur(20px) saturate(170%); /* @kind other */
+  --glass-bg: rgba(255, 255, 255, 0.62);
+  --glass-bg-strong: rgba(255, 255, 255, 0.78);
+  --glass-ring: inset 0 0 0 1px rgba(255, 255, 255, 0.7); /* @kind shadow */
+  --glass-shadow: 0 8px 32px -8px rgba(23, 33, 56, 0.18);
+  --glass-dark-bg: rgba(46, 58, 71, 0.55);
+  --glass-dark-ring: inset 0 0 0 1px rgba(255, 255, 255, 0.10); /* @kind shadow */
+
+  /* Glass tiles — translucent cards on spotlight/dark sections (cycle brand-gradient icons across a row) */
+  --glass-tile-bg: rgba(255, 255, 255, 0.05);
+  --glass-tile-bg-hover: rgba(255, 255, 255, 0.10);
+  --glass-tile-border: rgba(255, 255, 255, 0.10); /* @kind shadow */
+  --glass-tile-border-hover: rgba(0, 170, 185, 0.40); /* @kind shadow */
+
+  /* Grid overlay — faint line grid for dark "spotlight" sections (set as background-image on a navy surface) */
+  --grid-line: rgba(255, 255, 255, 0.04);
+  --grid-overlay: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px); /* @kind other */
+  --grid-size: 48px 48px;
+  /* Radial accent glow for dark CTA/docs sections */
+  --spotlight-glow: radial-gradient(ellipse at 80% 0%, rgba(0, 170, 185, 0.12), transparent 50%); /* @kind other */
+
+  /* Colored glow — gradient marketing CTAs (cyan key light) */
+  --shadow-glow-cyan: 0 10px 25px -5px rgba(0, 170, 185, 0.25);
+  --shadow-glow-cyan-strong: 0 14px 30px -5px rgba(0, 170, 185, 0.30);
+
+  /* Borders */
+  --border-width: 1px;
+
+  /* Motion — quick, precise; no bounce */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1); /* @kind other */
+  --ease-reveal: cubic-bezier(0.22, 1, 0.36, 1); /* @kind other */
+  --duration-fast: 120ms; /* @kind other */
+  --duration-base: 180ms; /* @kind other */
+  --duration-slow: 280ms; /* @kind other */
+  --duration-reveal: 700ms; /* @kind other */
+}

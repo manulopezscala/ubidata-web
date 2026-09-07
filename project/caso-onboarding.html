@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Onboarding — Ubidata</title>
+<link rel="icon" href="assets/logo/ubidata-mark.png">
+<link rel="stylesheet" href="_ds/ubidata-design-system-f0fbdda3-3a90-4fc2-8858-39d3bc5ebf3e/styles.css">
+<template id="__bundler_thumbnail" data-bg-color="#1c2530">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#1c2530"/>
+    <rect x="360" y="190" width="480" height="92" rx="14" fill="#0f2140" stroke="#2c3e52" stroke-width="3"/>
+    <rect x="360" y="312" width="480" height="92" rx="14" fill="#0f2140" stroke="#2c3e52" stroke-width="3"/>
+    <rect x="360" y="434" width="480" height="92" rx="14" fill="#0f2140" stroke="#00AAB9" stroke-width="4"/>
+    <g fill="#00AAB9"><circle cx="404" cy="480" r="13"/></g>
+    <rect x="440" y="466" width="230" height="12" rx="6" fill="#3DC2CE"/>
+    <rect x="440" y="492" width="150" height="10" rx="5" fill="#5a6b80"/>
+    <path d="M770 472 l16 16 l30 -34" stroke="#5FBF8A" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="600" y="690" font-family="Arial, sans-serif" font-size="46" font-weight="600" fill="white" text-anchor="middle" opacity="0.9">Onboarding</text>
+  </svg>
+</template>
+<style>
+/* ============================================================
+   Ubidata — Caso de uso: Onboarding
+   Built on the Ubidata design system tokens (styles.css).
+   Shares visual vocabulary with index.html / caso-ultima-milla.html.
+   ============================================================ */
+* { box-sizing: border-box; }
+body { margin: 0; font-family: var(--font-sans); color: var(--text-body); background: var(--surface-page); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+img { display: block; }
+a { color: inherit; }
+
+/* ── Section scaffolding ── */
+.eyebrow { font: var(--text-overline); letter-spacing: var(--tracking-overline); text-transform: uppercase; color: var(--cyan-600); }
+.eyebrow--on-dark { color: var(--cyan-400); }
+.sec { padding: 96px 0; }
+.sec-h2 { font: 600 clamp(1.75rem, 3.6vw, 2.25rem)/1.16 var(--font-sans); letter-spacing: -0.02em; color: var(--navy-950); margin: 14px 0 0; max-width: 38ch; }
+.sec-h2--on-dark { color: #fff; }
+.sec-lead { font: var(--text-body-lg); color: var(--text-muted); line-height: 1.6; margin: 16px 0 0; max-width: 640px; }
+.sec-lead--on-dark { color: var(--text-on-dark); }
+.sec-head { max-width: 52rem; }
+.spotlight { position: relative; overflow: hidden; background: var(--surface-spotlight); }
+.spotlight::before { content: ""; position: absolute; inset: 0; pointer-events: none; background-image: var(--grid-overlay); background-size: var(--grid-size); }
+.spotlight::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: var(--spotlight-glow); }
+.spotlight .wrap { position: relative; z-index: 1; }
+
+/* ── Buttons ── */
+.btn { display: inline-flex; align-items: center; gap: 8px; height: 46px; padding: 0 22px; border-radius: var(--radius-md); font: 500 1rem/1 var(--font-sans); cursor: pointer; border: 1px solid transparent; text-decoration: none; transition: background var(--duration-base) var(--ease-out), border-color var(--duration-base) var(--ease-out), box-shadow var(--duration-slow) var(--ease-out), transform var(--duration-base) var(--ease-out); white-space: nowrap; }
+.btn:hover { text-decoration: none; }
+.btn-grad { color: #fff; background: var(--brand-gradient-cta); box-shadow: var(--shadow-glow-cyan); }
+.btn-grad:hover { box-shadow: var(--shadow-glow-cyan-strong); transform: translateY(-1px); }
+.btn-glass { color: #fff; background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.14); }
+.btn-glass:hover { background: rgba(255,255,255,0.10); border-color: rgba(0,170,185,0.5); }
+.btn-navy { background: var(--navy-950); color: #fff; border-color: var(--navy-950); }
+.btn-navy:hover { background: var(--navy-800); }
+.btn-outline-white { background: rgba(255,255,255,0.08); color: #fff; border-color: rgba(255,255,255,0.55); }
+.btn-outline-white:hover { background: rgba(255,255,255,0.16); }
+.btn .i { width: 17px; height: 17px; }
+
+/* ============================================================ NAV ============================================================ */
+.nav { position: sticky; top: 0; z-index: 200; display: flex; align-items: center; gap: 8px; height: 68px; padding: 0 48px; background: rgba(255,255,255,0.88); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-subtle); }
+.nav__logo { height: 26px; margin-right: 18px; width: auto; }
+.nav__links { display: flex; align-items: stretch; height: 100%; }
+.nav__item { position: relative; display: flex; align-items: center; }
+.nav__link { display: inline-flex; align-items: center; gap: 5px; height: 100%; padding: 0 14px; font: 500 0.9rem/1 var(--font-sans); color: var(--text-body); background: none; border: none; cursor: pointer; text-decoration: none; }
+.nav__link:hover, .nav__link.is-current { color: var(--navy-950); }
+.nav__link .caret { width: 14px; height: 14px; transition: transform var(--duration-base) var(--ease-out); color: var(--gray-400); }
+.nav__item:hover .nav__link .caret { transform: rotate(180deg); }
+.nav__item:hover .nav__link { color: var(--navy-950); }
+.nav__spacer { flex: 1; }
+.nav__right { display: flex; align-items: center; gap: 10px; }
+.nav__login { display: inline-flex; align-items: center; gap: 7px; height: 40px; padding: 0 20px; border-radius: var(--radius-md); font: 500 0.9rem/1 var(--font-sans); background: var(--navy-950); color: #fff; border: 1px solid var(--navy-950); cursor: pointer; transition: background var(--duration-base) var(--ease-out); }
+.nav__login:hover { background: var(--navy-800); }
+.dropdown { position: absolute; top: calc(100% - 6px); left: 0; min-width: 320px; background: #fff; border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); padding: 10px; opacity: 0; visibility: hidden; transform: translateY(6px); transition: opacity var(--duration-base) var(--ease-out), transform var(--duration-base) var(--ease-out), visibility var(--duration-base); }
+.nav__item:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+.dropdown::before { content: ""; position: absolute; bottom: 100%; left: 0; right: 0; height: 10px; }
+.dropdown a { display: flex; gap: 12px; align-items: flex-start; padding: 11px 12px; border-radius: var(--radius-md); text-decoration: none; transition: background var(--duration-fast) var(--ease-out); }
+.dropdown a:hover { background: var(--surface-subtle); }
+.dropdown__ic { flex: none; width: 34px; height: 34px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; background: var(--cyan-100); color: var(--cyan-700); margin-top: 2px; }
+.dropdown a:hover .dropdown__ic { background: var(--cyan-200); }
+.dropdown__t { font: 600 0.875rem/1.3 var(--font-sans); color: var(--navy-950); display: block; }
+.dropdown__d { font: var(--text-caption); color: var(--text-muted); margin-top: 3px; line-height: 1.45; display: block; }
+.dropdown .i { width: 17px; height: 17px; }
+
+/* ============================================================ HERO ============================================================ */
+.hero { padding: 80px 0 92px; }
+.hero__grid { display: grid; grid-template-columns: 0.92fr 1.08fr; gap: 56px; align-items: center; }
+.hero__crumb { display: inline-flex; align-items: center; gap: 8px; font: 500 0.78rem/1 var(--font-sans); color: var(--cyan-400); margin-bottom: 24px; }
+.hero__crumb a { color: var(--text-on-dark); text-decoration: none; }
+.hero__crumb a:hover { color: #fff; }
+.hero__crumb .sep { color: var(--gray-500); }
+.hero__h1 { font: 600 clamp(2.1rem, 4.2vw, 2.95rem)/1.1 var(--font-sans); letter-spacing: -0.02em; color: #fff; margin: 0; max-width: 17ch; }
+.hero__h1 .grad { background: var(--brand-gradient-h); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hero__sub { font: var(--text-body-lg); color: var(--text-on-dark); line-height: 1.62; max-width: 33rem; margin: 22px 0 0; }
+.hero__ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px; }
+
+/* ── Hero onboarding-form mock ── */
+.formcard { position: relative; background: #fff; border-radius: var(--radius-xl); box-shadow: 0 30px 70px -22px rgba(0,0,0,0.55), 0 0 0 1px rgba(0,170,185,0.06); padding: 26px 26px 28px; }
+.formcard__head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+.formcard__title { font: 600 0.95rem/1.2 var(--font-sans); color: var(--navy-950); }
+.formcard__step { font: var(--text-overline); letter-spacing: 0.07em; text-transform: uppercase; color: var(--gray-400); }
+.fmrow { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+.fmf { display: flex; flex-direction: column; gap: 6px; }
+.fmf--full { grid-column: 1 / -1; }
+.fmf label { font: 500 0.72rem/1 var(--font-sans); color: var(--gray-500); letter-spacing: 0.01em; }
+.fmf .ph { height: 40px; border: 1px solid var(--gray-200); border-radius: var(--radius-md); background: var(--gray-50); display: flex; align-items: center; padding: 0 13px; font: var(--text-body-sm); color: var(--gray-600); }
+.fmf .ph.mono { font-family: var(--font-mono); font-size: 0.78rem; }
+/* assisted address field */
+.fmaddr { position: relative; }
+.fmaddr__input { height: 46px; border: 1.5px solid var(--cyan-500); border-radius: var(--radius-md); background: #fff; display: flex; align-items: center; gap: 9px; padding: 0 13px; box-shadow: 0 0 0 3px rgba(0,170,185,0.16); }
+.fmaddr__input .pin { width: 17px; height: 17px; color: var(--cyan-600); flex: none; }
+.fmaddr__input .txt { font: var(--text-data); font-size: 0.85rem; color: var(--navy-950); }
+.fmaddr__input .caret { width: 2px; height: 17px; background: var(--cyan-500); margin-left: -3px; animation: blink 1.1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.fmsug { margin-top: 7px; border: 1px solid var(--gray-200); border-radius: var(--radius-md); box-shadow: var(--shadow-md); overflow: hidden; }
+.fmsug__item { display: flex; align-items: center; gap: 10px; padding: 10px 13px; font: var(--text-body-sm); color: var(--text-body); }
+.fmsug__item.is-active { background: var(--cyan-100); }
+.fmsug__item .mp { width: 15px; height: 15px; color: var(--cyan-600); flex: none; }
+.fmsug__item b { color: var(--navy-950); font-weight: 600; }
+.fmsug__item .conf { margin-left: auto; font: var(--text-caption); font-family: var(--font-mono); color: var(--success); }
+/* validated side note */
+.fmvalid { display: flex; align-items: flex-start; gap: 10px; margin-top: 14px; padding: 12px 14px; background: var(--success-bg); border: 1px solid rgba(31,157,99,0.3); border-radius: var(--radius-md); }
+.fmvalid .i { width: 17px; height: 17px; color: var(--success); flex: none; margin-top: 1px; }
+.fmvalid .vt { font: 600 0.8rem/1.3 var(--font-sans); color: var(--navy-950); }
+.fmvalid .vt span { display: block; font: var(--text-caption); color: var(--success); font-weight: 500; margin-top: 3px; }
+
+/* ============================================================ ROADMAP ============================================================ */
+.road { background: var(--surface-subtle); border-bottom: 1px solid var(--border-subtle); }
+.road__track { display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; margin-top: 56px; position: relative; }
+.road__rail { position: absolute; top: 19px; left: 9%; right: 9%; height: 3px; background: linear-gradient(90deg, var(--warning) 0%, var(--danger) 78%); border-radius: 2px; opacity: 0.35; }
+.rstep { position: relative; display: flex; flex-direction: column; }
+.rstep__node { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font: 600 0.95rem/1 var(--font-mono); color: #fff; background: var(--gray-400); border: 4px solid var(--surface-subtle); position: relative; z-index: 1; margin-bottom: 16px; }
+.rstep--warn .rstep__node { background: var(--warning); }
+.rstep--bad .rstep__node { background: var(--danger); }
+.rcard { background: #fff; border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 20px 18px; box-shadow: var(--shadow-card); display: flex; flex-direction: column; height: 100%; }
+.rcard__phase { font: var(--text-overline); letter-spacing: 0.07em; text-transform: uppercase; color: var(--gray-400); }
+.rcard h3 { font: 600 1.02rem/1.28 var(--font-sans); letter-spacing: -0.01em; color: var(--navy-950); margin: 8px 0 0; }
+.rcard p { font: var(--text-body-sm); color: var(--text-muted); line-height: 1.55; margin: 9px 0 0; }
+/* the protagonist address chip that degrades */
+.rchip { margin-top: 14px; border-radius: var(--radius-sm); padding: 9px 11px; font-family: var(--font-mono); font-size: 0.74rem; line-height: 1.4; display: flex; align-items: center; gap: 7px; }
+.rchip .d { width: 6px; height: 6px; border-radius: 50%; background: currentColor; flex: none; }
+.rchip--warn { background: var(--warning-bg); color: var(--warning); border: 1px dashed rgba(185,122,9,0.5); }
+.rchip--bad { background: var(--danger-bg); color: var(--danger); border: 1px dashed rgba(204,61,61,0.5); }
+.rlist { list-style: none; padding: 0; margin: 13px 0 0; display: flex; flex-direction: column; gap: 6px; }
+.rlist li { display: flex; align-items: flex-start; gap: 8px; font: var(--text-caption); color: var(--text-muted); line-height: 1.4; }
+.rlist li .i { width: 13px; height: 13px; flex: none; color: var(--danger); margin-top: 1px; }
+.rimpact { margin-top: auto; padding-top: 13px; }
+.rimpact__label { font: var(--text-overline); letter-spacing: 0.07em; text-transform: uppercase; color: var(--danger); }
+.rimpact p { font: var(--text-body-sm); color: var(--text-body); margin: 5px 0 0; line-height: 1.45; }
+/* closing phrase */
+.road__close { margin-top: 48px; display: flex; justify-content: center; }
+.road__close-inner { display: flex; align-items: center; gap: 16px; max-width: 56rem; background: var(--navy-950); border-radius: var(--radius-xl); padding: 26px 32px; box-shadow: 0 24px 54px -20px rgba(0,170,185,0.4); }
+.road__close-inner .ic { width: 46px; height: 46px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; background: var(--brand-gradient-cta); color: #fff; box-shadow: var(--shadow-glow-cyan); flex: none; }
+.road__close-inner .ic .i { width: 23px; height: 23px; }
+.road__close-inner p { font: 600 clamp(1.1rem,2vw,1.32rem)/1.4 var(--font-sans); letter-spacing: -0.01em; color: #fff; margin: 0; }
+.road__close-inner p .hl { background: var(--brand-gradient-h); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+/* ============================================================ DEMO (interactive) ============================================================ */
+.demo__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 52px; align-items: start; }
+.dpanel { background: #fff; border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); box-shadow: var(--shadow-card); overflow: hidden; }
+.dpanel__head { display: flex; align-items: center; gap: 10px; padding: 16px 22px; border-bottom: 1px solid var(--border-subtle); }
+.dpanel__head .ic { width: 30px; height: 30px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; background: var(--cyan-100); color: var(--cyan-700); flex: none; }
+.dpanel__head .ic .i { width: 16px; height: 16px; }
+.dpanel__head .t { font: 600 0.92rem/1.2 var(--font-sans); color: var(--navy-950); }
+.dpanel__head .tag { margin-left: auto; font: var(--text-caption); color: var(--gray-500); }
+.dpanel__body { padding: 22px; }
+/* form */
+.dform .fmrow { margin-bottom: 14px; }
+.dform .fmf .ph { background: var(--gray-50); }
+.dlabel { display: flex; align-items: center; gap: 6px; font: 500 0.74rem/1 var(--font-sans); color: var(--gray-500); margin-bottom: 6px; }
+.dlabel--active { color: var(--cyan-700); }
+.dlabel .req { color: var(--cyan-600); }
+.daddr { position: relative; }
+.daddr__field { display: flex; align-items: center; gap: 9px; height: 48px; border: 1.5px solid var(--gray-200); border-radius: var(--radius-md); background: #fff; padding: 0 13px; transition: border-color var(--duration-base) var(--ease-out), box-shadow var(--duration-base) var(--ease-out); }
+.daddr__field:focus-within { border-color: var(--cyan-500); box-shadow: 0 0 0 3px rgba(0,170,185,0.18); }
+.daddr__field.is-valid { border-color: var(--success); box-shadow: 0 0 0 3px rgba(31,157,99,0.14); }
+.daddr__field .pin { width: 18px; height: 18px; color: var(--cyan-600); flex: none; }
+.daddr__field.is-valid .pin { color: var(--success); }
+.daddr__field input { flex: 1; border: none; outline: none; background: none; font: var(--text-data); font-size: 0.88rem; color: var(--navy-950); }
+.daddr__field input::placeholder { color: var(--gray-400); font-family: var(--font-sans); font-weight: 400; }
+.daddr__field .check { width: 18px; height: 18px; color: var(--success); flex: none; opacity: 0; transition: opacity var(--duration-base) var(--ease-out); }
+.daddr__field.is-valid .check { opacity: 1; }
+.daddr__menu { position: absolute; top: calc(100% + 7px); left: 0; right: 0; z-index: 30; background: #fff; border: 1px solid var(--gray-200); border-radius: var(--radius-md); box-shadow: var(--shadow-lg); overflow: hidden; display: none; }
+.daddr__menu.is-open { display: block; }
+.daddr__menu-h { padding: 8px 13px; font: var(--text-overline); letter-spacing: 0.07em; text-transform: uppercase; color: var(--gray-400); background: var(--gray-50); border-bottom: 1px solid var(--gray-100); }
+.dsug { display: flex; align-items: center; gap: 10px; padding: 11px 13px; cursor: pointer; transition: background var(--duration-fast) var(--ease-out); border-bottom: 1px solid var(--gray-100); }
+.dsug:last-child { border-bottom: none; }
+.dsug:hover, .dsug.is-active { background: var(--cyan-100); }
+.dsug .mp { width: 16px; height: 16px; color: var(--cyan-600); flex: none; }
+.dsug .stxt { font: var(--text-body-sm); color: var(--text-body); }
+.dsug .stxt b { color: var(--navy-950); font-weight: 600; }
+.dsug .stxt span { display: block; font: var(--text-caption); color: var(--gray-500); margin-top: 2px; }
+.dsug .conf { margin-left: auto; display: inline-flex; align-items: center; gap: 4px; font: var(--text-caption); font-family: var(--font-mono); color: var(--success); white-space: nowrap; }
+.dsug .conf .d { width: 5px; height: 5px; border-radius: 50%; background: var(--success); }
+.dhint { display: flex; align-items: center; gap: 6px; margin-top: 9px; font: var(--text-caption); color: var(--gray-500); }
+.dhint .i { width: 13px; height: 13px; color: var(--cyan-600); }
+.dform__submit { width: 100%; margin-top: 20px; height: 48px; border: none; border-radius: var(--radius-md); background: var(--gray-200); color: var(--gray-500); font: 500 0.95rem/1 var(--font-sans); cursor: not-allowed; transition: background var(--duration-base) var(--ease-out), color var(--duration-base) var(--ease-out); }
+.dform__submit.is-ready { background: var(--brand-gradient-cta); color: #fff; cursor: pointer; box-shadow: var(--shadow-glow-cyan); }
+
+/* response panel */
+.dpanel--resp { background: var(--navy-950); border-color: var(--navy-950); position: relative; overflow: hidden; }
+.dpanel--resp::after { content: ""; position: absolute; inset: 0; background-image: var(--grid-overlay); background-size: var(--grid-size); opacity: 0.5; pointer-events: none; }
+.dpanel--resp > * { position: relative; z-index: 1; }
+.dpanel--resp .dpanel__head { border-color: rgba(255,255,255,0.1); }
+.dpanel--resp .dpanel__head .ic { background: rgba(0,170,185,0.18); color: var(--cyan-300); }
+.dpanel--resp .dpanel__head .t { color: #fff; }
+.dpanel--resp .dpanel__head .tag { color: var(--text-inverse-muted); }
+.dtabs { display: flex; gap: 4px; padding: 4px; margin: 0 22px; margin-top: 18px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-md); }
+.dtab { flex: 1; height: 34px; border: none; background: none; border-radius: var(--radius-sm); font: 500 0.82rem/1 var(--font-sans); color: var(--text-on-dark); cursor: pointer; transition: background var(--duration-base) var(--ease-out), color var(--duration-base) var(--ease-out); }
+.dtab.is-active { background: #fff; color: var(--navy-950); }
+.dresp { padding: 20px 22px 24px; }
+/* awaiting state */
+.dresp__await { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 38px 16px; }
+.dresp__await .ic { width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); color: var(--gray-500); margin-bottom: 16px; }
+.dresp__await .ic .i { width: 24px; height: 24px; }
+.dresp__await p { font: var(--text-body-sm); color: var(--text-on-dark); max-width: 26ch; line-height: 1.5; margin: 0; }
+/* result view */
+.dview { display: none; }
+.dview.is-shown { display: block; animation: fadeUp var(--duration-reveal) var(--ease-reveal) both; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+.dchips { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 18px; }
+.dchip { display: inline-flex; align-items: center; gap: 6px; font: 500 0.74rem/1 var(--font-sans); color: var(--cyan-300); background: rgba(0,170,185,0.14); border: 1px solid rgba(0,170,185,0.28); padding: 6px 11px; border-radius: var(--radius-pill); }
+.dchip .i { width: 13px; height: 13px; }
+.dkv { display: flex; flex-direction: column; }
+.dkv__row { display: flex; align-items: baseline; gap: 12px; padding: 11px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.dkv__row:last-child { border-bottom: none; }
+.dkv__k { flex: none; width: 130px; font: var(--text-overline); letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-inverse-muted); }
+.dkv__v { font: var(--text-data); color: #fff; line-height: 1.4; }
+.dkv__v.accent { color: var(--cyan-300); }
+.dkv__v.success { color: var(--green-400); }
+.drec { display: flex; align-items: flex-start; gap: 10px; margin-top: 16px; padding: 13px 14px; background: rgba(0,170,185,0.1); border: 1px solid rgba(0,170,185,0.25); border-radius: var(--radius-md); }
+.drec .i { width: 16px; height: 16px; color: var(--cyan-300); flex: none; margin-top: 1px; }
+.drec .rt { font: 500 0.8rem/1.4 var(--font-sans); color: #fff; }
+.drec .rt span { display: block; font: var(--text-caption); color: var(--text-on-dark); font-weight: 400; margin-top: 2px; }
+/* technical view: json */
+.djson { margin: 0; font: var(--text-code); font-size: 0.8rem; color: var(--cyan-100); background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-md); padding: 16px 18px; overflow-x: auto; line-height: 1.7; }
+.djson .k { color: var(--cyan-300); }
+.djson .s { color: var(--green-400); }
+.djson .p { color: var(--gray-400); }
+.dmeta { display: flex; gap: 18px; margin-top: 14px; }
+.dmeta__item { display: flex; flex-direction: column; gap: 3px; }
+.dmeta__item .mk { font: var(--text-caption); color: var(--text-inverse-muted); }
+.dmeta__item .mv { font: 600 0.95rem/1 var(--font-mono); color: var(--cyan-300); }
+
+/* ============================================================ BENEFITS (glass) ============================================================ */
+.benf { position: relative; overflow: hidden; background: var(--surface-spotlight); }
+.benf::before { content: ""; position: absolute; inset: 0; background-image: var(--grid-overlay); background-size: var(--grid-size); pointer-events: none; }
+.benf::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: var(--spotlight-glow); }
+.benf .wrap { position: relative; z-index: 1; }
+.benf__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 48px; }
+.gcard { background: rgba(255,255,255,0.055); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.13); border-radius: var(--radius-lg); padding: 24px 22px; transition: background var(--duration-slow) var(--ease-out), transform var(--duration-slow) var(--ease-out), border-color var(--duration-slow) var(--ease-out); }
+.gcard:hover { background: rgba(255,255,255,0.09); border-color: rgba(0,170,185,0.4); transform: translateY(-3px); }
+.gcard--wide { grid-column: span 1; }
+.gcard__ic { width: 42px; height: 42px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; background: rgba(0,170,185,0.16); color: var(--cyan-300); margin-bottom: 15px; }
+.gcard__ic .i { width: 21px; height: 21px; }
+.gcard h3 { font: 600 1.05rem/1.25 var(--font-sans); color: #fff; margin: 0; }
+.gcard p { font: var(--text-body-sm); color: var(--text-on-dark); line-height: 1.55; margin: 9px 0 0; }
+
+/* ============================================================ PRODUCTOS ============================================================ */
+.prodlead { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 20px; margin-top: 52px; }
+.pfeat { position: relative; overflow: hidden; display: flex; flex-direction: column; text-decoration: none; background: var(--navy-950); border: 1px solid var(--navy-950); border-radius: var(--radius-xl); padding: 30px 32px; box-shadow: 0 24px 54px -20px rgba(0,170,185,0.35); transition: transform var(--duration-slow) var(--ease-out), box-shadow var(--duration-slow) var(--ease-out); }
+.pfeat::after { content: ""; position: absolute; inset: 0; background-image: var(--grid-overlay); background-size: var(--grid-size); opacity: 0.5; pointer-events: none; }
+.pfeat:hover { transform: translateY(-3px); box-shadow: 0 28px 62px -20px rgba(0,170,185,0.5); }
+.pfeat > * { position: relative; z-index: 1; }
+.pfeat__tag { display: inline-flex; align-items: center; gap: 7px; align-self: flex-start; font: var(--text-overline); letter-spacing: 0.07em; text-transform: uppercase; color: var(--navy-950); background: var(--brand-gradient-cta); padding: 6px 12px; border-radius: var(--radius-pill); margin-bottom: 18px; }
+.pfeat__tag .i { width: 13px; height: 13px; }
+.pfeat__ic { width: 48px; height: 48px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; background: rgba(0,170,185,0.18); color: var(--cyan-300); margin-bottom: 16px; }
+.pfeat__ic .i { width: 24px; height: 24px; }
+.pfeat h3 { font: 600 1.5rem/1.2 var(--font-sans); letter-spacing: -0.02em; color: #fff; margin: 0; }
+.pfeat p { font: var(--text-body-sm); font-size: 0.92rem; color: var(--text-on-dark); line-height: 1.6; margin: 12px 0 0; max-width: 40ch; }
+/* mini lookup mock inside featured */
+.pmock { margin-top: 22px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-md); padding: 14px; }
+.pmock__in { display: flex; align-items: center; gap: 9px; height: 40px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: var(--radius-sm); padding: 0 12px; }
+.pmock__in .mp { width: 15px; height: 15px; color: var(--cyan-300); flex: none; }
+.pmock__in .txt { font: var(--text-data); font-size: 0.78rem; color: var(--text-on-dark); }
+.pmock__arrow { display: flex; justify-content: center; padding: 7px 0; color: var(--gray-500); }
+.pmock__arrow .i { width: 16px; height: 16px; }
+.pmock__out { display: flex; align-items: center; gap: 9px; height: 40px; background: rgba(0,170,185,0.12); border: 1px solid rgba(0,170,185,0.28); border-radius: var(--radius-sm); padding: 0 12px; }
+.pmock__out .mp { width: 15px; height: 15px; color: var(--cyan-300); flex: none; }
+.pmock__out .txt { font: var(--text-data); font-size: 0.78rem; color: #fff; }
+.pmock__states { display: flex; gap: 7px; margin-top: 11px; }
+.pmock__states span { display: inline-flex; align-items: center; gap: 5px; font: var(--text-caption); color: var(--cyan-300); background: rgba(0,170,185,0.12); padding: 4px 9px; border-radius: var(--radius-pill); }
+.pmock__states span .d { width: 5px; height: 5px; border-radius: 50%; background: var(--cyan-400); }
+.pfeat .more { display: inline-flex; align-items: center; gap: 6px; margin-top: 22px; font: 500 0.9rem/1 var(--font-sans); color: var(--cyan-300); }
+.pfeat .more .i { width: 16px; height: 16px; transition: transform var(--duration-base) var(--ease-out); }
+.pfeat:hover .more .i { transform: translateX(4px); }
+.psecs { display: flex; flex-direction: column; gap: 20px; }
+.psec { display: flex; gap: 16px; text-decoration: none; background: #fff; border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 22px 22px; box-shadow: var(--shadow-card); transition: border-color var(--duration-slow) var(--ease-out), box-shadow var(--duration-slow) var(--ease-out), transform var(--duration-slow) var(--ease-out); flex: 1; }
+.psec:hover { border-color: rgba(0,170,185,0.4); box-shadow: var(--shadow-card-hover); transform: translateY(-2px); }
+.psec__ic { width: 42px; height: 42px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; background: var(--cyan-100); color: var(--cyan-700); flex: none; }
+.psec__ic .i { width: 21px; height: 21px; }
+.psec__b { display: flex; flex-direction: column; }
+.psec h4 { font: 600 1.02rem/1.25 var(--font-sans); color: var(--navy-950); margin: 0; }
+.psec p { font: var(--text-caption); color: var(--text-muted); line-height: 1.5; margin: 6px 0 0; }
+.psec__tag { font: var(--text-overline); letter-spacing: 0.06em; text-transform: uppercase; color: var(--cyan-700); margin-top: 10px; }
+
+/* ============================================================ CTA FINAL ============================================================ */
+.cta { position: relative; overflow: hidden; background: var(--surface-spotlight); }
+.cta::before { content: ""; position: absolute; inset: 0; background-image: var(--grid-overlay); background-size: var(--grid-size); pointer-events: none; }
+.cta__inner { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 84px 48px; display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 56px; align-items: center; }
+.cta__h2 { font: 600 clamp(1.8rem,3.6vw,2.4rem)/1.15 var(--font-sans); letter-spacing: -0.02em; color: #fff; margin: 14px 0 0; max-width: 18ch; }
+.cta__p { font: var(--text-body-lg); color: var(--text-on-dark); line-height: 1.6; margin: 16px 0 0; max-width: 34rem; }
+.cta__btns { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
+.cta__chip { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.13); border-radius: var(--radius-lg); padding: 24px; backdrop-filter: blur(14px); }
+.cta__chip .ph { display: flex; align-items: center; gap: 10px; }
+.cta__chip .ph .ic { width: 38px; height: 38px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; background: rgba(0,170,185,0.16); color: var(--cyan-300); flex: none; }
+.cta__chip .ph .ic .i { width: 19px; height: 19px; }
+.cta__chip .ph .t { font: 600 0.95rem/1.2 var(--font-sans); color: #fff; }
+.cta__chip .addr { font: var(--text-data); color: var(--text-on-dark); margin: 16px 0 0; line-height: 1.4; }
+.cta__chip .states { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+.cta__chip .states span { display: inline-flex; align-items: center; gap: 5px; font: var(--text-caption); color: var(--cyan-300); background: rgba(0,170,185,0.12); padding: 5px 9px; border-radius: var(--radius-pill); }
+.cta__chip .states span .d { width: 5px; height: 5px; border-radius: 50%; background: var(--cyan-400); }
+
+/* ============================================================ FOOTER ============================================================ */
+.footer { background: var(--surface-spotlight); position: relative; }
+.footer::before { content: ""; position: absolute; inset: 0; background-image: var(--grid-overlay); background-size: var(--grid-size); opacity: 0.6; pointer-events: none; }
+.footer__inner { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 64px 48px 36px; }
+.footer__top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 36px; padding-bottom: 44px; border-bottom: 1px solid rgba(255,255,255,0.09); }
+.footer__brand img { height: 26px; }
+.footer__brand p { font: var(--text-body-sm); color: var(--text-on-dark); line-height: 1.6; margin: 16px 0 0; max-width: 260px; }
+.footer__brand .badges { display: flex; gap: 8px; margin-top: 18px; }
+.footer__brand .badges span { font: var(--text-caption); color: var(--text-inverse-muted); border: 1px solid rgba(255,255,255,0.14); padding: 5px 10px; border-radius: var(--radius-sm); }
+.footer__col h4 { font: 600 0.8125rem/1 var(--font-sans); color: #fff; margin: 0 0 16px; }
+.footer__col ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 11px; }
+.footer__col li a { font: var(--text-body-sm); color: var(--text-on-dark); text-decoration: none; }
+.footer__col li a:hover { color: #fff; }
+.footer__bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 26px; }
+.footer__bottom p { font: var(--text-caption); color: var(--gray-500); }
+.footer__bottom .links { display: flex; gap: 22px; }
+.footer__bottom .links a { font: var(--text-caption); color: var(--gray-400); text-decoration: none; }
+.footer__bottom .links a:hover { color: #fff; }
+
+/* ── Scroll reveal ── */
+.reveal-on [data-reveal] { opacity: 0; }
+.reveal-on [data-reveal].in { animation: revealIn var(--duration-reveal) var(--ease-reveal) both; }
+@keyframes revealIn { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .reveal-on [data-reveal] { opacity: 1 !important; animation: none !important; } .fmaddr__input .caret { animation: none; } }
+
+/* ── Responsive ── */
+@media (max-width: 1040px) {
+  .road__track { grid-template-columns: repeat(2, 1fr); }
+  .road__rail { display: none; }
+  .benf__grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 900px) {
+  .wrap, .nav, .cta__inner, .footer__inner { padding-left: 24px; padding-right: 24px; }
+  .nav__links { display: none; }
+  .hero__grid { grid-template-columns: 1fr; gap: 40px; }
+  .demo__grid { grid-template-columns: 1fr; }
+  .prodlead { grid-template-columns: 1fr; }
+  .cta__inner { grid-template-columns: 1fr; gap: 36px; }
+  .footer__top { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .road__track { grid-template-columns: 1fr; }
+  .benf__grid { grid-template-columns: 1fr; }
+  .fmrow { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================ NAV ============================================================ -->
+<nav class="nav">
+  <a href="index.html"><img class="nav__logo" src="assets/logo/ubidata-logo-navy.png" alt="Ubidata"></a>
+  <div class="nav__links">
+    <div class="nav__item"><a class="nav__link" href="index.html">Inicio</a></div>
+    <div class="nav__item">
+      <button class="nav__link">Productos <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg></button>
+      <div class="dropdown" style="min-width:380px;">
+        <a href="index.html#producto-lookup"><span class="dropdown__ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span><span><span class="dropdown__t">Buscador de direcciones</span><span class="dropdown__d">Autocompletado normalizado para onboarding y checkout</span></span></a>
+        <a href="producto-api-rest.html"><span class="dropdown__ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg></span><span><span class="dropdown__t">API REST de validación</span><span class="dropdown__d">Validación, normalización y diagnóstico en tus sistemas</span></span></a>
+        <a href="index.html#producto-batch"><span class="dropdown__ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg></span><span><span class="dropdown__t">Procesamiento batch</span><span class="dropdown__d">Normalizá grandes volúmenes y bases históricas</span></span></a>
+        <a href="index.html#producto-plataforma"><span class="dropdown__ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></span><span><span class="dropdown__t">Plataforma</span><span class="dropdown__d">Operá productos y centralizá procesos con visibilidad total</span></span></a>
+      </div>
+    </div>
+    <div class="nav__item">
+      <button class="nav__link is-current">Casos de uso <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg></button>
+      <div class="dropdown">
+        <a href="caso-ultima-milla.html"><span class="dropdown__ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg></span><span><span class="dropdown__t">Última milla</span><span class="dropdown__d">Reducí entregas fallidas y mejorá la precisión operativa</span></span></a>
+        <a href="caso-onboarding.html"><span class="dropdown__ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg></span><span><span class="dropdown__t">Onboarding</span><span class="dropdown__d">Mejorá la captura de domicilios desde el primer dato</span></span></a>
+        <a href="caso-cumplimiento.html"><span class="dropdown__ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span><span><span class="dropdown__t">Cumplimiento normativo</span><span class="dropdown__d">Validación de domicilios en procesos sensibles</span></span></a>
+        <a href="caso-data-cleaning.html"><span class="dropdown__ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg></span><span><span class="dropdown__t">Data cleaning</span><span class="dropdown__d">Transformá bases inconsistentes en datos confiables</span></span></a>
+      </div>
+    </div>
+    <div class="nav__item"><a class="nav__link" href="index.html#novedades">Docs</a></div>
+    <div class="nav__item"><a class="nav__link" href="index.html#novedades">Novedades</a></div>
+    <div class="nav__item"><a class="nav__link" href="index.html#footer">Empresa</a></div>
+    <div class="nav__item"><a class="nav__link" href="index.html#footer">Contacto</a></div>
+  </div>
+  <div class="nav__spacer"></div>
+  <div class="nav__right">
+    <button class="nav__login">
+      <svg class="i" style="width:15px;height:15px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" x2="3" y1="12" y2="12"/></svg>
+      Login
+    </button>
+  </div>
+</nav>
+
+<!-- ============================================================ HERO ============================================================ -->
+<section class="spotlight hero" data-screen-label="Hero — Onboarding">
+  <div class="wrap hero__grid">
+    <div data-reveal>
+      <span class="hero__crumb"><a href="index.html#casos">Casos de uso</a> <span class="sep">/</span> Onboarding</span>
+      <h1 class="hero__h1">Mejorá la captura de domicilios desde el <span class="grad">primer dato</span></h1>
+      <p class="hero__sub">Ubidata ayuda a reducir errores de carga y fricción en formularios de onboarding, validando y normalizando direcciones en tiempo real — antes de que un dato mal cargado avance por todo el proceso.</p>
+      <div class="hero__ctas">
+        <a class="btn btn-grad" href="#cta">Solicitar demo <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+        <a class="btn btn-glass" href="#productos">Ver productos relacionados</a>
+      </div>
+    </div>
+
+    <!-- Onboarding form mock -->
+    <div data-reveal>
+      <div class="formcard">
+        <div class="formcard__head">
+          <span class="formcard__title">Crear cuenta</span>
+          <span class="formcard__step">Paso 2 de 3 · Datos</span>
+        </div>
+        <div class="fmrow">
+          <div class="fmf"><label>Nombre</label><div class="ph">María González</div></div>
+          <div class="fmf"><label>Email</label><div class="ph">maria@empresa.com</div></div>
+        </div>
+        <div class="fmrow">
+          <div class="fmf"><label>Documento / CUIT</label><div class="ph mono">20-31……-4</div></div>
+          <div class="fmf"><label>Teléfono</label><div class="ph mono">+54 11 5……</div></div>
+        </div>
+        <div class="fmf fmf--full">
+          <label>Dirección</label>
+          <div class="fmaddr">
+            <div class="fmaddr__input">
+              <svg class="pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span class="txt">Av. Cordoba 1430</span><span class="caret"></span>
+            </div>
+            <div class="fmsug">
+              <div class="fmsug__item is-active">
+                <svg class="mp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span><b>Av. Córdoba 1430</b>, Ciudad Autónoma de Buenos Aires</span>
+                <span class="conf">98.7%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="fmvalid">
+          <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+          <div class="vt">Dirección validada<span>Normalizada · Alta confianza · Lista para guardar</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ ROADMAP ============================================================ -->
+<section class="sec road" data-screen-label="Roadmap — Camino de una dirección mal cargada">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow">El camino de una dirección mal cargada</span>
+      <h2 class="sec-h2">El problema no aparece al final del onboarding. Entra con el primer dato mal cargado.</h2>
+      <p class="sec-lead">Cuando el domicilio se carga de forma incompleta, ambigua o inconsistente, el proceso puede continuar — pero el dato empieza a degradar todo lo que viene después: validaciones, sistemas internos, CRM, reportes y experiencia del usuario.</p>
+    </div>
+
+    <div class="road__track">
+      <div class="road__rail"></div>
+
+      <!-- Step 1 -->
+      <div class="rstep rstep--warn" data-reveal>
+        <div class="rstep__node">1</div>
+        <div class="rcard">
+          <span class="rcard__phase">Carga inicial</span>
+          <h3>Carga inicial ambigua</h3>
+          <p>El usuario ingresa una dirección con abreviaciones, errores o datos incompletos.</p>
+          <div class="rchip rchip--warn"><span class="d"></span>Cordoba 1430 Cap Fed</div>
+          <div class="rimpact"><span class="rimpact__label" style="color:var(--warning)">Estado</span><p style="color:var(--warning)">Ambigua</p></div>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="rstep rstep--bad" data-reveal>
+        <div class="rstep__node">2</div>
+        <div class="rcard">
+          <span class="rcard__phase">Sin validación en origen</span>
+          <h3>El error entra al sistema</h3>
+          <p>Sin validación en origen, el formulario permite guardar una dirección que no está normalizada ni estructurada.</p>
+          <ul class="rlist">
+            <li><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg> Calle sin acento o mal escrita</li>
+            <li><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg> Ciudad abreviada</li>
+            <li><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg> Provincia no estandarizada</li>
+            <li><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg> Campos faltantes · formato inconsistente</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="rstep rstep--bad" data-reveal>
+        <div class="rstep__node">3</div>
+        <div class="rcard">
+          <span class="rcard__phase">Después del alta</span>
+          <h3>Aparece la revisión manual</h3>
+          <p>El dato requiere interpretación, corrección o validación posterior por parte de equipos internos.</p>
+          <div class="rchip rchip--bad"><span class="d"></span>¿Córdoba? ¿CABA? Revisar</div>
+          <div class="rimpact"><span class="rimpact__label">Impacto</span><p>Más tareas manuales, más demoras y criterios poco consistentes.</p></div>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="rstep rstep--bad" data-reveal>
+        <div class="rstep__node">4</div>
+        <div class="rcard">
+          <span class="rcard__phase">Calidad del registro</span>
+          <h3>El onboarding pierde calidad</h3>
+          <p>El usuario puede completar el proceso, pero la empresa recibe un domicilio poco confiable para operar.</p>
+          <div class="rimpact"><span class="rimpact__label">Impacto</span><p>Datos incompletos, validaciones débiles y menor confiabilidad del registro.</p></div>
+        </div>
+      </div>
+
+      <!-- Step 5 -->
+      <div class="rstep rstep--bad" data-reveal>
+        <div class="rstep__node">5</div>
+        <div class="rcard">
+          <span class="rcard__phase">Aguas abajo</span>
+          <h3>El dato contamina otros sistemas</h3>
+          <p>La dirección mal cargada pasa al CRM, sistemas internos, reportes, comunicaciones o validaciones futuras.</p>
+          <div class="rimpact"><span class="rimpact__label">Impacto</span><p>Bases inconsistentes desde el inicio.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="road__close" data-reveal>
+      <div class="road__close-inner">
+        <span class="ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span>
+        <p>Ubidata evita que el error entre al proceso. No lo corrige tarde: <span class="hl">lo previene en el momento de la carga.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ DEMO (interactive) ============================================================ -->
+<section class="sec" id="demo" data-screen-label="Demo interactiva — Integración en onboarding">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow">Demo aplicada</span>
+      <h2 class="sec-h2">Cómo se integra Ubidata en tu onboarding</h2>
+      <p class="sec-lead">Incorporá Address Lookup y validación en tiempo real dentro de tus formularios para que cada domicilio llegue normalizado, estructurado y listo para operar. Escribí en el campo de dirección para verlo en acción.</p>
+    </div>
+
+    <div class="demo__grid">
+      <!-- LEFT: form -->
+      <div class="dpanel dform" data-reveal>
+        <div class="dpanel__head">
+          <span class="ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg></span>
+          <span class="t">Formulario de alta</span>
+          <span class="tag">Onboarding empresarial</span>
+        </div>
+        <div class="dpanel__body">
+          <div class="fmrow">
+            <div class="fmf"><span class="dlabel">Nombre y apellido</span><div class="ph">María González</div></div>
+            <div class="fmf"><span class="dlabel">Email</span><div class="ph">maria@empresa.com</div></div>
+          </div>
+          <div class="fmrow">
+            <div class="fmf"><span class="dlabel">Documento / CUIT</span><div class="ph mono">20-31654987-4</div></div>
+            <div class="fmf"><span class="dlabel">Teléfono</span><div class="ph mono">+54 11 5123-4567</div></div>
+          </div>
+          <div class="fmf fmf--full" style="margin-bottom:14px;">
+            <span class="dlabel">Razón social</span><div class="ph">González &amp; Asociados S.R.L.</div>
+          </div>
+
+          <div class="fmf fmf--full">
+            <span class="dlabel dlabel--active" id="d-addr-label">Dirección <span class="req">· editable</span></span>
+            <div class="daddr">
+              <div class="daddr__field" id="d-addr-field">
+                <svg class="pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <input id="d-addr-input" type="text" autocomplete="off" spellcheck="false" placeholder="Escribí: Cordoba 1430 capital">
+                <svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              </div>
+              <div class="daddr__menu" id="d-addr-menu">
+                <div class="daddr__menu-h">Sugerencias · Address Lookup</div>
+                <div id="d-sug-list"></div>
+              </div>
+            </div>
+            <div class="dhint"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg> Probá con una dirección incompleta o con abreviaciones.</div>
+          </div>
+
+          <button class="dform__submit" id="d-submit" disabled>Seleccioná una dirección para continuar</button>
+        </div>
+      </div>
+
+      <!-- RIGHT: response panel -->
+      <div class="dpanel dpanel--resp" data-reveal>
+        <div class="dpanel__head">
+          <span class="ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg></span>
+          <span class="t">Respuesta de Ubidata</span>
+          <span class="tag" id="d-latency-tag">en tiempo real</span>
+        </div>
+        <div class="dtabs" role="tablist">
+          <button class="dtab is-active" data-tab="negocio">Vista negocio</button>
+          <button class="dtab" data-tab="tecnica">Vista técnica</button>
+        </div>
+        <div class="dresp">
+          <!-- awaiting -->
+          <div class="dresp__await" id="d-await">
+            <span class="ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>
+            <p>Escribí una dirección y seleccioná una sugerencia para ver el resultado de validación.</p>
+          </div>
+
+          <!-- business view -->
+          <div class="dview" id="d-view-negocio">
+            <div class="dchips">
+              <span class="dchip"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Validada</span>
+              <span class="dchip"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Normalizada</span>
+              <span class="dchip"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"/></svg> Alta confianza</span>
+              <span class="dchip"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21V5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v16l7-3z"/></svg> Lista para guardar</span>
+            </div>
+            <div class="dkv">
+              <div class="dkv__row"><span class="dkv__k">Estado</span><span class="dkv__v success" id="b-status">Validada</span></div>
+              <div class="dkv__row"><span class="dkv__k">Confianza</span><span class="dkv__v accent" id="b-conf">Alto · 98.7%</span></div>
+              <div class="dkv__row"><span class="dkv__k">Normalizada</span><span class="dkv__v" id="b-addr">Av. Córdoba 1430</span></div>
+              <div class="dkv__row"><span class="dkv__k">Localidad</span><span class="dkv__v" id="b-city">Ciudad Autónoma de Buenos Aires</span></div>
+              <div class="dkv__row"><span class="dkv__k">Provincia</span><span class="dkv__v" id="b-prov">CABA</span></div>
+              <div class="dkv__row"><span class="dkv__k">País</span><span class="dkv__v">Argentina</span></div>
+              <div class="dkv__row"><span class="dkv__k">Diagnóstico</span><span class="dkv__v" id="b-diag">Coincidencia encontrada y normalizada</span></div>
+            </div>
+            <div class="drec">
+              <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 11 3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+              <div class="rt">Acción recomendada<span id="b-action">Guardar domicilio estructurado</span></div>
+            </div>
+          </div>
+
+          <!-- technical view -->
+          <div class="dview" id="d-view-tecnica">
+            <pre class="djson" id="d-json"></pre>
+            <div class="dmeta">
+              <div class="dmeta__item"><span class="mk">Endpoint</span><span class="mv" style="font-size:0.78rem">POST /v2/validar</span></div>
+              <div class="dmeta__item"><span class="mk">Latencia</span><span class="mv" id="t-latency">78 ms</span></div>
+              <div class="dmeta__item"><span class="mk">Confianza</span><span class="mv" id="t-conf">0.987</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ BENEFITS (glass) ============================================================ -->
+<section class="sec benf" data-screen-label="Beneficios">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow eyebrow--on-dark">Beneficios</span>
+      <h2 class="sec-h2 sec-h2--on-dark">Menos fricción para el usuario. Más calidad para tu operación.</h2>
+      <p class="sec-lead sec-lead--on-dark">Validar el domicilio en el momento de la carga mejora la experiencia de onboarding y evita que datos inconsistentes lleguen a tus sistemas.</p>
+    </div>
+    <div class="benf__grid">
+      <div class="gcard" data-reveal>
+        <div class="gcard__ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+        <h3>Menos errores de carga</h3>
+        <p>Asistí al usuario mientras escribe y reducí domicilios incompletos, ambiguos o mal estructurados.</p>
+      </div>
+      <div class="gcard" data-reveal>
+        <div class="gcard__ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4M16 2v4"/><circle cx="12" cy="14" r="6"/><path d="m12 12 1.5 1.5"/></svg></div>
+        <h3>Mejor experiencia de onboarding</h3>
+        <p>El usuario encuentra su dirección más rápido y completa el formulario con menos fricción.</p>
+      </div>
+      <div class="gcard" data-reveal>
+        <div class="gcard__ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg></div>
+        <h3>Datos confiables desde el origen</h3>
+        <p>El domicilio llega validado, normalizado y estructurado antes de entrar al CRM o sistema interno.</p>
+      </div>
+      <div class="gcard" data-reveal>
+        <div class="gcard__ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg></div>
+        <h3>Menos revisión manual</h3>
+        <p>Reducí correcciones posteriores, validaciones internas y criterios manuales dispersos.</p>
+      </div>
+      <div class="gcard" data-reveal>
+        <div class="gcard__ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="10" width="3" height="7"/><rect x="12" y="6" width="3" height="11"/><rect x="17" y="13" width="3" height="4"/></svg></div>
+        <h3>Mayor consistencia operativa</h3>
+        <p>Unificá formatos y campos para que el dato pueda usarse en validaciones, reportes y procesos posteriores.</p>
+      </div>
+      <div class="gcard" data-reveal>
+        <div class="gcard__ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg></div>
+        <h3>Integración sin fricción</h3>
+        <p>Incorporá Address Lookup y validación sin romper el flujo de onboarding existente.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ PRODUCTOS ============================================================ -->
+<section class="sec" id="productos" data-screen-label="Productos recomendados">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow">Productos recomendados</span>
+      <h2 class="sec-h2">Productos para mejorar tu onboarding</h2>
+      <p class="sec-lead">Aplicá Address Intelligence en el punto exacto donde capturás el domicilio: desde el formulario hasta la validación interna y la operación posterior.</p>
+    </div>
+    <div class="prodlead">
+      <!-- featured -->
+      <a class="pfeat" href="index.html#producto-lookup" data-reveal>
+        <span class="pfeat__tag"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 9.2 8.6 2 9.3l5.5 4.8L5.8 21 12 17.3 18.2 21l-1.7-6.9L22 9.3l-7.2-.7z"/></svg> Producto recomendado para onboarding</span>
+        <div class="pfeat__ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></div>
+        <h3>Buscador de direcciones</h3>
+        <p>Asistí al usuario mientras escribe su domicilio y devolvé sugerencias normalizadas en tiempo real. Ideal para formularios de onboarding, registros digitales, apertura de cuentas y procesos de alta.</p>
+        <div class="pmock">
+          <div class="pmock__in"><svg class="mp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg><span class="txt">Av. Cordoba 1430</span></div>
+          <div class="pmock__arrow"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></div>
+          <div class="pmock__out"><svg class="mp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg><span class="txt">Av. Córdoba 1430, Ciudad Autónoma de Buenos Aires</span></div>
+          <div class="pmock__states"><span><span class="d"></span>Normalizada</span><span><span class="d"></span>Alta confianza</span></div>
+        </div>
+        <span class="more">Ver producto <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+      </a>
+
+      <!-- secondary -->
+      <div class="psecs">
+        <a class="psec" href="producto-api-rest.html" data-reveal>
+          <span class="psec__ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg></span>
+          <div class="psec__b"><h4>API REST de validación</h4><p>Validá, normalizá y diagnosticá direcciones en tiempo real dentro de tus sistemas de alta, CRM, app o plataforma propia.</p><span class="psec__tag">Ideal para validación en tiempo real</span></div>
+        </a>
+        <a class="psec" href="index.html#producto-plataforma" data-reveal>
+          <span class="psec__ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></span>
+          <div class="psec__b"><h4>Plataforma Ubidata</h4><p>Consultá resultados, visualizá diagnósticos y centralizá procesos de validación desde una interfaz de operación.</p><span class="psec__tag">Ideal para visibilidad y control</span></div>
+        </a>
+        <a class="psec" href="index.html#producto-batch" data-reveal>
+          <span class="psec__ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>
+          <div class="psec__b"><h4>Soluciones a medida</h4><p>Adaptamos Address Intelligence a flujos de onboarding con reglas específicas, integraciones internas o validaciones particulares.</p><span class="psec__tag">Ideal para procesos complejos</span></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ CTA FINAL ============================================================ -->
+<section class="cta" id="cta" data-screen-label="CTA final">
+  <div class="cta__inner">
+    <div data-reveal>
+      <span class="eyebrow eyebrow--on-dark">Empezá hoy</span>
+      <h2 class="cta__h2">Capturá domicilios confiables desde el primer input</h2>
+      <p class="cta__p">Conocé cómo Ubidata puede integrarse a tus formularios, sistemas de alta y procesos de onboarding para validar direcciones en tiempo real y operar con datos más consistentes.</p>
+      <div class="cta__btns">
+        <a class="btn btn-grad" href="index.html#footer">Solicitar demo <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+        <a class="btn btn-outline-white" href="index.html#producto-plataforma">Probar plataforma</a>
+      </div>
+    </div>
+    <div class="cta__chip" data-reveal>
+      <div class="ph">
+        <span class="ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21V5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v16l7-3z"/></svg></span>
+        <span class="t">Domicilio listo para operar</span>
+      </div>
+      <p class="addr">Av. Córdoba 1430, Ciudad Autónoma de Buenos Aires</p>
+      <div class="states">
+        <span><span class="d"></span>Validado</span>
+        <span><span class="d"></span>Normalizado</span>
+        <span><span class="d"></span>Alta confianza</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ FOOTER ============================================================ -->
+<footer class="footer" id="footer">
+  <div class="footer__inner">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <img src="assets/logo/ubidata-logo-white.png" alt="Ubidata">
+        <p>Address Intelligence para empresas que necesitan operar con direcciones confiables, en tiempo real o a gran escala.</p>
+        <div class="badges"><span>Real-time</span><span>Batch</span><span>REST · SOAP</span></div>
+      </div>
+      <div class="footer__col"><h4>Productos</h4><ul><li><a href="index.html#producto-lookup">Buscador de direcciones</a></li><li><a href="producto-api-rest.html">API REST</a></li><li><a href="producto-api-rest.html">API SOAP</a></li><li><a href="index.html#producto-batch">Procesamiento batch</a></li><li><a href="index.html#producto-batch">Soluciones a medida</a></li><li><a href="index.html#producto-plataforma">Plataforma</a></li></ul></div>
+      <div class="footer__col"><h4>Casos de uso</h4><ul><li><a href="caso-ultima-milla.html">Última milla</a></li><li><a href="caso-onboarding.html">Onboarding</a></li><li><a href="caso-cumplimiento.html">Cumplimiento normativo</a></li><li><a href="caso-data-cleaning.html">Data cleaning</a></li></ul></div>
+      <div class="footer__col"><h4>Recursos</h4><ul><li><a href="index.html#novedades">Docs</a></li><li><a href="index.html#novedades">Novedades</a></li><li><a href="#">API reference</a></li><li><a href="#">Estado del servicio</a></li></ul></div>
+      <div class="footer__col"><h4>Empresa</h4><ul><li><a href="#">Nosotros</a></li><li><a href="#">Contacto</a></li><li><a href="#">Login</a></li><li><a href="#">Solicitar demo</a></li></ul></div>
+    </div>
+    <div class="footer__bottom">
+      <p>© 2026 Ubidata · Inteligencia en datos</p>
+      <div class="links"><a href="#">Privacidad</a><a href="#">Términos</a><a href="#">Seguridad</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ── Interactive onboarding demo ── */
+(function () {
+  const input = document.getElementById('d-addr-input');
+  const field = document.getElementById('d-addr-field');
+  const menu = document.getElementById('d-addr-menu');
+  const sugList = document.getElementById('d-sug-list');
+  const submit = document.getElementById('d-submit');
+  const addrLabel = document.getElementById('d-addr-label');
+  const awaitEl = document.getElementById('d-await');
+  const viewN = document.getElementById('d-view-negocio');
+  const viewT = document.getElementById('d-view-tecnica');
+  if (!input) return;
+
+  // Suggestion dataset — normalized records keyed by loose query tokens
+  const DATA = [
+    {
+      match: ['cordoba 1430', 'córdoba 1430', 'cordoba 1430 capital', 'cordoba 1430 cap', 'av cordoba 1430'],
+      label: 'Av. Córdoba 1430', sub: 'Ciudad Autónoma de Buenos Aires · CABA',
+      conf: '98.7%', confNum: '0.987', latency: '78 ms',
+      norm: 'Av. Córdoba 1430', city: 'Ciudad Autónoma de Buenos Aires', prov: 'CABA',
+      diag: 'Coincidencia encontrada y normalizada', diagCode: 'matched_and_normalized',
+      action: 'Guardar domicilio estructurado'
+    },
+    {
+      match: ['corrientes 3200', 'av corrientes 3200', 'corrientes 3200 caba'],
+      label: 'Av. Corrientes 3200', sub: 'Ciudad Autónoma de Buenos Aires · CABA',
+      conf: '97.4%', confNum: '0.974', latency: '81 ms',
+      norm: 'Av. Corrientes 3200', city: 'Ciudad Autónoma de Buenos Aires', prov: 'CABA',
+      diag: 'Coincidencia encontrada y normalizada', diagCode: 'matched_and_normalized',
+      action: 'Guardar domicilio estructurado'
+    },
+    {
+      match: ['san martin 850 cordoba', 'san martín 850', 'san martin 850 cba'],
+      label: 'San Martín 850', sub: 'Córdoba Capital · Córdoba',
+      conf: '96.1%', confNum: '0.961', latency: '84 ms',
+      norm: 'San Martín 850', city: 'Córdoba', prov: 'Córdoba',
+      diag: 'Coincidencia encontrada y normalizada', diagCode: 'matched_and_normalized',
+      action: 'Guardar domicilio estructurado'
+    }
+  ];
+
+  // Flatten into searchable suggestions; default suggestion is Córdoba 1430
+  function suggestionsFor(q) {
+    q = q.trim().toLowerCase();
+    if (!q) return [];
+    const scored = DATA.map(d => {
+      let score = 0;
+      d.match.forEach(m => { if (m.includes(q) || q.includes(m.split(' ')[0])) score++; });
+      // token overlap
+      const qt = q.split(/\s+/);
+      d.match.forEach(m => qt.forEach(t => { if (t.length > 2 && m.includes(t)) score += 0.5; }));
+      return { d, score };
+    }).filter(x => x.score > 0).sort((a, b) => b.score - a.score);
+    let list = scored.map(x => x.d);
+    if (!list.length && q.length >= 2) list = [DATA[0]]; // always guide toward a result
+    return list.slice(0, 3);
+  }
+
+  let active = -1;
+  let current = [];
+
+  function renderMenu(list) {
+    current = list;
+    if (!list.length) { menu.classList.remove('is-open'); return; }
+    sugList.innerHTML = list.map((d, i) => `
+      <div class="dsug${i === active ? ' is-active' : ''}" data-i="${i}">
+        <svg class="mp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span class="stxt"><b>${d.label}</b><span>${d.sub}</span></span>
+        <span class="conf"><span class="d"></span>${d.conf}</span>
+      </div>`).join('');
+    menu.classList.add('is-open');
+    [...sugList.querySelectorAll('.dsug')].forEach(el => {
+      el.addEventListener('mousedown', e => { e.preventDefault(); select(current[+el.dataset.i]); });
+    });
+  }
+
+  function select(d) {
+    input.value = d.label + ', ' + d.sub.split(' · ')[0];
+    menu.classList.remove('is-open');
+    field.classList.add('is-valid');
+    addrLabel.innerHTML = 'Dirección <span class="req" style="color:var(--success)">· validada</span>';
+    submit.classList.add('is-ready');
+    submit.disabled = false;
+    submit.textContent = 'Continuar';
+
+    // populate business view
+    document.getElementById('b-conf').textContent = 'Alto · ' + d.conf;
+    document.getElementById('b-addr').textContent = d.norm;
+    document.getElementById('b-city').textContent = d.city;
+    document.getElementById('b-prov').textContent = d.prov;
+    document.getElementById('b-diag').textContent = d.diag;
+    document.getElementById('b-action').textContent = d.action;
+    // technical view
+    document.getElementById('d-json').innerHTML = jsonHtml(d);
+    document.getElementById('t-latency').textContent = d.latency;
+    document.getElementById('t-conf').textContent = d.confNum;
+    document.getElementById('d-latency-tag').textContent = d.latency;
+
+    awaitEl.style.display = 'none';
+    showActiveView();
+  }
+
+  function jsonHtml(d) {
+    return [
+      '{',
+      '  <span class="k">"status"</span>: <span class="s">"validated"</span>,',
+      '  <span class="k">"confidence"</span>: <span class="s">"high"</span>,',
+      '  <span class="k">"score"</span>: <span class="p">' + d.confNum + '</span>,',
+      '  <span class="k">"normalized_address"</span>: <span class="s">"' + d.norm + '"</span>,',
+      '  <span class="k">"city"</span>: <span class="s">"' + d.city + '"</span>,',
+      '  <span class="k">"province"</span>: <span class="s">"' + d.prov + '"</span>,',
+      '  <span class="k">"country"</span>: <span class="s">"AR"</span>,',
+      '  <span class="k">"diagnosis"</span>: <span class="s">"' + d.diagCode + '"</span>',
+      '}'
+    ].join('\n');
+  }
+
+  // tabs
+  let activeView = 'negocio';
+  function showActiveView() {
+    const populated = awaitEl.style.display === 'none';
+    viewN.classList.toggle('is-shown', populated && activeView === 'negocio');
+    viewT.classList.toggle('is-shown', populated && activeView === 'tecnica');
+    if (!populated) awaitEl.style.display = '';
+  }
+  [...document.querySelectorAll('.dtab')].forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.dtab').forEach(t => t.classList.remove('is-active'));
+      tab.classList.add('is-active');
+      activeView = tab.dataset.tab;
+      showActiveView();
+    });
+  });
+
+  // input handlers
+  input.addEventListener('input', () => {
+    active = -1;
+    if (field.classList.contains('is-valid') && input.value) {
+      field.classList.remove('is-valid');
+      addrLabel.innerHTML = 'Dirección <span class="req">· editable</span>';
+      submit.classList.remove('is-ready'); submit.disabled = true;
+      submit.textContent = 'Seleccioná una dirección para continuar';
+    }
+    renderMenu(suggestionsFor(input.value));
+  });
+  input.addEventListener('focus', () => { if (input.value.trim()) renderMenu(suggestionsFor(input.value)); });
+  input.addEventListener('keydown', e => {
+    if (!menu.classList.contains('is-open')) return;
+    if (e.key === 'ArrowDown') { e.preventDefault(); active = Math.min(active + 1, current.length - 1); renderMenu(current); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); active = Math.max(active - 1, 0); renderMenu(current); }
+    else if (e.key === 'Enter') { e.preventDefault(); if (current[active]) select(current[active]); else if (current[0]) select(current[0]); }
+    else if (e.key === 'Escape') { menu.classList.remove('is-open'); }
+  });
+  document.addEventListener('click', e => { if (!field.contains(e.target) && !menu.contains(e.target)) menu.classList.remove('is-open'); });
+})();
+
+/* ── Scroll reveal (same behavior as sister pages) ── */
+(function () {
+  const reveals = [...document.querySelectorAll('[data-reveal]')];
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.body.classList.add('reveal-on');
+  if (prefersReduced) { reveals.forEach(el => el.classList.add('in')); return; }
+  reveals.forEach(el => {
+    const sibs = [...el.parentElement.children].filter(c => c.hasAttribute('data-reveal'));
+    el.style.animationDelay = (Math.min(sibs.indexOf(el), 4) * 0.07) + 's';
+  });
+  const pending = new Set(reveals);
+  let ticking = false;
+  function reveal() {
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+    pending.forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.top < vh * 0.92 && r.bottom > 0) { el.classList.add('in'); pending.delete(el); }
+    });
+    ticking = false;
+  }
+  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(reveal); } }
+  reveal();
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  window.addEventListener('load', reveal);
+  setTimeout(() => reveals.forEach(el => { el.classList.add('in'); el.style.opacity = '1'; el.style.transform = 'none'; }), 4000);
+})();
+</script>
+</body></html>

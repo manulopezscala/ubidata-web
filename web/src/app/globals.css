@@ -1,0 +1,32 @@
+/* ============================================================
+   Ubidata — Global stylesheet
+   Imports the Ubidata design system (tokens + base + fonts).
+   Page-specific styles live in co-located CSS Modules.
+   ============================================================ */
+@import "../styles/ds/styles.css";
+
+/* Site-wide element defaults (mirrors the prototypes' resets) */
+* { box-sizing: border-box; }
+
+html, body { margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-sans);
+  color: var(--text-body);
+  background: var(--surface-page);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img { display: block; }
+
+a { color: inherit; text-decoration: none; }
+
+/* API code sample syntax highlighting.
+   Global hook so injected code markup keeps its token colors regardless of
+   CSS-module scoping (used by the home page API code card). */
+.code-body .ck { color: #84D8DF; }
+.code-body .cs { color: #8FCB90; }
+.code-body .cn { color: #F0C674; }
+.code-body .cc { color: #6B7C93; }
+.code-body .ct { color: #C5CFDD; }
