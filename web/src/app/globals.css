@@ -22,6 +22,21 @@ img { display: block; }
 
 a { color: inherit; text-decoration: none; }
 
+/* Scroll reveal.
+   Gated on [data-reveal-ready], which <ScrollReveal /> sets on mount, so
+   content stays visible when JS is unavailable. */
+[data-reveal-ready] [data-reveal] { opacity: 0; }
+[data-reveal-ready] [data-reveal].is-revealed {
+  animation: revealIn var(--duration-reveal) var(--ease-reveal) both;
+}
+@keyframes revealIn {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal-ready] [data-reveal] { opacity: 1 !important; animation: none !important; }
+}
+
 /* API code sample syntax highlighting.
    Global hook so injected code markup keeps its token colors regardless of
    CSS-module scoping (used by the home page API code card). */

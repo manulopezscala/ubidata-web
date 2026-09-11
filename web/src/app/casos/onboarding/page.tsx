@@ -2,17 +2,15 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import styles from "./page.module.css";
 import { makeCx } from "@/lib/cx";
+import OnboardingDemo from "./OnboardingDemo";
 import {
   ArrowRight,
   ArrowDown,
   Pin,
-  Check,
   CheckCircle,
   CheckSquare,
-  UserPlus,
   Braces,
   Search,
-  Info,
   X,
   Star,
   Grid,
@@ -121,7 +119,7 @@ export default function Onboarding() {
       {/* ===================== ROADMAP ===================== */}
       <section className={c("sec", "road")}>
         <div className={c("wrap")}>
-          <div className={c("sec-head")}>
+          <div className={c("sec-head")} data-reveal>
             <span className={c("eyebrow")}>El camino de una dirección mal cargada</span>
             <h2 className={c("sec-h2")}>
               El problema no aparece al final del onboarding. Entra con el primer dato mal cargado.
@@ -136,7 +134,7 @@ export default function Onboarding() {
           <div className={c("road__track")}>
             <div className={c("road__rail")} />
 
-            <div className={c("rstep", "rstep--warn")}>
+            <div className={c("rstep", "rstep--warn")} data-reveal>
               <div className={c("rstep__node")}>1</div>
               <div className={c("rcard")}>
                 <span className={c("rcard__phase")}>Carga inicial</span>
@@ -155,7 +153,7 @@ export default function Onboarding() {
               </div>
             </div>
 
-            <div className={c("rstep", "rstep--bad")}>
+            <div className={c("rstep", "rstep--bad")} data-reveal>
               <div className={c("rstep__node")}>2</div>
               <div className={c("rcard")}>
                 <span className={c("rcard__phase")}>Sin validación en origen</span>
@@ -181,7 +179,7 @@ export default function Onboarding() {
               </div>
             </div>
 
-            <div className={c("rstep", "rstep--bad")}>
+            <div className={c("rstep", "rstep--bad")} data-reveal>
               <div className={c("rstep__node")}>3</div>
               <div className={c("rcard")}>
                 <span className={c("rcard__phase")}>Después del alta</span>
@@ -201,7 +199,7 @@ export default function Onboarding() {
               </div>
             </div>
 
-            <div className={c("rstep", "rstep--bad")}>
+            <div className={c("rstep", "rstep--bad")} data-reveal>
               <div className={c("rstep__node")}>4</div>
               <div className={c("rcard")}>
                 <span className={c("rcard__phase")}>Calidad del registro</span>
@@ -217,7 +215,7 @@ export default function Onboarding() {
               </div>
             </div>
 
-            <div className={c("rstep", "rstep--bad")}>
+            <div className={c("rstep", "rstep--bad")} data-reveal>
               <div className={c("rstep__node")}>5</div>
               <div className={c("rcard")}>
                 <span className={c("rcard__phase")}>Aguas abajo</span>
@@ -234,7 +232,7 @@ export default function Onboarding() {
             </div>
           </div>
 
-          <div className={c("road__close")}>
+          <div className={c("road__close")} data-reveal>
             <div className={c("road__close-inner")}>
               <span className={c("ic")}>
                 <ShieldCheck className={c("i")} />
@@ -248,10 +246,10 @@ export default function Onboarding() {
         </div>
       </section>
 
-      {/* ===================== DEMO (initial static state) ===================== */}
+      {/* ===================== DEMO (interactive) ===================== */}
       <section className={c("sec")} id="demo">
         <div className={c("wrap")}>
-          <div className={c("sec-head")}>
+          <div className={c("sec-head")} data-reveal>
             <span className={c("eyebrow")}>Demo aplicada</span>
             <h2 className={c("sec-h2")}>Cómo se integra Ubidata en tu onboarding</h2>
             <p className={c("sec-lead")}>
@@ -261,106 +259,14 @@ export default function Onboarding() {
             </p>
           </div>
 
-          <div className={c("demo__grid")}>
-            {/* LEFT: form */}
-            <div className={c("dpanel", "dform")}>
-              <div className={c("dpanel__head")}>
-                <span className={c("ic")}>
-                  <UserPlus className={c("i")} strokeWidth={1.8} />
-                </span>
-                <span className={c("t")}>Formulario de alta</span>
-                <span className={c("tag")}>Onboarding empresarial</span>
-              </div>
-              <div className={c("dpanel__body")}>
-                <div className={c("fmrow")}>
-                  <div className={c("fmf")}>
-                    <span className={c("dlabel")}>Nombre y apellido</span>
-                    <div className={c("ph")}>María González</div>
-                  </div>
-                  <div className={c("fmf")}>
-                    <span className={c("dlabel")}>Email</span>
-                    <div className={c("ph")}>maria@empresa.com</div>
-                  </div>
-                </div>
-                <div className={c("fmrow")}>
-                  <div className={c("fmf")}>
-                    <span className={c("dlabel")}>Documento / CUIT</span>
-                    <div className={c("ph", "mono")}>20-31654987-4</div>
-                  </div>
-                  <div className={c("fmf")}>
-                    <span className={c("dlabel")}>Teléfono</span>
-                    <div className={c("ph", "mono")}>+54 11 5123-4567</div>
-                  </div>
-                </div>
-                <div className={c("fmf", "fmf--full")} style={{ marginBottom: 14 }}>
-                  <span className={c("dlabel")}>Razón social</span>
-                  <div className={c("ph")}>González &amp; Asociados S.R.L.</div>
-                </div>
-
-                <div className={c("fmf", "fmf--full")}>
-                  <span className={c("dlabel", "dlabel--active")}>
-                    Dirección <span className={c("req")}>· editable</span>
-                  </span>
-                  <div className={c("daddr")}>
-                    <div className={c("daddr__field")}>
-                      <Pin className={c("pin")} strokeWidth={1.8} />
-                      <input
-                        type="text"
-                        autoComplete="off"
-                        spellCheck={false}
-                        placeholder="Escribí: Cordoba 1430 capital"
-                      />
-                      <Check className={c("check")} strokeWidth={2.4} />
-                    </div>
-                    <div className={c("daddr__menu")}>
-                      <div className={c("daddr__menu-h")}>Sugerencias · Address Lookup</div>
-                      <div />
-                    </div>
-                  </div>
-                  <div className={c("dhint")}>
-                    <Info className={c("i")} /> Probá con una dirección incompleta o con abreviaciones.
-                  </div>
-                </div>
-
-                <button className={c("dform__submit")} disabled>
-                  Seleccioná una dirección para continuar
-                </button>
-              </div>
-            </div>
-
-            {/* RIGHT: response panel (awaiting) */}
-            <div className={c("dpanel", "dpanel--resp")}>
-              <div className={c("dpanel__head")}>
-                <span className={c("ic")}>
-                  <Braces className={c("i")} strokeWidth={1.8} />
-                </span>
-                <span className={c("t")}>Respuesta de Ubidata</span>
-                <span className={c("tag")}>en tiempo real</span>
-              </div>
-              <div className={c("dtabs")} role="tablist">
-                <button className={c("dtab", "is-active")}>Vista negocio</button>
-                <button className={c("dtab")}>Vista técnica</button>
-              </div>
-              <div className={c("dresp")}>
-                <div className={c("dresp__await")}>
-                  <span className={c("ic")}>
-                    <Search className={c("i")} strokeWidth={1.6} />
-                  </span>
-                  <p>
-                    Escribí una dirección y seleccioná una sugerencia para ver el resultado de
-                    validación.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+          <OnboardingDemo />
         </div>
       </section>
 
       {/* ===================== BENEFITS (glass) ===================== */}
       <section className={c("sec", "benf")}>
         <div className={c("wrap")}>
-          <div className={c("sec-head")}>
+          <div className={c("sec-head")} data-reveal>
             <span className={c("eyebrow", "eyebrow--on-dark")}>Beneficios</span>
             <h2 className={c("sec-h2", "sec-h2--on-dark")}>
               Menos fricción para el usuario. Más calidad para tu operación.
@@ -370,8 +276,8 @@ export default function Onboarding() {
               evita que datos inconsistentes lleguen a tus sistemas.
             </p>
           </div>
-          <div className={c("benf__grid")}>
-            <div className={c("gcard")}>
+          <div className={c("benf__grid")} data-reveal>
+            <div className={c("gcard")} data-reveal>
               <div className={c("gcard__ic")}>
                 <CheckSquare className={c("i")} strokeWidth={1.8} />
               </div>
@@ -381,14 +287,14 @@ export default function Onboarding() {
                 estructurados.
               </p>
             </div>
-            <div className={c("gcard")}>
+            <div className={c("gcard")} data-reveal>
               <div className={c("gcard__ic")}>
                 <Timer className={c("i")} strokeWidth={1.8} />
               </div>
               <h3>Mejor experiencia de onboarding</h3>
               <p>El usuario encuentra su dirección más rápido y completa el formulario con menos fricción.</p>
             </div>
-            <div className={c("gcard")}>
+            <div className={c("gcard")} data-reveal>
               <div className={c("gcard__ic")}>
                 <Database className={c("i")} strokeWidth={1.8} />
               </div>
@@ -398,14 +304,14 @@ export default function Onboarding() {
                 sistema interno.
               </p>
             </div>
-            <div className={c("gcard")}>
+            <div className={c("gcard")} data-reveal>
               <div className={c("gcard__ic")}>
                 <RefreshCw className={c("i")} strokeWidth={1.8} />
               </div>
               <h3>Menos revisión manual</h3>
               <p>Reducí correcciones posteriores, validaciones internas y criterios manuales dispersos.</p>
             </div>
-            <div className={c("gcard")}>
+            <div className={c("gcard")} data-reveal>
               <div className={c("gcard__ic")}>
                 <BarChartBig className={c("i")} strokeWidth={1.8} />
               </div>
@@ -415,7 +321,7 @@ export default function Onboarding() {
                 procesos posteriores.
               </p>
             </div>
-            <div className={c("gcard")}>
+            <div className={c("gcard")} data-reveal>
               <div className={c("gcard__ic")}>
                 <Braces className={c("i")} strokeWidth={1.8} />
               </div>
@@ -429,7 +335,7 @@ export default function Onboarding() {
       {/* ===================== PRODUCTOS ===================== */}
       <section className={c("sec")} id="productos">
         <div className={c("wrap")}>
-          <div className={c("sec-head")}>
+          <div className={c("sec-head")} data-reveal>
             <span className={c("eyebrow")}>Productos recomendados</span>
             <h2 className={c("sec-h2")}>Productos para mejorar tu onboarding</h2>
             <p className={c("sec-lead")}>
@@ -439,7 +345,7 @@ export default function Onboarding() {
           </div>
           <div className={c("prodlead")}>
             {/* featured */}
-            <Link className={c("pfeat")} href="/#producto-lookup">
+            <Link className={c("pfeat")} href="/#producto-lookup" data-reveal>
               <span className={c("pfeat__tag")}>
                 <Star className={c("i")} strokeWidth={2.2} /> Producto recomendado para onboarding
               </span>
@@ -482,7 +388,7 @@ export default function Onboarding() {
 
             {/* secondary */}
             <div className={c("psecs")}>
-              <Link className={c("psec")} href="/#producto-api">
+              <Link className={c("psec")} href="/#producto-api" data-reveal>
                 <span className={c("psec__ic")}>
                   <Braces className={c("i")} strokeWidth={1.8} />
                 </span>
@@ -495,7 +401,7 @@ export default function Onboarding() {
                   <span className={c("psec__tag")}>Ideal para validación en tiempo real</span>
                 </div>
               </Link>
-              <Link className={c("psec")} href="/#producto-plataforma">
+              <Link className={c("psec")} href="/#producto-plataforma" data-reveal>
                 <span className={c("psec__ic")}>
                   <Grid className={c("i")} strokeWidth={1.8} />
                 </span>
@@ -508,7 +414,7 @@ export default function Onboarding() {
                   <span className={c("psec__tag")}>Ideal para visibilidad y control</span>
                 </div>
               </Link>
-              <Link className={c("psec")} href="/#producto-batch">
+              <Link className={c("psec")} href="/#producto-batch" data-reveal>
                 <span className={c("psec__ic")}>
                   <Wrench className={c("i")} strokeWidth={1.8} />
                 </span>
@@ -545,7 +451,7 @@ export default function Onboarding() {
               </a>
             </div>
           </div>
-          <div className={c("cta__chip")}>
+          <div className={c("cta__chip")} data-reveal>
             <div className={c("ph")}>
               <span className={c("ic")}>
                 <Bookmark className={c("i")} strokeWidth={1.8} />

@@ -1,6 +1,8 @@
 import Link from "next/link";
 import styles from "./home.module.css";
 import { makeCx } from "@/lib/cx";
+import AddressLookupDemo from "./AddressLookupDemo";
+import ApiCodeCard from "./ApiCodeCard";
 import {
   ArrowRight,
   ArrowUp,
@@ -8,7 +10,6 @@ import {
   Zap,
   Server,
   MapPin,
-  X,
   Check,
   CheckCircle,
   AlertTriangle,
@@ -30,13 +31,6 @@ import {
 } from "@/components/icons";
 
 const c = makeCx(styles);
-
-const codeBody = `<span class="cc">// Authorization: Bearer ub_live_•••</span>
-{
-  <span class="ck">"direccion"</span>: <span class="cs">"Av Insurgentes Sur 1602, CDMX"</span>,
-  <span class="ck">"pais"</span>: <span class="cs">"MX"</span>,
-  <span class="ck">"geocodificar"</span>: <span class="cn">true</span>
-}`;
 
 export default function Home() {
   return (
@@ -76,46 +70,9 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Live Address Lookup demo (static initial state) */}
+          {/* Live Address Lookup demo */}
           <div>
-            <div className={c("demo")} id="demo">
-              <div className={c("demo__top")}>
-                <span className={c("demo__ov")}>
-                  <span className={c("live")} /> Address Lookup · en vivo
-                </span>
-                <span className={c("demo__endpoint")}>POST /v2/validar</span>
-              </div>
-              <div className={c("demo__field")}>
-                <MapPin className={c("pin")} strokeWidth={1.8} />
-                <input
-                  id="demoInput"
-                  type="text"
-                  autoComplete="off"
-                  spellCheck={false}
-                  placeholder="Escribí una dirección…"
-                  defaultValue="Av. Insurgentes Sur 16"
-                />
-                <button className={c("demo__clear")} id="demoClear" aria-label="Limpiar">
-                  <X className={c("i")} />
-                </button>
-              </div>
-              <div className={c("demo__sug")} id="demoSug">
-                <button className={c("active")}>
-                  <MapPin className={c("i")} />
-                  <span>Av. Insurgentes Sur 1602, Crédito Constructor</span>
-                  <span className={c("conf")}>0.987</span>
-                </button>
-                <button>
-                  <MapPin className={c("i")} />
-                  <span>Av. Insurgentes Sur 1620, Del Valle</span>
-                  <span className={c("conf")}>0.842</span>
-                </button>
-              </div>
-              <div id="demoOut" />
-              <div className={c("demo__hint")} id="demoHint">
-                Elegí una sugerencia para ver la respuesta normalizada
-              </div>
-            </div>
+            <AddressLookupDemo />
           </div>
         </div>
       </section>
@@ -123,7 +80,7 @@ export default function Home() {
       {/* ===================== PROBLEM ===================== */}
       <section className={c("sec", "problem")}>
         <div className={c("wrap")}>
-          <div className={c("sec-head")}>
+          <div className={c("sec-head")} data-reveal>
             <span className={c("eyebrow")}>El problema</span>
             <h2 className={c("sec-h2")}>Una mala dirección impacta mucho más que un formulario</h2>
             <p className={c("sec-lead")}>
@@ -141,7 +98,7 @@ export default function Home() {
             <span>desencadena cinco problemas en cascada</span>
           </div>
           <div className={c("chain")} style={{ margin: "30px 0px 0px" }}>
-            <div className={c("chain__card")} style={{ margin: "0px" }}>
+            <div className={c("chain__card")} style={{ margin: "0px" }} data-reveal>
               <span className={c("chain__num")}>01</span>
               <div className={c("chain__ic")}>
                 <FileText className={c("i")} strokeWidth={1.8} />
@@ -152,7 +109,7 @@ export default function Home() {
                 <ArrowRight className={c("i")} />
               </span>
             </div>
-            <div className={c("chain__card")}>
+            <div className={c("chain__card")} data-reveal>
               <span className={c("chain__num")}>02</span>
               <div className={c("chain__ic")}>
                 <AlertCircle className={c("i")} strokeWidth={1.8} />
@@ -163,7 +120,7 @@ export default function Home() {
                 <ArrowRight className={c("i")} />
               </span>
             </div>
-            <div className={c("chain__card")}>
+            <div className={c("chain__card")} data-reveal>
               <span className={c("chain__num")}>03</span>
               <div className={c("chain__ic")}>
                 <Truck className={c("i")} strokeWidth={1.8} />
@@ -174,7 +131,7 @@ export default function Home() {
                 <ArrowRight className={c("i")} />
               </span>
             </div>
-            <div className={c("chain__card")}>
+            <div className={c("chain__card")} data-reveal>
               <span className={c("chain__num")}>04</span>
               <div className={c("chain__ic")}>
                 <ShieldX className={c("i")} strokeWidth={1.8} />
@@ -185,7 +142,7 @@ export default function Home() {
                 <ArrowRight className={c("i")} />
               </span>
             </div>
-            <div className={c("chain__card")}>
+            <div className={c("chain__card")} data-reveal>
               <span className={c("chain__num")}>05</span>
               <div className={c("chain__ic")}>
                 <Database className={c("i")} strokeWidth={1.8} />
@@ -200,7 +157,7 @@ export default function Home() {
       {/* ===================== QUÉ HACE — pipeline ===================== */}
       <section className={c("sec", "eco")}>
         <div className={c("wrap")}>
-          <div className={c("sec-head")} style={{ width: 704 }}>
+          <div className={c("sec-head")} style={{ width: 704 }} data-reveal>
             <span className={c("eyebrow", "eyebrow--green")}>Qué hace Ubidata</span>
             <h2 className={c("sec-h2")}>Una capa de Address Intelligence para todo el ciclo del dato</h2>
             <p className={c("sec-lead")}>
@@ -209,7 +166,7 @@ export default function Home() {
             </p>
           </div>
           <div className={c("pipe")}>
-            <div className={c("pipe__step")}>
+            <div className={c("pipe__step")} data-reveal>
               <span className={c("pipe__n")}>1</span>
               <div className={c("pipe__bar")}>
                 <span style={{ height: "40%" }} />
@@ -220,7 +177,7 @@ export default function Home() {
               <p>Mejora la carga de direcciones desde el primer input.</p>
               <ArrowRight className={c("pipe__connect")} style={{ display: "none" }} />
             </div>
-            <div className={c("pipe__step")}>
+            <div className={c("pipe__step")} data-reveal>
               <span className={c("pipe__n")}>2</span>
               <div className={c("pipe__bar")}>
                 <span style={{ height: "60%" }} />
@@ -231,7 +188,7 @@ export default function Home() {
               <p>Verifica e interpreta direcciones en tiempo real.</p>
               <ArrowRight className={c("pipe__connect")} style={{ display: "none" }} />
             </div>
-            <div className={c("pipe__step")}>
+            <div className={c("pipe__step")} data-reveal>
               <span className={c("pipe__n")}>3</span>
               <div className={c("pipe__bar")}>
                 <span style={{ height: "85%" }} />
@@ -242,7 +199,7 @@ export default function Home() {
               <p>Devuelve datos estructurados y consistentes.</p>
               <ArrowRight className={c("pipe__connect")} style={{ display: "none" }} />
             </div>
-            <div className={c("pipe__step")}>
+            <div className={c("pipe__step")} data-reveal>
               <span className={c("pipe__n")}>4</span>
               <div className={c("pipe__bar")}>
                 <span style={{ height: "50%" }} />
@@ -253,7 +210,7 @@ export default function Home() {
               <p>Informa qué se resolvió, qué fue corregido y qué requiere revisión.</p>
               <ArrowRight className={c("pipe__connect")} style={{ display: "none" }} />
             </div>
-            <div className={c("pipe__step")}>
+            <div className={c("pipe__step")} data-reveal>
               <span className={c("pipe__n")}>5</span>
               <div className={c("pipe__bar")}>
                 <span style={{ height: "90%" }} />
@@ -270,7 +227,7 @@ export default function Home() {
       {/* ===================== ECOSYSTEM INTRO ===================== */}
       <section className={c("sec", "eco", "spotlight")} id="ecosistema" style={{ padding: "96px 0px 10px" }}>
         <div className={c("wrap")} style={{ padding: "0px 48px", textAlign: "left" }}>
-          <div className={c("sec-head")}>
+          <div className={c("sec-head")} data-reveal>
             <span className={c("eyebrow", "eyebrow--on-dark")}>Ecosistema de producto</span>
             <h2 className={c("sec-h2")} style={{ color: "rgb(28, 37, 48)" }}>
               Un solo motor. Múltiples formas de integrarlo a tu operación.
@@ -381,34 +338,7 @@ export default function Home() {
             </a>
           </div>
           <div>
-            <div className={c("code-card")} id="codeCard">
-              <div className={c("code-card__top")}>
-                <div className={c("code-card__dots")}>
-                  <span />
-                  <span />
-                  <span />
-                </div>
-                <div className={c("code-card__proto")}>
-                  <button className={c("active")}>REST</button>
-                  <button>SOAP</button>
-                </div>
-              </div>
-              <div className={c("code-card__tabs")}>
-                <button className={c("active")}>Request</button>
-                <button>Response</button>
-              </div>
-              <div className={c("code-card__verb")}>
-                <span className={c("m")}>POST</span>
-                <span className={c("u")}>/v2/direcciones/validar</span>
-              </div>
-              <pre className="code-body" dangerouslySetInnerHTML={{ __html: codeBody }} />
-              <div className={c("code-card__foot")}>
-                <span>
-                  <CheckCircle className={c("i")} /> 200 OK · 78 ms
-                </span>
-                <span>application/json</span>
-              </div>
-            </div>
+            <ApiCodeCard />
           </div>
         </div>
       </section>
@@ -417,7 +347,7 @@ export default function Home() {
       <section className={c("sec", "eco")} id="producto-batch" style={{ paddingTop: 84, paddingBottom: 48 }}>
         <div className={c("wrap")}>
           <div className={c("eco-row")}>
-            <div className={c("eco-card")}>
+            <div className={c("eco-card")} data-reveal>
               <div className={c("eco-card__ic")}>
                 <Database className={c("i")} strokeWidth={1.8} />
               </div>
@@ -441,7 +371,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className={c("eco-card")}>
+            <div className={c("eco-card")} data-reveal>
               <div className={c("eco-card__ic")}>
                 <Wrench className={c("i")} strokeWidth={1.8} />
               </div>
@@ -469,7 +399,7 @@ export default function Home() {
       <section className={c("sec", "eco")} id="producto-plataforma" style={{ paddingTop: 48, paddingBottom: 96 }}>
         <div className={c("wrap")}>
           <div className={c("platform")}>
-            <div className={c("platform__head")}>
+            <div className={c("platform__head")} data-reveal>
               <span className={c("prod-tag")} style={{ marginBottom: 0 }}>
                 <Grid className={c("i")} /> Plataforma
               </span>
@@ -481,7 +411,7 @@ export default function Home() {
                 para equipos que necesitan visibilidad y control sobre su operación de direcciones.
               </p>
             </div>
-            <div className={c("platform__stage")}>
+            <div className={c("platform__stage")} data-reveal>
               <div className={c("platform__frame")}>
                 <div className={c("dash")}>
                   <div className={c("dash__chrome")}>
@@ -677,7 +607,7 @@ export default function Home() {
       {/* ===================== CASOS DE USO ===================== */}
       <section className={c("sec", "problem")} id="casos">
         <div className={c("wrap")}>
-          <div className={c("sec-head")}>
+          <div className={c("sec-head")} data-reveal>
             <span className={c("eyebrow")}>Casos de uso</span>
             <h2 className={c("sec-h2")}>Address Intelligence aplicado a procesos reales</h2>
             <p className={c("sec-lead")}>
@@ -686,7 +616,7 @@ export default function Home() {
             </p>
           </div>
           <div className={c("cases")}>
-            <Link className={c("case")} href="/casos/ultima-milla">
+            <Link className={c("case")} href="/casos/ultima-milla" data-reveal>
               <span className={c("case__blob")} />
               <div className={c("case__ic")}>
                 <Truck className={c("i")} strokeWidth={1.8} />
@@ -701,7 +631,7 @@ export default function Home() {
                 Ver caso <ArrowRight className={c("i")} />
               </span>
             </Link>
-            <Link className={c("case")} href="/casos/onboarding">
+            <Link className={c("case")} href="/casos/onboarding" data-reveal>
               <span className={c("case__blob")} />
               <div className={c("case__ic")}>
                 <UserPlus className={c("i")} strokeWidth={1.8} />
@@ -716,7 +646,7 @@ export default function Home() {
                 Ver caso <ArrowRight className={c("i")} />
               </span>
             </Link>
-            <Link className={c("case")} href="/casos/cumplimiento">
+            <Link className={c("case")} href="/casos/cumplimiento" data-reveal>
               <span className={c("case__blob")} />
               <div className={c("case__ic")}>
                 <ShieldCheck className={c("i")} strokeWidth={1.8} />
@@ -731,7 +661,7 @@ export default function Home() {
                 Ver caso <ArrowRight className={c("i")} />
               </span>
             </Link>
-            <Link className={c("case")} href="/casos/data-cleaning">
+            <Link className={c("case")} href="/casos/data-cleaning" data-reveal>
               <span className={c("case__blob")} />
               <div className={c("case__ic")}>
                 <Funnel className={c("i")} strokeWidth={1.8} />
@@ -794,7 +724,7 @@ export default function Home() {
       <section className={c("sec", "blog")} id="novedades">
         <div className={c("wrap")}>
           <div className={c("blog__head")}>
-            <div className={c("sec-head")}>
+            <div className={c("sec-head")} data-reveal>
               <span className={c("eyebrow")}>Novedades</span>
               <h2 className={c("sec-h2")}>Novedades e insights sobre Address Intelligence</h2>
             </div>
@@ -803,7 +733,7 @@ export default function Home() {
             </a>
           </div>
           <div className={c("blog__grid")}>
-            <a className={c("post")} href="#">
+            <a className={c("post")} href="#" data-reveal>
               <div className={c("post__cover", "c1")}>
                 <div className={c("grid-tex")} />
                 <div className={c("bars")}>
@@ -826,7 +756,7 @@ export default function Home() {
                 </span>
               </div>
             </a>
-            <a className={c("post")} href="#">
+            <a className={c("post")} href="#" data-reveal>
               <div className={c("post__cover", "c2")}>
                 <div className={c("grid-tex")} />
                 <div className={c("bars")}>
@@ -849,7 +779,7 @@ export default function Home() {
                 </span>
               </div>
             </a>
-            <a className={c("post")} href="#">
+            <a className={c("post")} href="#" data-reveal>
               <div className={c("post__cover", "c3")}>
                 <div className={c("grid-tex")} />
                 <div className={c("bars")}>

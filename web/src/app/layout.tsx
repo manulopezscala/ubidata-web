@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import ScrollReveal from "@/components/ScrollReveal";
 
 export const metadata: Metadata = {
   title: "Ubidata — Address Intelligence",
@@ -23,6 +24,7 @@ export default function RootLayout({
         <Nav />
         {children}
         <Footer />
+        <ScrollReveal />
       </body>
     </html>
   );

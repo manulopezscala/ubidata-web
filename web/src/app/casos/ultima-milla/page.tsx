@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import styles from "./page.module.css";
 import { makeCx } from "@/lib/cx";
+import RoiCalculator from "./RoiCalculator";
 import {
   ArrowRight,
   X,
   Check,
   CheckCircle,
   Settings,
-  Info,
   LinkOff,
   RefreshCw,
   Truck,
@@ -155,7 +155,7 @@ export default function UltimaMilla() {
       {/* ===================== NARRATIVE ===================== */}
       <section className={c("sec", "story")}>
         <div className={c("wrap")}>
-          <div className={c("sec-head")}>
+          <div className={c("sec-head")} data-reveal>
             <span className={c("eyebrow")}>Problema → Intervención → Resultado</span>
             <h2 className={c("sec-h2")}>Cuando una dirección falla, la entrega ya empezó mal</h2>
             <p className={c("sec-lead")}>
@@ -167,7 +167,7 @@ export default function UltimaMilla() {
 
           <div className={c("story__flow")}>
             {/* Block 1 */}
-            <div className={c("sblock")}>
+            <div className={c("sblock")} data-reveal>
               <span className={c("sblock__step")}>
                 <span className={c("n")}>1</span> Problema
               </span>
@@ -207,7 +207,7 @@ export default function UltimaMilla() {
             </div>
 
             {/* Block 2 */}
-            <div className={c("sblock", "sblock--engine")}>
+            <div className={c("sblock", "sblock--engine")} data-reveal>
               <span className={c("sblock__step")}>
                 <span className={c("n")}>2</span> Intervención Ubidata
               </span>
@@ -240,7 +240,7 @@ export default function UltimaMilla() {
             </div>
 
             {/* Block 3 */}
-            <div className={c("sblock")}>
+            <div className={c("sblock")} data-reveal>
               <span className={c("sblock__step")}>
                 <span className={c("n")}>3</span> Resultado
               </span>
@@ -278,7 +278,7 @@ export default function UltimaMilla() {
             </div>
           </div>
 
-          <div className={c("story__close")}>
+          <div className={c("story__close")} data-reveal>
             <p>
               Ubidata no corrige el problema al final del proceso.{" "}
               <span className={c("hl")}>Lo previene desde el origen del dato.</span>
@@ -290,7 +290,7 @@ export default function UltimaMilla() {
       {/* ===================== BENEFITS + ROI ===================== */}
       <section className={c("sec", "roi")}>
         <div className={c("wrap")}>
-          <div className={c("sec-head")}>
+          <div className={c("sec-head")} data-reveal>
             <span className={c("eyebrow", "eyebrow--on-dark")}>Impacto en el negocio</span>
             <h2 className={c("sec-h2", "sec-h2--on-dark")}>
               Calculá el costo oculto de las direcciones mal cargadas
@@ -303,28 +303,28 @@ export default function UltimaMilla() {
 
           {/* glass benefit cards */}
           <div className={c("roi__benefits")}>
-            <div className={c("gcard")}>
+            <div className={c("gcard")} data-reveal>
               <div className={c("gcard__ic")}>
                 <LinkOff className={c("i")} strokeWidth={1.8} />
               </div>
               <h3>Menos entregas fallidas</h3>
               <p>Detectá direcciones problemáticas antes de que lleguen al despacho.</p>
             </div>
-            <div className={c("gcard")}>
+            <div className={c("gcard")} data-reveal>
               <div className={c("gcard__ic")}>
                 <RefreshCw className={c("i")} strokeWidth={1.8} />
               </div>
               <h3>Menos reprocesos</h3>
               <p>Reducí tareas manuales, reprogramaciones y validaciones posteriores.</p>
             </div>
-            <div className={c("gcard")}>
+            <div className={c("gcard")} data-reveal>
               <div className={c("gcard__ic")}>
                 <Truck className={c("i")} strokeWidth={1.8} />
               </div>
               <h3>Mejor planificación logística</h3>
               <p>Trabajá con direcciones más consistentes para ruteo y operación.</p>
             </div>
-            <div className={c("gcard")}>
+            <div className={c("gcard")} data-reveal>
               <div className={c("gcard__ic")}>
                 <Timer className={c("i")} strokeWidth={1.8} />
               </div>
@@ -333,80 +333,15 @@ export default function UltimaMilla() {
             </div>
           </div>
 
-          {/* calculator (static defaults; interactivity comes later) */}
-          <div className={c("calc")}>
-            <div className={c("calc__inputs")}>
-              <h3>Tu operación</h3>
-              <p className={c("hint")}>Ajustá los valores según tu volumen y costos reales.</p>
-              <div className={c("field")}>
-                <label htmlFor="ms">Envíos mensuales</label>
-                <div className={c("field__wrap")}>
-                  <input id="ms" type="text" inputMode="numeric" defaultValue="10.000" autoComplete="off" />
-                </div>
-              </div>
-              <div className={c("field")}>
-                <label htmlFor="ec">Costo promedio por envío fallido o reprocesado</label>
-                <div className={c("field__wrap")}>
-                  <span className={c("field__pre")}>$</span>
-                  <input id="ec" className={c("has-pre")} type="text" inputMode="numeric" defaultValue="3.500" autoComplete="off" />
-                </div>
-              </div>
-              <div className={c("field")}>
-                <label htmlFor="br">Porcentaje estimado de direcciones mal cargadas</label>
-                <div className={c("field__wrap")}>
-                  <input id="br" type="text" inputMode="decimal" defaultValue="4" autoComplete="off" />
-                  <span className={c("field__suf")}>%</span>
-                </div>
-              </div>
-              <div className={c("calc__assumption")}>
-                <Info className={c("i")} />
-                <div>
-                  <span className={c("at")}>
-                    Errores prevenibles con Ubidata: <b>65%</b>
-                  </span>
-                  <span className={c("an")}>
-                    Estimación referencial para fines demostrativos. Los resultados reales dependen del
-                    flujo, la calidad de datos y la integración.
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div className={c("calc__result")}>
-              <span className={c("rlabel")}>Ahorro anual estimado</span>
-              <div className={c("calc__big")}>$10.920.000</div>
-              <span className={c("calc__sub")}>con validación de direcciones antes del despacho</span>
-              <div className={c("calc__grid")}>
-                <div className={c("calc__cell")}>
-                  <div className={c("ck")}>Envíos afectados / mes</div>
-                  <div className={c("cv")}>400</div>
-                </div>
-                <div className={c("calc__cell")}>
-                  <div className={c("ck")}>Costo mensual estimado</div>
-                  <div className={c("cv")}>$1.400.000</div>
-                </div>
-                <div className={c("calc__cell")}>
-                  <div className={c("ck")}>Errores prevenibles / mes</div>
-                  <div className={c("cv", "accent")}>260</div>
-                </div>
-                <div className={c("calc__cell")}>
-                  <div className={c("ck")}>Ahorro mensual estimado</div>
-                  <div className={c("cv", "accent")}>$910.000</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <p className={c("calc__note")}>
-            Esta calculadora ofrece una estimación orientativa. No representa una garantía de ahorro.
-            Los resultados reales dependen de la operación, la calidad de los datos y la implementación.
-          </p>
+          {/* calculator (interactive) */}
+          <RoiCalculator />
         </div>
       </section>
 
       {/* ===================== PRODUCTOS ===================== */}
       <section className={c("sec")} id="productos">
         <div className={c("wrap")}>
-          <div className={c("sec-head")}>
+          <div className={c("sec-head")} data-reveal>
             <span className={c("eyebrow")}>Productos recomendados</span>
             <h2 className={c("sec-h2")}>Productos para mejorar tu operación de última milla</h2>
             <p className={c("sec-lead")}>
@@ -415,7 +350,7 @@ export default function UltimaMilla() {
             </p>
           </div>
           <div className={c("prods")}>
-            <Link className={c("prod")} href="/#producto-lookup">
+            <Link className={c("prod")} href="/#producto-lookup" data-reveal>
               <div className={c("prod__ic")}>
                 <Search className={c("i")} strokeWidth={1.8} />
               </div>
@@ -431,7 +366,7 @@ export default function UltimaMilla() {
                 Ver producto <ArrowRight className={c("i")} />
               </span>
             </Link>
-            <Link className={c("prod")} href="/#producto-api">
+            <Link className={c("prod")} href="/#producto-api" data-reveal>
               <div className={c("prod__ic")}>
                 <Braces className={c("i")} strokeWidth={1.8} />
               </div>
@@ -447,7 +382,7 @@ export default function UltimaMilla() {
                 Ver producto <ArrowRight className={c("i")} />
               </span>
             </Link>
-            <Link className={c("prod")} href="/#producto-batch">
+            <Link className={c("prod")} href="/#producto-batch" data-reveal>
               <div className={c("prod__ic")}>
                 <Database className={c("i")} strokeWidth={1.8} />
               </div>
@@ -463,7 +398,7 @@ export default function UltimaMilla() {
                 Ver producto <ArrowRight className={c("i")} />
               </span>
             </Link>
-            <Link className={c("prod")} href="/#producto-batch">
+            <Link className={c("prod")} href="/#producto-batch" data-reveal>
               <div className={c("prod__ic")}>
                 <Wrench className={c("i")} strokeWidth={1.8} />
               </div>
@@ -502,7 +437,7 @@ export default function UltimaMilla() {
               </a>
             </div>
           </div>
-          <div className={c("cta__chip")}>
+          <div className={c("cta__chip")} data-reveal>
             <div className={c("ph")}>
               <span className={c("ic")}>
                 <Pin className={c("i")} strokeWidth={1.8} />

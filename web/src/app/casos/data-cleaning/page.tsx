@@ -119,7 +119,7 @@ export default function DataCleaning() {
       {/* ===================== PROBLEM ===================== */}
       <section className={c("sec", "problem")}>
         <div className={c("wrap")}>
-          <div className={c("sec-head")}>
+          <div className={c("sec-head")} data-reveal>
             <span className={c("eyebrow")}>El problema</span>
             <h2 className={c("sec-h2")}>
               Las bases históricas pierden valor cuando las direcciones no son consistentes
@@ -130,35 +130,35 @@ export default function DataCleaning() {
             </p>
           </div>
           <div className={c("pcards")}>
-            <div className={c("pcard")}>
+            <div className={c("pcard")} data-reveal>
               <div className={c("pcard__ic")}>
                 <Copy className={c("i")} strokeWidth={1.8} />
               </div>
               <h3>Registros duplicados o inconsistentes</h3>
               <p>La misma dirección puede aparecer escrita de muchas formas distintas.</p>
             </div>
-            <div className={c("pcard")}>
+            <div className={c("pcard")} data-reveal>
               <div className={c("pcard__ic")}>
                 <FileText className={c("i")} strokeWidth={1.8} />
               </div>
               <h3>Campos incompletos</h3>
               <p>Faltan datos clave para operar o analizar correctamente.</p>
             </div>
-            <div className={c("pcard")}>
+            <div className={c("pcard")} data-reveal>
               <div className={c("pcard__ic")}>
                 <BarChart className={c("i")} strokeWidth={1.8} />
               </div>
               <h3>Reportes poco confiables</h3>
               <p>La mala calidad del dato impacta en análisis y decisiones.</p>
             </div>
-            <div className={c("pcard")}>
+            <div className={c("pcard")} data-reveal>
               <div className={c("pcard__ic")}>
                 <Clock className={c("i")} strokeWidth={1.8} />
               </div>
               <h3>Procesos manuales de limpieza</h3>
               <p>Equipos que pierden tiempo corrigiendo registros caso por caso.</p>
             </div>
-            <div className={c("pcard")}>
+            <div className={c("pcard")} data-reveal>
               <div className={c("pcard__ic")}>
                 <Blocks className={c("i")} strokeWidth={1.8} />
               </div>
@@ -172,7 +172,7 @@ export default function DataCleaning() {
       {/* ===================== CÓMO AYUDA — pipeline ===================== */}
       <section className={c("sec")}>
         <div className={c("wrap")}>
-          <div className={c("sec-head")}>
+          <div className={c("sec-head")} data-reveal>
             <span className={c("eyebrow", "eyebrow--green")}>Cómo ayuda Ubidata</span>
             <h2 className={c("sec-h2")}>Normalización masiva con diagnóstico registro por registro</h2>
             <p className={c("sec-lead")}>
@@ -181,7 +181,7 @@ export default function DataCleaning() {
             </p>
           </div>
           <div className={c("pipe")}>
-            <div className={c("pipe__step")}>
+            <div className={c("pipe__step")} data-reveal>
               <span className={c("pipe__n")}>1</span>
               <div className={c("pipe__bar")}>
                 <span style={{ height: "45%" }} />
@@ -191,7 +191,7 @@ export default function DataCleaning() {
               <h3>Procesamiento batch</h3>
               <p>Grandes volúmenes procesados con la misma lógica del motor de validación.</p>
             </div>
-            <div className={c("pipe__step")}>
+            <div className={c("pipe__step")} data-reveal>
               <span className={c("pipe__n")}>2</span>
               <div className={c("pipe__bar")}>
                 <span style={{ height: "60%" }} />
@@ -201,7 +201,7 @@ export default function DataCleaning() {
               <h3>Normalización</h3>
               <p>Cada dirección se interpreta y se lleva a una forma única y consistente.</p>
             </div>
-            <div className={c("pipe__step")}>
+            <div className={c("pipe__step")} data-reveal>
               <span className={c("pipe__n")}>3</span>
               <div className={c("pipe__bar")}>
                 <span style={{ height: "80%" }} />
@@ -211,7 +211,7 @@ export default function DataCleaning() {
               <h3>Diagnóstico</h3>
               <p>Registros clasificados como resolubles y no resolubles, con su nivel de confianza.</p>
             </div>
-            <div className={c("pipe__step")}>
+            <div className={c("pipe__step")} data-reveal>
               <span className={c("pipe__n")}>4</span>
               <div className={c("pipe__bar")}>
                 <span style={{ height: "55%" }} />
@@ -221,7 +221,7 @@ export default function DataCleaning() {
               <h3>Estandarización</h3>
               <p>Campos estructurados y homogéneos, listos para sistemas y análisis.</p>
             </div>
-            <div className={c("pipe__step")}>
+            <div className={c("pipe__step")} data-reveal>
               <span className={c("pipe__n")}>5</span>
               <div className={c("pipe__bar")}>
                 <span style={{ height: "90%" }} />
@@ -238,11 +238,11 @@ export default function DataCleaning() {
       {/* ===================== FLUJO APLICADO ===================== */}
       <section className={c("sec", "flow")}>
         <div className={c("wrap")}>
-          <div className={c("sec-head")}>
+          <div className={c("sec-head")} data-reveal>
             <span className={c("eyebrow")}>Flujo aplicado</span>
             <h2 className={c("sec-h2")}>De base histórica a datos operables</h2>
           </div>
-          <div className={c("flow__track")}>
+          <div className={c("flow__track")} data-reveal>
             <div className={c("flow__node")}>
               <span className={c("flow__ic")}>
                 <Database className={c("i")} strokeWidth={1.8} />
@@ -297,7 +297,7 @@ export default function DataCleaning() {
       {/* ===================== PRODUCTOS RECOMENDADOS ===================== */}
       <section className={c("sec")} id="productos">
         <div className={c("wrap")}>
-          <div className={c("sec-head")}>
+          <div className={c("sec-head")} data-reveal>
             <span className={c("eyebrow")}>Productos recomendados</span>
             <h2 className={c("sec-h2")}>Las piezas de Ubidata para este caso</h2>
             <p className={c("sec-lead")}>
@@ -305,7 +305,7 @@ export default function DataCleaning() {
             </p>
           </div>
           <div className={c("prods")}>
-            <Link className={c("prod")} href="/#producto-batch">
+            <Link className={c("prod")} href="/#producto-batch" data-reveal>
               <span className={c("prod__tag", "main")}>Producto principal</span>
               <h3>Procesamiento batch</h3>
               <p>
@@ -316,7 +316,7 @@ export default function DataCleaning() {
                 Ver producto <ArrowRight className={c("i")} />
               </span>
             </Link>
-            <Link className={c("prod")} href="/#producto-plataforma">
+            <Link className={c("prod")} href="/#producto-plataforma" data-reveal>
               <span className={c("prod__tag")}>Plataforma</span>
               <h3>Plataforma Ubidata</h3>
               <p>
@@ -327,7 +327,7 @@ export default function DataCleaning() {
                 Ver producto <ArrowRight className={c("i")} />
               </span>
             </Link>
-            <Link className={c("prod")} href="/#producto-api">
+            <Link className={c("prod")} href="/#producto-api" data-reveal>
               <span className={c("prod__tag")}>API</span>
               <h3>API REST</h3>
               <p>
@@ -338,7 +338,7 @@ export default function DataCleaning() {
                 Ver producto <ArrowRight className={c("i")} />
               </span>
             </Link>
-            <Link className={c("prod")} href="/#producto-batch">
+            <Link className={c("prod")} href="/#producto-batch" data-reveal>
               <span className={c("prod__tag")}>A medida</span>
               <h3>Soluciones a medida</h3>
               <p>
@@ -356,11 +356,11 @@ export default function DataCleaning() {
       {/* ===================== BENEFICIOS ===================== */}
       <section className={c("sec", "problem")} style={{ borderTop: "1px solid var(--border-subtle)" }}>
         <div className={c("wrap")}>
-          <div className={c("sec-head")}>
+          <div className={c("sec-head")} data-reveal>
             <span className={c("eyebrow", "eyebrow--green")}>Beneficios esperados</span>
             <h2 className={c("sec-h2")}>Qué recuperás cuando la base vuelve a ser confiable</h2>
           </div>
-          <div className={c("benefits")}>
+          <div className={c("benefits")} data-reveal>
             <div className={c("benefit")}>
               <CheckCircle className={c("i")} />
               <span>Bases más limpias y consistentes</span>

@@ -2,11 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import styles from "./page.module.css";
 import { makeCx } from "@/lib/cx";
+import ComplianceSimulator from "./ComplianceSimulator";
 import {
   ShieldCheck,
-  Shield,
   File,
-  FileText,
   FileCheck,
   ArrowDown,
   ArrowRight,
@@ -155,7 +154,7 @@ export default function Cumplimiento() {
       {/* ===================== CONTROL LAYER ===================== */}
       <section className={c("sec", "sec--subtle")}>
         <div className={c("wrap")}>
-          <div className={c("sec-head")}>
+          <div className={c("sec-head")} data-reveal>
             <span className={c("eyebrow")}>La dirección como punto de control</span>
             <h2 className={c("sec-h2")}>
               El riesgo no está solo en una dirección incorrecta. Está en no poder explicar qué pasó
@@ -171,7 +170,7 @@ export default function Cumplimiento() {
 
           <div className={c("flow")}>
             {/* Antes */}
-            <div className={c("fcard")}>
+            <div className={c("fcard")} data-reveal>
               <span className={c("fcard__step")}>
                 <span className={c("n")}>1</span>Antes · dato ambiguo
               </span>
@@ -205,7 +204,7 @@ export default function Cumplimiento() {
             </div>
 
             {/* Capa Ubidata */}
-            <div className={c("fcard", "fcard--ubi")}>
+            <div className={c("fcard", "fcard--ubi")} data-reveal>
               <span className={c("fcard__step")}>
                 <span className={c("n")}>2</span>Capa Ubidata
               </span>
@@ -249,7 +248,7 @@ export default function Cumplimiento() {
             </div>
 
             {/* Después */}
-            <div className={c("fcard")}>
+            <div className={c("fcard")} data-reveal>
               <span className={c("fcard__step")}>
                 <span className={c("n")}>3</span>Después · decisión trazable
               </span>
@@ -284,7 +283,7 @@ export default function Cumplimiento() {
             </div>
           </div>
 
-          <div className={c("flow__close")}>
+          <div className={c("flow__close")} data-reveal>
             <div className={c("flow__close-inner")}>
               <span className={c("ic")}>
                 <ShieldCheck className={c("i")} />
@@ -303,7 +302,7 @@ export default function Cumplimiento() {
       {/* ===================== MATRIZ DE DECISIÓN ===================== */}
       <section className={c("sec")}>
         <div className={c("wrap")}>
-          <div className={c("sec-head")}>
+          <div className={c("sec-head")} data-reveal>
             <span className={c("eyebrow")}>Matriz de decisión</span>
             <h2 className={c("sec-h2")}>Cada domicilio debería volver con una respuesta clara</h2>
             <p className={c("sec-lead")}>
@@ -314,7 +313,7 @@ export default function Cumplimiento() {
           </div>
 
           <div className={c("matrix")}>
-            <div className={c("mcard", "mcard--ok")}>
+            <div className={c("mcard", "mcard--ok")} data-reveal>
               <span className={c("mpill")}>
                 <Check className={c("i")} strokeWidth={2.4} /> Validado
               </span>
@@ -327,7 +326,7 @@ export default function Cumplimiento() {
                 </span>
               </div>
             </div>
-            <div className={c("mcard", "mcard--info")}>
+            <div className={c("mcard", "mcard--info")} data-reveal>
               <span className={c("mpill")}>
                 <RefreshCw className={c("i")} /> Corregido
               </span>
@@ -343,7 +342,7 @@ export default function Cumplimiento() {
                 </span>
               </div>
             </div>
-            <div className={c("mcard", "mcard--warn")}>
+            <div className={c("mcard", "mcard--warn")} data-reveal>
               <span className={c("mpill")}>
                 <AlertTriangle className={c("i")} /> Requiere revisión
               </span>
@@ -359,7 +358,7 @@ export default function Cumplimiento() {
                 </span>
               </div>
             </div>
-            <div className={c("mcard", "mcard--bad")}>
+            <div className={c("mcard", "mcard--bad")} data-reveal>
               <span className={c("mpill")}>
                 <X className={c("i")} strokeWidth={2.2} /> No resoluble
               </span>
@@ -374,7 +373,7 @@ export default function Cumplimiento() {
             </div>
           </div>
 
-          <div className={c("mtable")}>
+          <div className={c("mtable")} data-reveal>
             <div className={c("mtable__head")}>
               <span className={c("ic")}>
                 <Grid className={c("i")} strokeWidth={1.8} />
@@ -445,7 +444,7 @@ export default function Cumplimiento() {
       {/* ===================== SIMULADOR (initial static state) ===================== */}
       <section className={c("sec", "sec--subtle")} id="simulador">
         <div className={c("wrap")}>
-          <div className={c("sec-head")}>
+          <div className={c("sec-head")} data-reveal>
             <span className={c("eyebrow")}>Simulador</span>
             <h2 className={c("sec-h2")}>Cómo se vería Ubidata dentro de tu flujo de control</h2>
             <p className={c("sec-lead")}>
@@ -454,102 +453,14 @@ export default function Cumplimiento() {
             </p>
           </div>
 
-          <div className={c("sim__grid")}>
-            {/* LEFT: internal request */}
-            <div className={c("dpanel")}>
-              <div className={c("dpanel__head")}>
-                <span className={c("ic")}>
-                  <FileText className={c("i")} strokeWidth={1.8} />
-                </span>
-                <span className={c("t")}>Solicitud interna de validación</span>
-                <span className={c("tag")}>Proceso sensible</span>
-              </div>
-              <div className={c("dpanel__body")}>
-                <div className={c("fmrow")}>
-                  <div className={c("fmf")}>
-                    <span className={c("dlabel")}>Cliente / ID</span>
-                    <div className={c("ph", "mono")}>CLI-0093421</div>
-                  </div>
-                  <div className={c("fmf")}>
-                    <span className={c("dlabel")}>Tipo de proceso</span>
-                    <div className={c("ph")}>KYC · alta de cliente</div>
-                  </div>
-                </div>
-                <div className={c("fmrow")}>
-                  <div className={c("fmf")}>
-                    <span className={c("dlabel")}>País</span>
-                    <div className={c("ph")}>Argentina</div>
-                  </div>
-                  <div className={c("fmf")}>
-                    <span className={c("dlabel")}>Provincia</span>
-                    <div className={c("ph")}>CABA</div>
-                  </div>
-                </div>
-                <div className={c("fmf", "fmf--full")} style={{ marginBottom: 14 }}>
-                  <span className={c("dlabel")}>Localidad</span>
-                  <div className={c("ph")}>Ciudad Autónoma de Buenos Aires</div>
-                </div>
-
-                <div className={c("fmf", "fmf--full")}>
-                  <span className={c("dlabel", "dlabel--active")}>
-                    Domicilio informado <span className={c("req")}>· editable</span>
-                  </span>
-                  <div className={c("daddr__field")}>
-                    <Pin className={c("pin")} strokeWidth={1.8} />
-                    <input
-                      type="text"
-                      autoComplete="off"
-                      spellCheck={false}
-                      placeholder="Cordoba 1430 Cap Fed"
-                      defaultValue="Cordoba 1430 Cap Fed"
-                    />
-                  </div>
-                  <div className={c("presets")}>
-                    <span className={c("presets__k")}>Probá con otros casos:</span>
-                    <button className={c("preset", "is-on")}>Cordoba 1430 Cap Fed</button>
-                    <button className={c("preset")}>Av. Córdoba 1430</button>
-                    <button className={c("preset")}>Calle 14 s/n</button>
-                    <button className={c("preset")}>Zona norte lote 8</button>
-                  </div>
-                </div>
-
-                <button className={c("dform__submit")}>
-                  <ShieldCheck className={c("i")} /> Ejecutar validación
-                </button>
-              </div>
-            </div>
-
-            {/* RIGHT: control result (awaiting) */}
-            <div className={c("dpanel", "dpanel--resp")}>
-              <div className={c("dpanel__head")}>
-                <span className={c("ic")}>
-                  <Braces className={c("i")} strokeWidth={1.8} />
-                </span>
-                <span className={c("t")}>Resultado de control Ubidata</span>
-                <span className={c("tag")}>—</span>
-              </div>
-              <div className={c("dtabs")} role="tablist">
-                <button className={c("dtab", "is-active")}>Resumen</button>
-                <button className={c("dtab")}>Diagnóstico</button>
-                <button className={c("dtab")}>Audit trail</button>
-              </div>
-              <div className={c("dresp")}>
-                <div className={c("dresp__await")}>
-                  <span className={c("ic")}>
-                    <Shield className={c("i")} strokeWidth={1.6} />
-                  </span>
-                  <p>Ejecutá la validación para ver estado, diagnóstico y acción sugerida.</p>
-                </div>
-              </div>
-            </div>
-          </div>
+          <ComplianceSimulator />
         </div>
       </section>
 
       {/* ===================== BENEFICIOS ===================== */}
       <section className={c("sec", "benf")}>
         <div className={c("wrap")}>
-          <div className={c("sec-head")}>
+          <div className={c("sec-head")} data-reveal>
             <span className={c("eyebrow", "eyebrow--on-dark")}>Beneficios</span>
             <h2 className={c("sec-h2", "sec-h2--on-dark")}>
               Más control sobre el dato. Menos ambigüedad en el proceso.
@@ -559,8 +470,8 @@ export default function Cumplimiento() {
               diagnóstico disponible para tus sistemas o equipos internos.
             </p>
           </div>
-          <div className={c("benf__grid")}>
-            <div className={c("gcard")}>
+          <div className={c("benf__grid")} data-reveal>
+            <div className={c("gcard")} data-reveal>
               <div className={c("gcard__ic")}>
                 <ClockDial className={c("i")} strokeWidth={1.8} />
               </div>
@@ -570,21 +481,21 @@ export default function Cumplimiento() {
                 validación.
               </p>
             </div>
-            <div className={c("gcard")}>
+            <div className={c("gcard")} data-reveal>
               <div className={c("gcard__ic")}>
                 <AlignLeft className={c("i")} strokeWidth={1.8} />
               </div>
               <h3>Criterios más consistentes</h3>
               <p>Reducí decisiones manuales dispersas con estados y diagnósticos estandarizados.</p>
             </div>
-            <div className={c("gcard")}>
+            <div className={c("gcard")} data-reveal>
               <div className={c("gcard__ic")}>
                 <Database className={c("i")} strokeWidth={1.8} />
               </div>
               <h3>Mejor calidad de datos</h3>
               <p>Normalizá domicilios antes de que ingresen o se repliquen en sistemas internos.</p>
             </div>
-            <div className={c("gcard", "gcard--half")}>
+            <div className={c("gcard", "gcard--half")} data-reveal>
               <div className={c("gcard__ic")}>
                 <Activity className={c("i")} strokeWidth={1.8} />
               </div>
@@ -594,7 +505,7 @@ export default function Cumplimiento() {
                 revisión donde realmente hace falta.
               </p>
             </div>
-            <div className={c("gcard", "gcard--half")}>
+            <div className={c("gcard", "gcard--half")} data-reveal>
               <div className={c("gcard__ic")}>
                 <Braces className={c("i")} strokeWidth={1.8} />
               </div>
@@ -611,7 +522,7 @@ export default function Cumplimiento() {
       {/* ===================== PRODUCTOS ===================== */}
       <section className={c("sec")} id="productos">
         <div className={c("wrap")}>
-          <div className={c("sec-head")}>
+          <div className={c("sec-head")} data-reveal>
             <span className={c("eyebrow")}>Productos recomendados</span>
             <h2 className={c("sec-h2")}>Productos para fortalecer tus procesos de control</h2>
             <p className={c("sec-lead")}>
@@ -620,7 +531,7 @@ export default function Cumplimiento() {
             </p>
           </div>
           <div className={c("prodlead")}>
-            <Link className={c("pfeat")} href="/#producto-api">
+            <Link className={c("pfeat")} href="/#producto-api" data-reveal>
               <span className={c("pfeat__tag")}>
                 <Star className={c("i")} strokeWidth={2.2} /> Producto recomendado para flujos
                 sensibles
@@ -662,7 +573,7 @@ export default function Cumplimiento() {
             </Link>
 
             <div className={c("psecs")}>
-              <Link className={c("psec")} href="/#producto-api">
+              <Link className={c("psec")} href="/#producto-api" data-reveal>
                 <span className={c("psec__ic")}>
                   <ServerStack className={c("i")} strokeWidth={1.8} />
                 </span>
@@ -675,7 +586,7 @@ export default function Cumplimiento() {
                   <span className={c("psec__tag")}>Ideal para entornos legacy</span>
                 </div>
               </Link>
-              <Link className={c("psec")} href="/#producto-plataforma">
+              <Link className={c("psec")} href="/#producto-plataforma" data-reveal>
                 <span className={c("psec__ic")}>
                   <Grid className={c("i")} strokeWidth={1.8} />
                 </span>
@@ -688,7 +599,7 @@ export default function Cumplimiento() {
                   <span className={c("psec__tag")}>Ideal para visibilidad operativa</span>
                 </div>
               </Link>
-              <Link className={c("psec")} href="/#producto-batch">
+              <Link className={c("psec")} href="/#producto-batch" data-reveal>
                 <span className={c("psec__ic")}>
                   <Wrench className={c("i")} strokeWidth={1.8} />
                 </span>
@@ -725,7 +636,7 @@ export default function Cumplimiento() {
               </a>
             </div>
           </div>
-          <div className={c("cta__chip")}>
+          <div className={c("cta__chip")} data-reveal>
             <div className={c("ph2")}>
               <span className={c("ic")}>
                 <ShieldCheck className={c("i")} strokeWidth={1.8} />
