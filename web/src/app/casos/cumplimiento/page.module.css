@@ -269,6 +269,8 @@
 .pfeat h3 { font: 600 1.5rem/1.2 var(--font-sans); letter-spacing: -0.02em; color: #fff; margin: 0; }
 .pfeat p { font: var(--text-body-sm); font-size: 0.92rem; color: var(--text-on-dark); line-height: 1.6; margin: 12px 0 0; max-width: 42ch; }
 .pjson { margin: 22px 0 0; font: var(--text-code); font-size: 0.79rem; color: var(--cyan-100); background: rgba(0,0,0,0.28); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-md); padding: 16px 18px; overflow-x: auto; line-height: 1.75; }
+.pjson .k { color: var(--cyan-300); }
+.pjson .s { color: var(--green-400); }
 .pfeat .more { display: inline-flex; align-items: center; gap: 6px; margin-top: 22px; font: 500 0.9rem/1 var(--font-sans); color: var(--cyan-300); }
 .pfeat .more .i { width: 16px; height: 16px; transition: transform var(--duration-base) var(--ease-out); }
 .pfeat:hover .more .i { transform: translateX(4px); }

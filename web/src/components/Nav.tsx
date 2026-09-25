@@ -1,5 +1,6 @@
 import Link from "next/link";
 import styles from "./Nav.module.css";
+import { CurrentButton, CurrentLink } from "./NavCurrent";
 import {
   ChevronDown,
   Search,
@@ -71,16 +72,27 @@ export default function Nav() {
           <Dropdown items={productos} wide />
         </div>
         <div className={styles.nav__item}>
-          <button className={styles.nav__link}>
+          <CurrentButton
+            section="/casos"
+            className={styles.nav__link}
+            currentClassName={styles["is-current"]}
+          >
             Casos de uso <ChevronDown className={styles.caret} />
-          </button>
+          </CurrentButton>
           <Dropdown items={casos} />
         </div>
         <div className={styles.nav__item}>
           <Link className={styles.nav__link} href="/#novedades">Docs</Link>
         </div>
         <div className={styles.nav__item}>
-          <Link className={styles.nav__link} href="/blog">Novedades</Link>
+          <CurrentLink
+            section="/blog"
+            href="/blog"
+            className={styles.nav__link}
+            currentClassName={styles["is-current"]}
+          >
+            Novedades
+          </CurrentLink>
         </div>
         <div className={styles.nav__item}>
           <Link className={styles.nav__link} href="/#footer">Empresa</Link>

@@ -6,7 +6,7 @@
 .nav__links { display: flex; align-items: stretch; height: 100%; }
 .nav__item { position: relative; display: flex; align-items: center; }
 .nav__link { display: inline-flex; align-items: center; gap: 5px; height: 100%; padding: 0 14px; font: 500 0.9rem/1 var(--font-sans); color: var(--text-body); background: none; border: none; cursor: pointer; text-decoration: none; }
-.nav__link:hover { color: var(--navy-950); }
+.nav__link:hover, .nav__link.is-current { color: var(--navy-950); }
 .nav__link .caret { width: 14px; height: 14px; transition: transform var(--duration-base) var(--ease-out); color: var(--gray-400); }
 .nav__item:hover .nav__link .caret { transform: rotate(180deg); }
 .nav__item:hover .nav__link { color: var(--navy-950); }
