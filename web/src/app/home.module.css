@@ -296,25 +296,6 @@
 .blog { background: var(--surface-subtle); border-top: 1px solid var(--border-subtle); }
 .blog__head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; }
 .blog__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 48px; }
-.post { display: flex; flex-direction: column; background: #fff; border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-card); text-decoration: none; transition: transform var(--duration-slow) var(--ease-out), box-shadow var(--duration-slow) var(--ease-out); }
-.post:hover { transform: translateY(-3px); box-shadow: var(--shadow-card-hover); }
-.post__cover { height: 150px; position: relative; overflow: hidden; border-bottom: 1px solid var(--border-subtle); }
-.post__cover .grid-tex { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px); background-size: 26px 26px; }
-.post__cover.c1 { background: var(--brand-gradient); }
-.post__cover.c2 { background: linear-gradient(135deg, var(--navy-900), var(--navy-700)); }
-.post__cover.c3 { background: linear-gradient(135deg, var(--cyan-700), var(--cyan-500)); }
-.post__cover .bars { position: absolute; left: 24px; bottom: 22px; display: flex; align-items: flex-end; gap: 5px; height: 46px; }
-.post__cover .bars span { width: 9px; border-radius: 3px; background: rgba(255,255,255,0.85); }
-.post__body { padding: 20px 22px 24px; display: flex; flex-direction: column; flex: 1; }
-.post__meta { display: flex; align-items: center; gap: 9px; font: var(--text-caption); color: var(--cyan-700); }
-.post__meta .tag { font: var(--text-overline); letter-spacing: 0.06em; text-transform: uppercase; color: var(--cyan-700); background: var(--cyan-100); padding: 3px 8px; border-radius: var(--radius-sm); }
-.post__meta .dot { color: var(--gray-300); }
-.post__meta .date { color: var(--gray-500); }
-.post h3 { font: 600 1.0625rem/1.35 var(--font-sans); color: var(--navy-950); margin: 14px 0 0; }
-.post p { font: var(--text-body-sm); color: var(--text-muted); line-height: 1.55; margin: 10px 0 0; }
-.post .read { display: inline-flex; align-items: center; gap: 6px; margin-top: auto; padding-top: 18px; font: 500 0.85rem/1 var(--font-sans); color: var(--cyan-700); }
-.post .read .i { width: 15px; height: 15px; transition: transform var(--duration-base) var(--ease-out); }
-.post:hover .read .i { transform: translateX(3px); }
 
 /* ── Responsive ── */
 @media (max-width: 1000px) {

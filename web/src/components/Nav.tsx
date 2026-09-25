@@ -80,7 +80,7 @@ export default function Nav() {
           <Link className={styles.nav__link} href="/#novedades">Docs</Link>
         </div>
         <div className={styles.nav__item}>
-          <Link className={styles.nav__link} href="/#novedades">Novedades</Link>
+          <Link className={styles.nav__link} href="/blog">Novedades</Link>
         </div>
         <div className={styles.nav__item}>
           <Link className={styles.nav__link} href="/#footer">Empresa</Link>

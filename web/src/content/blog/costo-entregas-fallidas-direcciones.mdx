@@ -1,0 +1,81 @@
+---
+title: "Entregas fallidas: cuánto cuesta una dirección mal cargada en logística"
+description: El impacto real de la calidad de direcciones en ruteo, despacho y costos operativos.
+date: 2026-09-02
+category: Última milla
+readingTime: 8
+slug: costo-entregas-fallidas-direcciones
+cover: c2
+---
+
+Una entrega fallida rara vez se registra como un problema de datos. En los reportes aparece como "cliente ausente", "dirección no encontrada" o "reprogramada", y el costo se reparte entre transporte, atención al cliente y reprocesos. Pero cuando se analiza el origen, una parte relevante de esos casos empieza mucho antes del despacho: en una dirección que se cargó incompleta, ambigua o con errores.
+
+Este artículo propone una forma de estimar ese costo y de identificar en qué punto del proceso conviene intervenir.
+
+## Dónde se origina el problema
+
+Una dirección mal cargada no falla en el momento en que se escribe. Falla más tarde, cuando alguien intenta usarla. En una operación de última milla, ese recorrido suele ser así:
+
+1. **Captura.** El cliente escribe su domicilio en el checkout o en un formulario. El sistema acepta el texto sin validarlo.
+2. **Ruteo.** El planificador asigna el pedido a una zona y una ruta. Si la dirección es ambigua, la geolocalización puede ubicarla en el lugar equivocado.
+3. **Despacho.** El repartidor llega a un punto que no coincide con el destino real, o no encuentra la altura indicada.
+4. **Resolución.** El pedido vuelve al depósito, se reprograma y se contacta al cliente para corregir el dato.
+
+Cada paso agrega costo. Y el dato defectuoso sigue en la base, listo para generar el mismo problema en la próxima compra.
+
+## Los costos visibles y los que no se ven
+
+Los costos directos de una entrega fallida son relativamente fáciles de identificar:
+
+- El viaje adicional para el segundo intento.
+- El tiempo del repartidor en una parada que no se concretó.
+- La logística inversa si el pedido vuelve al depósito.
+
+Hay otros que no aparecen en la misma línea del presupuesto, pero pesan igual:
+
+- **Atención al cliente.** Llamadas y mensajes para confirmar o corregir la dirección.
+- **Planificación degradada.** Rutas calculadas sobre puntos mal geolocalizados, que alargan todos los recorridos del día.
+- **Experiencia del cliente.** Demoras que afectan la recompra y la reputación del servicio.
+- **Trabajo manual.** Equipos que revisan y corrigen direcciones caso por caso antes de cada despacho.
+
+## Una forma simple de estimarlo
+
+No hace falta un modelo complejo para tener un orden de magnitud. Con tres datos de la operación alcanza para una primera estimación:
+
+| Variable | Ejemplo |
+| --- | --- |
+| Envíos mensuales | 10.000 |
+| Porcentaje de direcciones con problemas | 4 % |
+| Costo promedio por envío fallido o reprocesado | $3.500 |
+
+Con esos valores, 400 envíos por mes tendrían algún problema de dirección, con un costo mensual estimado de $1.400.000. Si una parte de esos errores puede prevenirse validando la dirección antes del despacho, el ahorro se vuelve concreto y medible.
+
+Los valores de la tabla son ilustrativos. Podés probar con los números de tu operación en la [calculadora del caso de última milla](/casos/ultima-milla).
+
+## Dónde intervenir
+
+La conclusión principal es que el mejor momento para corregir una dirección es **antes de que entre al flujo logístico**. Cuanto más tarde se detecta el error, más pasos del proceso ya consumieron recursos sobre un dato incorrecto.
+
+En la práctica, eso implica actuar en dos frentes:
+
+### En la captura
+
+Validar y normalizar la dirección en el checkout o el formulario de alta, mientras el cliente todavía está presente para confirmarla. Es el punto de menor costo y mayor efectividad.
+
+### En la base existente
+
+Procesar las direcciones históricas para detectar las que ya están mal cargadas. Una base limpia evita que los clientes recurrentes generen el mismo error en cada compra.
+
+## Qué debería devolver una validación útil
+
+Para que la validación sirva a la operación, no alcanza con un "válida" o "inválida". El resultado debería incluir:
+
+- La **dirección normalizada**, con calle, altura, localidad y código postal en campos separados.
+- Un **nivel de confianza** que permita decidir automáticamente qué casos avanzan y cuáles se revisan.
+- Un **diagnóstico** que explique qué se corrigió o por qué no pudo resolverse.
+
+Con esa información, el sistema logístico puede aplicar reglas claras: despachar lo validado, revisar lo ambiguo y pedir corrección antes de asignar la ruta.
+
+## Conclusión
+
+Las entregas fallidas son un síntoma. En muchos casos, la causa es un dato que nadie validó en el origen. Medir cuánto cuesta ese problema es el primer paso para decidir dónde invertir, y en la mayoría de las operaciones la intervención más rentable está en el primer input.

@@ -628,12 +628,12 @@ export default function Cumplimiento() {
               diagnosticar domicilios con criterios consistentes y resultados accionables.
             </p>
             <div className={c("cta__btns")}>
-              <a className={c("btn", "btn-grad")} href="/#footer">
+              <Link className={c("btn", "btn-grad")} href="/#footer">
                 Solicitar demo <ArrowRight className={c("i")} />
-              </a>
-              <a className={c("btn", "btn-outline-white")} href="/#novedades">
+              </Link>
+              <Link className={c("btn", "btn-outline-white")} href="/#novedades">
                 Ver documentación
-              </a>
+              </Link>
             </div>
           </div>
           <div className={c("cta__chip")} data-reveal>

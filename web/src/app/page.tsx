@@ -3,6 +3,8 @@ import styles from "./home.module.css";
 import { makeCx } from "@/lib/cx";
 import AddressLookupDemo from "./AddressLookupDemo";
 import ApiCodeCard from "./ApiCodeCard";
+import PostCard from "@/components/PostCard";
+import { getAllPosts } from "@/lib/blog";
 import {
   ArrowRight,
   ArrowUp,
@@ -33,6 +35,8 @@ import {
 const c = makeCx(styles);
 
 export default function Home() {
+  const latestPosts = getAllPosts().slice(0, 3);
+
   return (
     <>
       {/* ===================== HERO ===================== */}
@@ -728,80 +732,14 @@ export default function Home() {
               <span className={c("eyebrow")}>Novedades</span>
               <h2 className={c("sec-h2")}>Novedades e insights sobre Address Intelligence</h2>
             </div>
-            <a className={c("eco__more")} href="#" style={{ marginTop: 0, flex: "none" }}>
+            <Link className={c("eco__more")} href="/blog" style={{ marginTop: 0, flex: "none" }}>
               Ver todas <ArrowRight className={c("i")} />
-            </a>
+            </Link>
           </div>
           <div className={c("blog__grid")}>
-            <a className={c("post")} href="#" data-reveal>
-              <div className={c("post__cover", "c1")}>
-                <div className={c("grid-tex")} />
-                <div className={c("bars")}>
-                  <span style={{ height: "60%" }} />
-                  <span style={{ height: "90%" }} />
-                  <span style={{ height: "40%" }} />
-                  <span style={{ height: "75%" }} />
-                </div>
-              </div>
-              <div className={c("post__body")}>
-                <div className={c("post__meta")}>
-                  <span className={c("tag")}>Onboarding</span>
-                  <span className={c("dot")}>·</span>
-                  <span className={c("date")}>6 min de lectura</span>
-                </div>
-                <h3>Cómo reducir el abandono en formularios con captura asistida de direcciones</h3>
-                <p>Buenas prácticas para validar domicilios sin agregar fricción en el alta digital.</p>
-                <span className={c("read")}>
-                  Leer artículo <ArrowRight className={c("i")} />
-                </span>
-              </div>
-            </a>
-            <a className={c("post")} href="#" data-reveal>
-              <div className={c("post__cover", "c2")}>
-                <div className={c("grid-tex")} />
-                <div className={c("bars")}>
-                  <span style={{ height: "80%", background: "var(--cyan-400)" }} />
-                  <span style={{ height: "45%", background: "var(--green-400)" }} />
-                  <span style={{ height: "95%", background: "var(--cyan-300)" }} />
-                  <span style={{ height: "65%", background: "var(--green-400)" }} />
-                </div>
-              </div>
-              <div className={c("post__body")}>
-                <div className={c("post__meta")}>
-                  <span className={c("tag")}>Última milla</span>
-                  <span className={c("dot")}>·</span>
-                  <span className={c("date")}>8 min de lectura</span>
-                </div>
-                <h3>Entregas fallidas: cuánto cuesta una dirección mal cargada en logística</h3>
-                <p>El impacto real de la calidad de direcciones en ruteo, despacho y costos operativos.</p>
-                <span className={c("read")}>
-                  Leer artículo <ArrowRight className={c("i")} />
-                </span>
-              </div>
-            </a>
-            <a className={c("post")} href="#" data-reveal>
-              <div className={c("post__cover", "c3")}>
-                <div className={c("grid-tex")} />
-                <div className={c("bars")}>
-                  <span style={{ height: "55%" }} />
-                  <span style={{ height: "85%" }} />
-                  <span style={{ height: "70%" }} />
-                  <span style={{ height: "95%" }} />
-                </div>
-              </div>
-              <div className={c("post__body")}>
-                <div className={c("post__meta")}>
-                  <span className={c("tag")}>Calidad de datos</span>
-                  <span className={c("dot")}>·</span>
-                  <span className={c("date")}>5 min de lectura</span>
-                </div>
-                <h3>Normalización y deduplicación: cómo recuperar una base de direcciones degradada</h3>
-                <p>Un enfoque de data cleaning con diagnóstico para casos resueltos, corregidos y a revisar.</p>
-                <span className={c("read")}>
-                  Leer artículo <ArrowRight className={c("i")} />
-                </span>
-              </div>
-            </a>
+            {latestPosts.map((post) => (
+              <PostCard key={post.slug} post={post} />
+            ))}
           </div>
         </div>
       </section>

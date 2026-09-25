@@ -1,0 +1,37 @@
+/* ============================================================
+   Ubidata — Blog index (/blog)
+   Same scaffolding vocabulary as the case pages.
+   ============================================================ */
+.wrap { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+
+.eyebrow { font: var(--text-overline); letter-spacing: var(--tracking-overline); text-transform: uppercase; color: var(--cyan-600); }
+.eyebrow--on-dark { color: var(--cyan-400); }
+
+.spotlight { position: relative; overflow: hidden; background: var(--surface-spotlight); }
+.spotlight::before { content: ""; position: absolute; inset: 0; pointer-events: none; background-image: var(--grid-overlay); background-size: var(--grid-size); }
+.spotlight::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: var(--spotlight-glow); }
+.spotlight .wrap { position: relative; z-index: 1; }
+
+/* ── Header ── */
+.hero { padding: 80px 0 76px; }
+.hero__crumb { display: inline-flex; align-items: center; gap: 8px; font: 500 0.78rem/1 var(--font-sans); color: var(--cyan-400); margin-bottom: 24px; }
+.hero__crumb a { color: var(--text-on-dark); text-decoration: none; }
+.hero__crumb a:hover { color: #fff; }
+.hero__crumb .sep { color: var(--gray-500); }
+.hero__h1 { font: 600 clamp(2.1rem, 4.2vw, 2.95rem)/1.1 var(--font-sans); letter-spacing: -0.02em; color: #fff; margin: 14px 0 0; max-width: 22ch; }
+.hero__h1 .grad { background: var(--brand-gradient-h); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hero__sub { font: var(--text-body-lg); color: var(--text-on-dark); line-height: 1.62; max-width: 38rem; margin: 20px 0 0; }
+
+/* ── Listing ── */
+.list { background: var(--surface-subtle); padding: 72px 0 96px; }
+.list__head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+.list__count { font: var(--text-caption); color: var(--gray-500); }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 28px; }
+
+@media (max-width: 900px) {
+  .wrap { padding-left: 24px; padding-right: 24px; }
+  .grid { grid-template-columns: 1fr; }
+}
+@media (min-width: 901px) and (max-width: 1080px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}

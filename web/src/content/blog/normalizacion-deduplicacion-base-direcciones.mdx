@@ -1,0 +1,77 @@
+---
+title: "Normalización y deduplicación: cómo recuperar una base de direcciones degradada"
+description: Un enfoque de data cleaning con diagnóstico para casos resueltos, corregidos y a revisar.
+date: 2026-08-19
+category: Calidad de datos
+readingTime: 5
+slug: normalizacion-deduplicacion-base-direcciones
+cover: c3
+---
+
+Toda base de direcciones se degrada con el tiempo. Cambian los sistemas, cambian los criterios de carga, se migran datos entre plataformas y se suman registros de fuentes distintas. El resultado es una base donde la misma dirección aparece escrita de varias formas, donde faltan campos clave y donde nadie sabe con certeza qué porcentaje de los registros es confiable.
+
+Recuperarla no es una tarea de una sola pasada. Requiere normalizar, detectar duplicados y, sobre todo, diagnosticar qué se pudo resolver y qué necesita revisión.
+
+## Síntomas de una base degradada
+
+Antes de empezar, conviene reconocer los problemas típicos:
+
+- **Variantes de escritura.** "AV INSURGENTES SUR1602", "av. insurgentes 1602" y "Insurgentes Sur 1602, BJ" pueden ser el mismo domicilio.
+- **Campos incompletos.** Registros sin código postal, sin localidad o sin altura.
+- **Formatos mezclados.** Todo el domicilio en un único campo de texto en algunos registros, y separado por componentes en otros.
+- **Duplicados.** El mismo cliente o destino registrado varias veces con pequeñas diferencias.
+
+## Paso 1: normalizar antes de comparar
+
+No se puede deduplicar lo que no está normalizado. Si dos registros describen la misma dirección con palabras distintas, una comparación de texto nunca los va a detectar como iguales.
+
+La normalización lleva cada dirección a una forma única y estructurada:
+
+```json
+{
+  "entrada": "AV INSURGENTES SUR1602 BJ cdmx",
+  "normalizada": {
+    "calle": "Av. Insurgentes Sur",
+    "altura": "1602",
+    "colonia": "Crédito Constructor",
+    "cp": "03940",
+    "municipio": "Benito Juárez"
+  }
+}
+```
+
+Una vez que todos los registros comparten la misma estructura, compararlos se vuelve directo.
+
+## Paso 2: deduplicar sobre la versión normalizada
+
+Con las direcciones normalizadas, los duplicados aparecen como registros que coinciden en sus campos clave. En este punto conviene definir con el negocio qué significa "duplicado":
+
+- ¿Dos clientes distintos en la misma dirección son un duplicado o dos registros válidos?
+- ¿Importa el piso y el departamento para considerar que dos domicilios son iguales?
+
+Las respuestas dependen del uso de la base. Para logística, dos pedidos a la misma dirección son un mismo destino. Para un CRM, pueden ser dos clientes distintos que conviene mantener separados.
+
+## Paso 3: clasificar cada registro con un diagnóstico
+
+El paso más importante, y el que más se omite, es dejar registrado qué pasó con cada dirección. Una base limpia sin diagnóstico no permite saber cuánto se resolvió automáticamente ni dónde siguen los problemas.
+
+Un esquema de clasificación simple alcanza:
+
+| Estado | Qué significa | Acción |
+| --- | --- | --- |
+| Exacta | Coincidencia directa, sin cambios | Usar como está |
+| Corregida | Se interpretó y normalizó una variante | Guardar la versión normalizada |
+| A revisión | Ambigua o con datos insuficientes | Revisión manual |
+| No resoluble | Sin información suficiente | Solicitar corrección o descartar |
+
+Con esta clasificación, el equipo puede concentrar la revisión manual solo en los registros que realmente la necesitan, en lugar de revisar la base completa.
+
+## Paso 4: evitar que la base se vuelva a degradar
+
+Limpiar una base histórica sin cambiar cómo entran los datos nuevos es resolver el problema a medias. Después de la limpieza, conviene validar cada dirección al momento de la carga, en formularios, integraciones y APIs, para que los registros nuevos lleguen ya normalizados.
+
+## Cómo encaja Ubidata
+
+El procesamiento batch de Ubidata aplica la misma lógica del motor de validación sobre bases completas: normaliza cada dirección, detecta duplicados y devuelve cada registro clasificado con su diagnóstico. Podés ver el flujo completo en el [caso de uso de data cleaning](/casos/data-cleaning).
+
+Una base de direcciones confiable no es un proyecto puntual. Es el resultado de limpiar lo existente y de validar todo lo que entra a partir de ese momento.

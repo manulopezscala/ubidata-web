@@ -443,12 +443,12 @@ export default function Onboarding() {
               onboarding para validar direcciones en tiempo real y operar con datos más consistentes.
             </p>
             <div className={c("cta__btns")}>
-              <a className={c("btn", "btn-grad")} href="/#footer">
+              <Link className={c("btn", "btn-grad")} href="/#footer">
                 Solicitar demo <ArrowRight className={c("i")} />
-              </a>
-              <a className={c("btn", "btn-outline-white")} href="/#producto-plataforma">
+              </Link>
+              <Link className={c("btn", "btn-outline-white")} href="/#producto-plataforma">
                 Probar plataforma
-              </a>
+              </Link>
             </div>
           </div>
           <div className={c("cta__chip")} data-reveal>

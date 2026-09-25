@@ -395,9 +395,9 @@ export default function DataCleaning() {
             un procesamiento de prueba.
           </p>
           <div className={c("cta__btns")}>
-            <a className={c("btn", "btn-grad")} href="/#footer">
+            <Link className={c("btn", "btn-grad")} href="/#footer">
               Solicitar demo <ArrowRight className={c("i")} />
-            </a>
+            </Link>
             <a className={c("btn", "btn-outline-white")} href="#productos">
               Ver productos relacionados
             </a>

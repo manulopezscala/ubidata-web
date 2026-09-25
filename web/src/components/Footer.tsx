@@ -43,7 +43,7 @@ export default function Footer() {
             <h4>Recursos</h4>
             <ul>
               <li><Link href="/#novedades">Docs</Link></li>
-              <li><Link href="/#novedades">Novedades</Link></li>
+              <li><Link href="/blog">Novedades</Link></li>
               <li><a href="#">API reference</a></li>
               <li><a href="#">Estado del servicio</a></li>
             </ul>
